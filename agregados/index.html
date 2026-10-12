@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Agregados | Demo</title>
+    <link rel="icon" href="demo/icon-192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="login-container"></div>
+
+    <div id="app-container-wrapper" style="display: none;">
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="brand">
+                    <h1>SISTEMA DE<br><span>AGREGADOS</span></h1>
+                </div>
+                <nav class="menu" id="main-menu">
+                    <a href="#" data-module="dashboard" class="active">Dashboard</a>
+                    <a href="#" data-module="servicos" class="acao-gestor">Novo Serviço</a>
+                    <a href="#" data-module="listagem">Serviços</a>
+                    <a href="#" data-module="cadastrar_agregado" class="acao-gestor">Cadastrar Motorista</a>
+                    <a href="#" data-module="agregados_lista">Motoristas</a>
+                    <a href="#" data-module="ciots">CIOTs</a>
+                    <a href="#" data-module="ocorrencias">Ocorrências</a>
+                    <a href="#" data-module="relatorios">Relatórios</a>
+                    <a href="#" data-module="calculadora_salario">Calculadora de salário</a>
+                    <a href="#" data-module="alterar_senha">Alterar senha</a>
+                    <a href="#" data-module="auditoria" data-role="gestor">Auditoria</a>
+                </nav>
+                <div class="sidebar-user-area">
+                    <div id="usuario-logado" class="sidebar-user"></div>
+                    <button id="btn-logout" class="btn-outline sidebar-button">Sair</button>
+                    <button id="btn-theme-toggle" class="btn-outline sidebar-button">🌙 Modo Escuro</button>
+                </div>
+            </aside>
+            <main class="main-content">
+                <div id="app-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="demo/demo-data.js"></script>
+    <script src="demo/seed.js"></script>
+    <script src="demo/supabase-mock.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

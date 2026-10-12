@@ -1,0 +1,352 @@
+/* ==========================================================================
+   FROTA EXEMPLO 3.0 — Design Foundation
+   --------------------------------------------------------------------------
+   Purpose: establish one consistent, Linear-inspired visual language on top
+   of the existing app.css, WITHOUT touching markup or JS. Every rule here
+   targets selectors already produced by assets/js/app.js, so it upgrades
+   the running app immediately.
+
+   Principles applied (see project brief):
+   - Visual hierarchy through spacing/weight/contrast, not just bigger fonts
+   - Tight 4px spacing grid + real typographic scale
+   - Calm surfaces: fewer heavy shadows, thin 1px borders, subtle elevation
+   - One state language for hover/focus/active across every component
+   - Preserve identity: black/graphite background, yellow primary,
+     green = positive, red = danger. No new hues introduced.
+
+   Load order: app.css -> relatorios-visual.css -> design-foundation.css
+   This file is intentionally the last stylesheet so it wins the cascade
+   without needing !important anywhere.
+   ========================================================================== */
+
+html{
+  /* Tells the browser to render native form UI (select dropdowns,
+     date pickers, scrollbars, checkboxes) using its dark palette instead
+     of defaulting to white — this is what was making filter dropdowns
+     look blank/white when opened. */
+  color-scheme:dark;
+}
+
+:root{
+  /* ---- 4px spacing scale --------------------------------------------- */
+  --sp-1:4px;  --sp-2:8px;  --sp-3:12px; --sp-4:16px;
+  --sp-5:20px; --sp-6:24px; --sp-7:32px; --sp-8:40px; --sp-9:48px;
+
+  /* ---- Typographic scale (Linear-style: tight, confident) ------------ */
+  --fs-xs:11px;  --fs-sm:12.5px; --fs-base:14px; --fs-md:15px;
+  --fs-lg:17px;  --fs-xl:20px;   --fs-2xl:24px;  --fs-3xl:30px;
+  --lh-tight:1.15; --lh-normal:1.45;
+
+  /* ---- Radius scale (rounder small controls, calmer large surfaces) -- */
+  --r-sm:7px; --r-md:10px; --r-lg:13px; --r-xl:16px;
+
+  /* ---- Elevation: soft, low-contrast, no heavy drop shadows ----------- */
+  --e-1:0 1px 0 rgba(0,0,0,.4);
+  --e-2:0 4px 14px rgba(0,0,0,.22);
+  --e-3:0 14px 34px rgba(0,0,0,.30);
+
+  /* ---- Motion: quick and consistent ----------------------------------- */
+  --ease:cubic-bezier(.2,.7,.3,1);
+  --dur-fast:120ms;
+  --dur-base:180ms;
+
+  /* ---- Status colors: brand is indigo now, so "warn" gets its own amber
+     instead of reusing --yellow (kept only for backward-compatible naming
+     in app.css) ---------------------------------------------------------- */
+  --status-ok:var(--green);
+  --status-warn:#f59e0b;
+  --status-danger:var(--red);
+  --status-info:#60a5fa;
+
+  /* ---- Surface tiers (subtle graphite steps, no new hues) ------------- */
+  --surface-0:var(--bg);
+  --surface-1:rgba(255,255,255,.025);
+  --surface-2:rgba(255,255,255,.045);
+  --surface-3:rgba(255,255,255,.07);
+  --border-quiet:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.16);
+}
+
+/* Autofill (usuário/senha salvos, buscas recentes) força fundo claro por
+   padrão no Chrome/Edge — neutralizamos com uma transição de cor absurdamente
+   longa, técnica padrão para "enganar" o autofill sem !important em cascata. */
+.search,.select,.field input,.field select,.field textarea,
+.login-card input{
+  -webkit-text-fill-color:var(--text);
+}
+.search:-webkit-autofill,.field input:-webkit-autofill,.login-card input:-webkit-autofill,
+.search:-webkit-autofill:hover,.field input:-webkit-autofill:hover,
+.search:-webkit-autofill:focus,.field input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--text);
+  -webkit-box-shadow:0 0 0 1000px #121211 inset;
+  box-shadow:0 0 0 1000px #121211 inset;
+  transition:background-color 99999s ease-in-out 0s;
+}
+
+/* Base typography ---------------------------------------------------------*/
+body{
+  font-size:var(--fs-base);
+  letter-spacing:-.005em;
+}
+h1,h2,h3,h4{ letter-spacing:-.015em; }
+
+/* Focus ring: one consistent, accessible treatment for every input -------*/
+a,button,input,select,textarea,.nav-btn,.btn,.icon-btn,.folder{
+  transition:
+    background-color var(--dur-base) var(--ease),
+    border-color var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-base) var(--ease);
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,.nav-btn:focus-visible,.btn:focus-visible{
+  outline:2px solid rgba(255,180,0,.55);
+  outline-offset:2px;
+}
+
+/* ---------------------------------------------------------------------- *
+ * Topbar — calmer chrome, clearer title hierarchy
+ * ---------------------------------------------------------------------- */
+.topbar{
+  border-radius:var(--r-lg);
+  padding:var(--sp-5) var(--sp-6);
+  box-shadow:var(--e-1);
+  border-color:var(--border-quiet);
+}
+.topbar h2{
+  font-size:var(--fs-2xl);
+  text-transform:none;
+  letter-spacing:-.02em;
+  font-weight:700;
+}
+.topbar p{
+  font-size:var(--fs-sm);
+  color:var(--muted);
+}
+
+/* ---------------------------------------------------------------------- *
+ * Sidebar & navigation — tighter rhythm, clearer active state
+ * ---------------------------------------------------------------------- */
+.sidebar{ padding:var(--sp-6) var(--sp-4) var(--sp-3); }
+.brand-text h1{ font-weight:800; letter-spacing:.02em; }
+.nav-title{
+  font-size:10px;
+  letter-spacing:.16em;
+  color:var(--muted2);
+  font-weight:700;
+  margin:var(--sp-1) var(--sp-1) 2px;
+}
+.nav-btn{
+  border-radius:var(--r-md);
+  padding:9px 10px;
+  min-height:42px;
+  font-weight:600;
+  gap:10px;
+}
+.nav-btn .label{ font-size:var(--fs-base); font-weight:600; }
+.nav-btn:hover{ background:var(--surface-2); }
+.nav-btn.active{
+  background:var(--yellow);
+  box-shadow:none;
+  font-weight:700;
+}
+.nav-btn .count{ font-weight:700; }
+.collapse-btn{ border-radius:var(--r-md); font-weight:700; }
+
+/* ---------------------------------------------------------------------- *
+ * Buttons — one clear scale: primary / default / ghost / danger
+ * ---------------------------------------------------------------------- */
+.btn,.icon-btn{
+  border-radius:var(--r-md);
+  font-weight:600;
+  font-size:var(--fs-base);
+  padding:9px 14px;
+  border-color:var(--border-quiet);
+  box-shadow:var(--e-1);
+}
+.btn:hover,.icon-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--e-2);
+  border-color:rgba(255,180,0,.5);
+}
+.btn:active,.icon-btn:active{ transform:translateY(0); }
+.btn.primary{
+  font-weight:700;
+  box-shadow:0 1px 0 rgba(0,0,0,.25), 0 6px 16px rgba(255,180,0,.18);
+}
+.btn.ghost{ box-shadow:none; }
+.btn.danger,.icon-btn.danger{ font-weight:700; }
+
+/* ---------------------------------------------------------------------- *
+ * Inputs — consistent surface, clear focus
+ * ---------------------------------------------------------------------- */
+.search,.select,.field input,.field select,.field textarea{
+  border-radius:var(--r-md);
+  font-size:var(--fs-base);
+  padding:10px 13px;
+  background:#121211;
+  color:var(--text);
+  border-color:var(--border-quiet);
+}
+.search:focus,.select:focus,
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--yellow);
+  box-shadow:0 0 0 3px rgba(255,180,0,.14);
+}
+.field{ gap:6px; font-size:var(--fs-sm); font-weight:600; color:var(--muted); }
+
+/* <select> dropdown options are rendered by the OS/browser, not by our
+   CSS box model — color-scheme:dark (set on <html>) fixes most engines,
+   but Firefox in particular also needs the option/optgroup colors set
+   explicitly or it falls back to a white popup. */
+.select option,.field select option,
+.select optgroup,.field select optgroup{
+  background:#1a1a18;
+  color:var(--text);
+}
+
+/* ---------------------------------------------------------------------- *
+ * Cards & stat cards — real hierarchy: number is the hero, label is quiet
+ * ---------------------------------------------------------------------- */
+.stat-card,.card,.table-card,.empty,.search-panel,.priority-box{
+  border-radius:var(--r-lg);
+  border-color:var(--border-quiet);
+  box-shadow:var(--e-1);
+}
+.stat-card{
+  padding:var(--sp-5);
+  border-left-width:3px;
+  transition:transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+.stat-card:hover{ transform:translateY(-2px); box-shadow:var(--e-2); }
+.stat-card span{
+  font-size:10px;
+  letter-spacing:.14em;
+  font-weight:700;
+  color:var(--muted2);
+}
+.stat-card strong{
+  font-size:var(--fs-3xl);
+  font-weight:700;
+  margin:6px 0 2px;
+}
+.stat-card small{ font-size:var(--fs-sm); }
+.card{ padding:var(--sp-5); }
+.card h3{ font-size:var(--fs-lg); font-weight:700; }
+.card p{ font-size:var(--fs-base); line-height:var(--lh-normal); }
+
+/* ---------------------------------------------------------------------- *
+ * Tables — easier to scan: quieter header, generous row padding, subtle
+ * hover, right-aligned numeric affordance ready for future phases
+ * ---------------------------------------------------------------------- */
+.table-card{ border-radius:var(--r-lg); }
+.data-table th,.data-table td{ padding:12px var(--sp-4); }
+.data-table th{
+  font-size:10.5px;
+  letter-spacing:.08em;
+  font-weight:700;
+  color:var(--muted2);
+  background:var(--surface-2);
+}
+.data-table td{ font-size:var(--fs-base); }
+.data-table tr:hover td{ background:var(--surface-1); }
+.plate{ border-radius:var(--r-sm); font-weight:700; letter-spacing:.05em; }
+
+/* Badges / tags — status colors carry the meaning, shape stays identical */
+.tag{
+  border-radius:999px;
+  font-weight:700;
+  font-size:11px;
+  padding:4px 10px;
+  border-color:var(--border-quiet);
+}
+.tag.green{ color:#8ff0b8; }
+.tag.red{ color:#ffaea8; }
+.tag.amber{ color:#ffdc7a; }
+.tag.blue{ color:#b5c7ff; }
+.tag.orange{ color:#ffcb9a; }
+
+/* ---------------------------------------------------------------------- *
+ * Modals — calmer overlay, clearer head/body/foot rhythm
+ * ---------------------------------------------------------------------- */
+.modal-bg{ background:rgba(6,6,6,.72); backdrop-filter:blur(2px); }
+.modal{
+  border-radius:var(--r-xl);
+  box-shadow:var(--e-3);
+  animation:modal-in var(--dur-base) var(--ease);
+}
+@keyframes modal-in{
+  from{ opacity:0; transform:translateY(6px) scale(.99); }
+  to{ opacity:1; transform:none; }
+}
+.modal-head,.modal-foot{ padding:var(--sp-4) var(--sp-5); }
+.modal-head h3{ font-size:var(--fs-lg); font-weight:700; }
+.modal-body{ padding:var(--sp-5); gap:var(--sp-4); }
+
+/* Toast — quieter, consistent with card elevation ------------------------*/
+.toast{
+  border-radius:var(--r-md);
+  box-shadow:var(--e-2);
+  font-size:var(--fs-base);
+}
+
+/* ---------------------------------------------------------------------- *
+ * Reusable utility classes for upcoming phases (nav shell, dashboard,
+ * per-module work). Safe to adopt incrementally — nothing above requires
+ * them, so shipping this file alone changes nothing structurally.
+ * ---------------------------------------------------------------------- */
+
+/* Skeleton loading placeholder */
+.skeleton{
+  position:relative;
+  overflow:hidden;
+  background:var(--surface-2);
+  border-radius:var(--r-md);
+  color:transparent!important;
+}
+.skeleton::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(90deg,transparent,var(--surface-3),transparent);
+  transform:translateX(-100%);
+  animation:skeleton-sweep 1.3s infinite;
+}
+@keyframes skeleton-sweep{ to{ transform:translateX(100%); } }
+
+/* Keyboard shortcut chip, e.g. for a future command palette / shortcuts */
+.kbd{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:20px; height:20px; padding:0 6px;
+  border-radius:5px;
+  background:var(--surface-2);
+  border:1px solid var(--border-strong);
+  font-size:11px; font-weight:700;
+  color:var(--muted);
+}
+
+/* Severity dot, for driver/vehicle risk indicators */
+.status-dot{
+  display:inline-block; width:8px; height:8px; border-radius:999px;
+  background:var(--muted2);
+}
+.status-dot.ok{ background:var(--status-ok); }
+.status-dot.warn{ background:var(--status-warn); }
+.status-dot.danger{ background:var(--status-danger); }
+
+/* Breadcrumb, ready for the navigation-shell phase */
+.breadcrumb{
+  display:flex; align-items:center; gap:6px;
+  font-size:var(--fs-sm); color:var(--muted2); font-weight:600;
+  margin:0 0 var(--sp-3);
+}
+.breadcrumb a{ color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover{ color:var(--text); }
+.breadcrumb .sep{ opacity:.5; }
+.breadcrumb .current{ color:var(--text); font-weight:700; }
+
+@media (max-width:760px){
+  .topbar{ padding:var(--sp-4); }
+  .stat-card{ padding:var(--sp-4); }
+  .card{ padding:var(--sp-4); }
+}

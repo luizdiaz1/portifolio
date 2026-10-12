@@ -1,0 +1,118 @@
+/* ===================================================================
+   RELATÓRIOS — visual executivo (KPIs grandes, gráficos, prioridades)
+   Este arquivo estiliza as classes .rel-* usadas em relatorios.module.js.
+   Não existia CSS dedicado para essas classes antes desta atualização.
+   =================================================================== */
+
+.relatorios-page{display:flex;flex-direction:column;gap:16px}
+
+.rel-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(120deg,rgba(255,180,0,.14),rgba(30,30,29,.9));border:1px solid var(--line2,#41413e);border-radius:16px;padding:20px 22px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.rel-eyebrow{display:inline-block;color:var(--yellow,#ffb400);font-size:11px;font-weight:1000;letter-spacing:.22em;text-transform:uppercase;margin-bottom:4px}
+.rel-hero h2{margin:0;font-size:26px;letter-spacing:-.02em}
+.rel-hero p{margin:6px 0 0;color:var(--muted,#a9a29a);max-width:520px}
+.rel-hero-side{text-align:right;flex:0 0 auto}
+.rel-hero-side strong{display:block;font-size:16px;color:var(--yellow2,#ffd45d)}
+.rel-hero-side span{display:block;color:var(--muted,#a9a29a);font-size:12px;margin-top:3px}
+
+.rel-filters .filter-row{display:flex;gap:10px;flex-wrap:wrap}
+.rel-filters select{background:#121211;border:1px solid var(--line2,#41413e);color:var(--text,#f2ede3);border-radius:9px;padding:11px 14px;font-weight:700;min-width:190px;outline:none}
+.rel-filters select:focus{border-color:var(--yellow,#ffb400)}
+
+/* ---------- KPIs grandes ---------- */
+.rel-kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:12px}
+@media (max-width:1180px){.rel-kpi-grid{grid-template-columns:repeat(3,minmax(150px,1fr))}}
+@media (max-width:640px){.rel-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rel-kpi{position:relative;overflow:hidden;background:rgba(30,30,29,.88);border:1px solid var(--line2,#41413e);border-top:4px solid var(--accent,#ffb400);border-radius:14px;padding:14px 16px;box-shadow:0 10px 24px rgba(0,0,0,.18);display:flex;flex-direction:column;gap:6px;min-height:112px}
+.rel-kpi .rel-kpi-label{display:flex;align-items:center;gap:6px;color:var(--muted,#a9a29a);font-size:11px;font-weight:1000;text-transform:uppercase;letter-spacing:.12em}
+.rel-kpi .rel-kpi-value{font-size:26px;font-weight:1000;line-height:1.05;letter-spacing:-.02em;color:var(--accent-text,#ffe08a);overflow-wrap:anywhere}
+.rel-kpi .rel-kpi-sub{font-size:12px;color:var(--muted,#a9a29a)}
+.rel-kpi .rel-kpi-trend{position:absolute;top:12px;right:12px;font-size:11px;font-weight:1000;padding:3px 8px;border-radius:999px}
+.rel-kpi .rel-kpi-trend.up{background:rgba(216,57,51,.18);color:#ffaea8}
+.rel-kpi .rel-kpi-trend.down{background:rgba(50,208,116,.16);color:#8ff0b8}
+.rel-kpi.accent-yellow{--accent:#ffb400;--accent-text:#ffe08a}
+.rel-kpi.accent-blue{--accent:#38bdf8;--accent-text:#9fe0ff}
+.rel-kpi.accent-red{--accent:#d83933;--accent-text:#ffaea8}
+.rel-kpi.accent-green{--accent:#22c55e;--accent-text:#8ff0b8}
+.rel-kpi.accent-purple{--accent:#a78bfa;--accent-text:#dcd0ff}
+
+/* ---------- painéis / gráficos ---------- */
+.rel-compact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:980px){.rel-compact-grid{grid-template-columns:1fr}}
+.rel-panel{padding:16px}
+.rel-panel .table-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.rel-panel .table-head h3{margin:0;font-size:15px}
+.rel-panel .table-head small{color:var(--muted,#a9a29a);font-size:11px}
+.rel-chart-card canvas{max-height:220px}
+.rel-chart-wrap{position:relative;height:220px}
+.rel-chart-wrap.donut{height:210px;display:flex;align-items:center;justify-content:center;gap:14px}
+.rel-donut-legend{display:flex;flex-direction:column;gap:8px;font-size:12px;min-width:120px}
+.rel-donut-legend .leg-item{display:flex;align-items:center;gap:8px}
+.rel-donut-legend .leg-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.rel-donut-legend .leg-label{color:var(--muted,#a9a29a);flex:1}
+.rel-donut-legend .leg-value{font-weight:1000;color:var(--text,#f2ede3)}
+
+/* ---------- barras textuais (fallback sem Chart.js) ---------- */
+.rel-bars{display:flex;flex-direction:column;gap:9px}
+.rel-bar-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
+.rel-bar-top b{font-weight:1000;color:var(--yellow2,#ffd45d)}
+.rel-bar-track{height:9px;border-radius:999px;background:#111;overflow:hidden}
+.rel-bar-track i{display:block;height:100%;background:linear-gradient(90deg,var(--yellow,#ffb400),var(--yellow2,#ffd45d));border-radius:999px}
+
+/* ---------- prioridades ---------- */
+.rel-risk-list{display:flex;flex-direction:column;gap:9px;max-height:320px;overflow:auto}
+.rel-risk{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center;background:rgba(18,18,17,.6);border:1px solid var(--line2,#41413e);border-radius:11px;padding:9px 12px}
+.rel-risk-level{text-align:center;font-size:11px;font-weight:1000;border-radius:999px;padding:5px 6px}
+.rel-risk-level.high{background:rgba(216,57,51,.18);color:#ffaea8}
+.rel-risk-level.mid{background:rgba(255,180,0,.18);color:#ffe08a}
+.rel-risk-level.low{background:rgba(56,189,248,.16);color:#9fe0ff}
+.rel-risk b{display:block;font-size:13px}
+.rel-risk small{display:block;color:var(--muted,#a9a29a);font-size:12px;margin-top:2px}
+
+/* ---------- resumo do diretor ---------- */
+.rel-director-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rel-director-summary div{background:rgba(18,18,17,.55);border:1px solid var(--line2,#41413e);border-radius:11px;padding:10px 12px}
+.rel-director-summary span{display:block;color:var(--muted,#a9a29a);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.rel-director-summary b{display:block;font-size:19px;font-weight:1000;margin-top:4px;color:var(--yellow2,#ffd45d)}
+
+/* ---------- tabela de lançamentos (agora visível também em tela) ---------- */
+.rel-entries-table{width:100%;border-collapse:separate;border-spacing:0}
+.rel-entries-table th,.rel-entries-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;font-size:13px}
+.rel-entries-table th{background:#242421;color:#cfc7b8;font-size:11px;text-transform:uppercase;letter-spacing:.06em;position:sticky;top:0}
+.rel-entries-table td.rel-value{font-weight:1000;color:#ffe08a;text-align:right;white-space:nowrap}
+.rel-entries-table tr:hover td{background:rgba(255,255,255,.03)}
+.rel-status-pill{display:inline-flex;font-size:11px;font-weight:900;padding:3px 9px;border-radius:999px}
+.rel-status-pill.paid{background:rgba(50,208,116,.14);color:#8ff0b8}
+.rel-status-pill.pending{background:rgba(255,180,0,.16);color:#ffe08a}
+.rel-status-pill.open{background:rgba(56,189,248,.14);color:#9fe0ff}
+
+.rel-clean-note{border:1px dashed var(--line2,#41413e);border-radius:12px;padding:12px 14px;color:var(--muted,#a9a29a);font-size:13px;background:rgba(255,255,255,.02)}
+.rel-clean-note strong{color:var(--text,#f2ede3)}
+
+@media (max-width:760px){.rel-hero{flex-direction:column;align-items:flex-start}.rel-hero-side{text-align:left}}
+
+/* ===================================================================
+   MOTORISTAS — multas por gravidade (resumo geral + coluna por motorista)
+   =================================================================== */
+.sev-summary-panel{margin:14px 0}
+.sev-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.sev-summary-card{border-radius:12px;padding:14px 16px;background:rgba(18,18,17,.55);border:1px solid var(--line2,#41413e);border-left:4px solid var(--accent,#888)}
+.sev-summary-card span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:1000;color:var(--muted,#a9a29a)}
+.sev-summary-card strong{display:block;font-size:26px;font-weight:1000;margin-top:6px}
+.sev-summary-card.sev-red{--accent:#d83933}
+.sev-summary-card.sev-red strong{color:#ffaea8}
+.sev-summary-card.sev-amber{--accent:#ffb400}
+.sev-summary-card.sev-amber strong{color:#ffe08a}
+.sev-summary-card.sev-green{--accent:#22c55e}
+.sev-summary-card.sev-green strong{color:#8ff0b8}
+.sev-summary-card.sev-gray{--accent:#94a3b8}
+.sev-summary-card.sev-gray strong{color:#c7cdd6}
+
+.driver-sev-cell{min-width:150px}
+.sev-pill-row{display:flex;flex-wrap:wrap;gap:5px}
+.sev-pill{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:1000;padding:3px 7px;border-radius:999px;white-space:nowrap}
+.sev-pill small{font-weight:800;text-transform:uppercase;opacity:.85}
+.sev-pill.sev-red{background:rgba(216,57,51,.15);color:#ffaea8}
+.sev-pill.sev-amber{background:rgba(255,180,0,.16);color:#ffe08a}
+.sev-pill.sev-green{background:rgba(34,197,94,.14);color:#8ff0b8}
+.sev-pill.sev-gray{background:rgba(148,163,184,.14);color:#c7cdd6}
+

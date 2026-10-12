@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Auditoria e Usuários — tabela ordenável, filtros compactos, modal de detalhe
+   Carregado por último (depois de eficiencia.css) para vencer a cascata.
+   Usa os tokens existentes (--line2, --muted, --yellow, --green, --red).
+   ========================================================================== */
+
+/* ---- Barra de filtros --------------------------------------------------- */
+.aud-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.aud-toolbar .aud-q{flex:1 1 280px;min-width:220px}
+.aud-toolbar .select{min-width:170px}
+.aud-date{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;font-weight:700}
+.aud-date .search{width:auto;min-width:0}
+
+/* ---- Controle segmentado por ação -------------------------------------- */
+.aud-seg{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden;margin:0 0 12px;background:#141413}
+.aud-seg button{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:transparent;border:0;border-right:1px solid var(--line2);color:var(--muted);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.aud-seg button:last-child{border-right:0}
+.aud-seg button:hover{background:rgba(255,255,255,.04);color:var(--text)}
+.aud-seg button.active{background:rgba(255,255,255,.08);color:var(--text)}
+.aud-seg button i{width:8px;height:8px;border-radius:50%;background:var(--muted2,#817b72)}
+.aud-seg button.is-criar i{background:var(--green)}
+.aud-seg button.is-editar i{background:var(--yellow)}
+.aud-seg button.is-excluir i{background:var(--red)}
+.aud-seg button:not([data-acao=""]) i{display:inline-block}
+.aud-seg button[data-acao=""] i{display:none}
+.aud-seg em{font-style:normal;font-size:12px;color:var(--muted2,#817b72);font-variant-numeric:tabular-nums}
+.aud-seg button.active em{color:var(--muted)}
+
+/* ---- Cartão/tabela ------------------------------------------------------ */
+.aud-card{min-height:0;box-shadow:none}
+.aud-table{min-width:880px}
+.aud-table th{white-space:nowrap}
+.aud-table td{vertical-align:middle;padding:11px 14px}
+.aud-sortable button{all:unset;display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:inherit;text-transform:inherit;letter-spacing:inherit;font:inherit}
+.aud-sortable button:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;border-radius:3px}
+.aud-sortable:hover{color:var(--text)}
+.aud-sortable.is-sorted{color:var(--yellow2)}
+.aud-arrow{font-size:9px;min-width:9px}
+
+.aud-daysep td{background:#171716;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+.aud-daysep:first-child td{border-top:0}
+
+.aud-row{cursor:pointer}
+.aud-row:focus-visible{outline:2px solid var(--yellow);outline-offset:-2px}
+.aud-row:hover td{background:rgba(255,255,255,.035)}
+.aud-when b{display:block;font-weight:700;font-variant-numeric:tabular-nums}
+.aud-when small{color:var(--muted);font-variant-numeric:tabular-nums}
+.aud-go{color:var(--muted2,#817b72);font-size:20px;text-align:right;width:28px}
+.aud-row:hover .aud-go{color:var(--yellow2)}
+.aud-sum{color:var(--muted);max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aud-id{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+.aud-null{color:var(--muted2,#817b72);font-style:italic}
+
+/* usuário com iniciais */
+.aud-user{display:inline-flex;align-items:center;gap:9px;font-weight:700}
+.aud-user i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#2a2a28;border:1px solid var(--line2);color:var(--yellow2);font-style:normal;font-size:12px;font-weight:800;flex:none}
+.usr-you{color:var(--muted);font-weight:700;font-size:11px;border:1px solid var(--line2);border-radius:999px;padding:1px 7px;margin-left:2px}
+
+/* ação: ponto colorido + rótulo (sem pílula pesada) */
+.aud-act{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13px;white-space:nowrap}
+.aud-act i{width:8px;height:8px;border-radius:50%;background:var(--muted2,#817b72);flex:none}
+.aud-act.is-criar{color:#8ff0b8}.aud-act.is-criar i{background:var(--green)}
+.aud-act.is-editar{color:var(--yellow2)}.aud-act.is-editar i{background:var(--yellow)}
+.aud-act.is-excluir{color:#ffaea8}.aud-act.is-excluir i{background:var(--red)}
+
+/* rodapé com paginação */
+.aud-pager{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid rgba(255,255,255,.07);color:var(--muted);font-size:13px}
+.aud-pager small{color:var(--muted2,#817b72)}
+.aud-pager-btns{display:inline-flex;align-items:center;gap:10px}
+.aud-pager .btn[disabled]{opacity:.4;cursor:default}
+
+/* estados vazio/erro */
+.aud-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:48px 20px;color:var(--muted);min-height:160px}
+.aud-state.is-error b{color:#ffaea8}
+.aud-state code,.sys-info code,.usr-table code{background:#121211;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;font-size:12px;color:var(--text)}
+
+/* ---- Modal de sistema (detalhe da auditoria, usuários) ------------------ */
+.sys-modal{width:min(680px,100%)}
+.sys-modal.is-wide{width:min(860px,100%)}
+.sys-modal-body{padding:18px;overflow:auto;display:block}
+.sys-info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;margin:0 0 18px}
+.sys-info dt{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.sys-info dd{margin:0;font-weight:600;word-break:break-word}
+.sys-h{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.aud-diff-wrap{border:1px solid var(--line2);border-radius:9px;overflow:hidden}
+.aud-diff-table{width:100%;border-collapse:collapse}
+.aud-diff-table th,.aud-diff-table td{text-align:left;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top;font-size:13.5px;word-break:break-word}
+.aud-diff-table th{background:#1c1c1a;color:var(--muted);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.aud-diff-table tr:last-child td{border-bottom:0}
+.aud-diff-table td:first-child{width:32%;font-weight:700;color:var(--text)}
+.aud-old{background:rgba(216,57,51,.09);color:#ffb4ae}
+.aud-new{background:rgba(50,208,116,.09);color:#8ff0b8}
+.aud-diff-wrap .aud-state{padding:24px}
+
+/* ---- Formulário de usuário --------------------------------------------- */
+.usr-form{display:flex;flex-direction:column;gap:16px}
+.usr-form .field small{font-weight:500;color:var(--muted2,#817b72);line-height:1.35}
+.usr-pass{display:flex;gap:8px}
+.usr-pass input{flex:1;min-width:0}
+.usr-fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.usr-fieldset legend{padding:0;margin-bottom:8px;color:var(--muted);font-size:13px;font-weight:700}
+.usr-fieldset>small{color:var(--muted2,#817b72)}
+.usr-opt{display:flex;align-items:flex-start;gap:12px;padding:11px 13px;border:1px solid var(--line2);border-radius:9px;cursor:pointer;background:#141413}
+.usr-opt:hover{border-color:var(--border-strong,rgba(255,255,255,.16))}
+.usr-opt.is-on{border-color:var(--yellow);background:rgba(255,180,0,.06)}
+.usr-opt.is-disabled{opacity:.55;cursor:not-allowed}
+.usr-opt input{margin-top:3px;accent-color:var(--yellow)}
+.usr-opt span{display:flex;flex-direction:column;gap:2px}
+.usr-opt b{font-size:14px;color:var(--text)}
+.usr-opt small{color:var(--muted);font-size:12.5px;line-height:1.35;font-weight:500}
+.usr-err{background:rgba(216,57,51,.12);border:1px solid rgba(216,57,51,.4);color:#ffb4ae;border-radius:9px;padding:10px 12px;font-size:13px;font-weight:600}
+.usr-err[hidden]{display:none}
+.usr-table .row-actions{justify-content:flex-end}
+
+@media (max-width:760px){
+  .sys-info{grid-template-columns:1fr}
+  .aud-seg{display:flex;width:100%;overflow:auto}
+  .aud-toolbar .select,.aud-date{flex:1 1 140px}
+}
+
+/* ---- Quem está online (presença em tempo real) --------------------------- */
+.pres-card{margin:0 0 14px;padding:12px 14px;box-shadow:none;min-height:0}
+.pres-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 10px}
+.pres-head b{font-size:14px}
+.pres-count{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;font-weight:700}
+.pres-count i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(50,208,116,.18)}
+.pres-seg{display:inline-flex;margin-left:auto;border:1px solid var(--line2);border-radius:999px;overflow:hidden}
+.pres-seg button{padding:5px 12px;background:transparent;border:0;border-right:1px solid var(--line2);color:var(--muted);font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.pres-seg button:last-child{border-right:0}
+.pres-seg button.active{background:var(--panel3,#292827);color:inherit}
+.pres-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.pres-list li{display:flex;flex-direction:column;gap:4px;padding:9px 11px;border:1px solid var(--line2);border-radius:10px;opacity:.72}
+.pres-list li.is-on{opacity:1;border-color:rgba(50,208,116,.45)}
+.pres-list small{color:var(--muted);font-size:11.5px;padding-left:35px}
+.aud-user i{position:relative}
+.pres-dot{position:absolute;right:-2px;bottom:-2px;width:9px;height:9px;border-radius:50%;background:var(--muted2,#817b72);border:2px solid var(--panel,#1d1d1b)}
+.pres-list li.is-on .pres-dot,.aud-user.is-on .pres-dot{background:var(--green)}
+@media (max-width:760px){
+  .pres-seg{margin-left:0}
+  .pres-list{grid-template-columns:1fr}
+}
