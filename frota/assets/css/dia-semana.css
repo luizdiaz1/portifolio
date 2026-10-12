@@ -1,0 +1,51 @@
+/* Produção do Dia — seletor rápido do dia da semana (SEG a SÁB)
+   Segue o visual atual: grafite, borda --line2 e destaque amarelo da marca. */
+.weekday-field{gap:8px}
+.wd-picker{display:flex;align-items:stretch;gap:6px}
+.wd-days{flex:1 1 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.wd-day,.wd-nav{
+  border:1px solid var(--line2,#41413e);background:#121211;color:var(--text,#f5f1e8);
+  border-radius:9px;cursor:pointer;font:inherit;transition:border-color .12s,background .12s,color .12s;
+}
+.wd-day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:9px 4px;min-height:56px;position:relative}
+.wd-day b{font-size:14px;font-weight:900;letter-spacing:.06em}
+.wd-day small{font-size:11.5px;font-weight:700;color:var(--muted,#b5afa3)}
+.wd-day:hover{border-color:rgba(255,180,0,.55)}
+.wd-day.is-today::after{content:"hoje";position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  font-size:9.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:999px;
+  background:#1d1d1b;border:1px solid var(--line2,#41413e);color:var(--muted,#b5afa3)}
+.wd-day.active{background:var(--yellow,#ffb400);border-color:var(--yellow,#ffb400);color:#111;box-shadow:0 0 0 2px rgba(255,180,0,.22)}
+.wd-day.active small{color:#3b2e00}
+.wd-day.active.is-today::after{border-color:var(--yellow,#ffb400);color:var(--yellow,#ffb400)}
+.wd-nav{flex:0 0 34px;font-size:20px;font-weight:700;color:var(--muted,#b5afa3);padding:0}
+.wd-nav:hover{color:var(--text,#f5f1e8);border-color:var(--line2,#41413e);background:#1c1c1a}
+.wd-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.wd-summary{color:var(--muted,#b5afa3);font-weight:700}
+.wd-summary b{color:var(--text,#f5f1e8);font-weight:800}
+.wd-summary em{font-style:normal;color:var(--yellow,#ffb400);font-weight:800}
+.wd-links{display:flex;gap:14px}
+.wd-link{background:none;border:0;padding:0;color:var(--yellow,#ffb400);font:inherit;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.wd-link:hover{color:var(--yellow2,#ffd45d)}
+.wd-date-slot .wd-date-label{max-width:260px}
+.wd-warn{color:#ffaea8;font-weight:700}
+@media (max-width:560px){
+  .wd-picker{gap:4px}
+  .wd-days{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px;gap:12px 4px}
+  .wd-nav{flex-basis:28px}
+  .wd-day{min-height:50px}
+  .wd-date-slot .wd-date-label{max-width:none}
+}
+
+/* Produção do Dia — responsável por clique */
+.resp-field{gap:8px}
+.resp-chips{display:flex;flex-wrap:wrap;gap:8px}
+.resp-chip{
+  min-width:84px;padding:10px 14px;border:1px solid var(--line2,#41413e);background:#121211;color:var(--text,#f5f1e8);
+  border-radius:9px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:border-color .12s,background .12s,color .12s;
+}
+.resp-chip:hover{border-color:rgba(255,180,0,.55)}
+.resp-chip.active{background:var(--yellow,#ffb400);border-color:var(--yellow,#ffb400);color:#111;box-shadow:0 0 0 2px rgba(255,180,0,.22)}
+.resp-chip.is-team{border-style:dashed}
+.resp-chip.is-team.active{border-style:solid}
+.resp-chip.is-legacy{font-weight:700}
+@media (max-width:560px){ .resp-chip{flex:1 1 calc(33.333% - 8px);min-width:0;padding:11px 6px} }

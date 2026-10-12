@@ -1,0 +1,161 @@
+/* Módulo Eficiência Operacional — usa as variáveis de marca já definidas
+   em app.css (--yellow, --green, --red, --line2, --muted, --radius etc.)
+   para manter a identidade visual (preto/grafite/amarelo/verde).
+
+   Linguagem visual do módulo: a meta de consumo fica sempre no meio da
+   escala (0 a 2x a meta) em qualquer indicador — o medidor do hero e as
+   mini-barras dos cards e do ranking. "Passou do meio, tá verde" vale em
+   todo lugar. */
+
+/* ---------- Hero ---------- */
+.efi-hero{
+  padding:26px 28px;
+  border:1px solid var(--line2);
+  border-top:3px solid var(--yellow);
+  margin-bottom:16px;
+  background:radial-gradient(ellipse at 20% 0%, rgba(255,180,0,.06), transparent 55%), var(--panel);
+}
+.efi-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.efi-eyebrow{display:block;color:var(--yellow);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:1000;margin-bottom:4px}
+.efi-hero-gauge-col{display:flex;flex-direction:column;align-items:center;min-width:220px}
+.efi-hero-compare{margin-top:2px}
+.efi-hero-value{display:block;color:var(--yellow2);font-weight:1000;margin:6px 0 4px}
+.efi-hero-side{flex:1;min-width:260px;display:flex;flex-direction:column;gap:14px}
+.efi-hero-actions{display:flex;justify-content:flex-end;gap:8px}
+.efi-hero-stats{margin-top:0}
+
+/* Aviso de confiabilidade — a média é aproximada, não exata (falhas
+   conhecidas de leitura de odômetro no relatório-fonte do CTF). Fica logo
+   abaixo do hero, sempre visível, sem precisar clicar em nada. */
+.efi-aviso-confiabilidade{
+  margin:0 0 16px;
+  padding:14px 18px;
+  border:1px solid #E0A800;
+  border-left:4px solid #E0A800;
+  border-radius:var(--radius, 8px);
+  background:rgba(224,168,0,.10);
+  color:#c99400;
+}
+.efi-aviso-confiabilidade strong{display:block;font-size:14px;margin-bottom:4px;color:#e0a800}
+.efi-aviso-confiabilidade p{margin:0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+
+/* Medidor (assinatura visual do módulo) */
+.efi-gauge{width:100%;max-width:220px;height:auto;display:block;margin-top:2px}
+.efi-gauge-value{font-size:28px;font-weight:1000;font-family:inherit}
+.efi-gauge-unit{font-size:10px;font-weight:900;fill:var(--muted);letter-spacing:.1em}
+.efi-gauge-scale{font-size:10px;font-weight:800;fill:var(--muted2)}
+
+.efi-meta-edit{padding:14px 16px;border:1px solid var(--line2);border-radius:10px;background:rgba(255,255,255,.02);display:grid;gap:10px;max-width:320px}
+.efi-meta-edit label{display:block;color:var(--muted);font-size:12px;font-weight:800}
+.efi-meta-edit input{width:100%;margin-top:6px;background:#111;border:1px solid var(--line2);color:var(--text);border-radius:8px;padding:10px 12px;outline:none}
+.efi-meta-edit input:focus{border-color:var(--yellow)}
+
+/* ---------- Barra de importação ---------- */
+.efi-import-bar{align-items:center;gap:16px;row-gap:10px}
+.efi-import-btn{cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-right:10px}
+#efiRefreshBtn{margin-left:0}
+.efi-import-hint{font-size:12px;flex:1;min-width:220px}
+.efi-import-feedback{margin:0 0 14px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:700;border:1px solid var(--line2);background:rgba(255,255,255,.03)}
+.efi-import-feedback.ok{border-color:rgba(50,208,116,.4);background:rgba(50,208,116,.09);color:#bdf5d4}
+.efi-import-feedback.error{border-color:rgba(216,57,51,.4);background:rgba(216,57,51,.1);color:#ffb3ae}
+.efi-import-feedback.loading{border-color:rgba(255,180,0,.4);background:rgba(255,180,0,.09);color:#ffe08a}
+
+.tag-inline{font-size:16px;color:var(--yellow2)}
+
+/* ---------- Mini-barra reutilizável ---------- */
+.efi-mini-bar{position:relative;height:6px;border-radius:4px;background:var(--line2);overflow:hidden;margin-top:8px;width:100%}
+.efi-mini-bar-fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;transition:width .25s ease}
+.efi-mini-bar-fill.green{background:var(--green)}
+.efi-mini-bar-fill.amber{background:var(--yellow)}
+.efi-mini-bar-fill.red{background:var(--red)}
+.efi-mini-bar-fill.gray{background:var(--muted2)}
+.efi-mini-bar-meta{position:absolute;left:50%;top:-2px;bottom:-2px;width:2px;background:rgba(255,255,255,.5);transform:translateX(-1px)}
+
+/* ---------- Ranking por modelo ---------- */
+.efi-modelo-card{margin-bottom:14px}
+.efi-modelo-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+.efi-modelo-head h3{margin:0;font-size:15px;letter-spacing:.02em}
+.efi-rank-row{display:grid;grid-template-columns:30px 1fr 90px auto;align-items:center;gap:14px;padding:10px 4px}
+.efi-rank-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.05)}
+.efi-rank-medal{font-size:17px;text-align:center;font-weight:1000;color:var(--muted)}
+.efi-rank-nome{font-weight:900;display:flex;flex-direction:column;gap:2px;min-width:0}
+.efi-rank-nome .plate{width:fit-content}
+.efi-rank-nome small{color:var(--muted);font-weight:800;font-size:11px}
+.efi-rank-valor{font-weight:1000;color:var(--yellow2);white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ---------- Painel de detalhe (overlay) ---------- */
+.efi-overlay-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.efi-overlay-panel{background:#181816;border:1px solid var(--line2);border-radius:16px;padding:24px;max-width:600px;width:100%;max-height:85vh;overflow:auto;box-shadow:var(--shadow)}
+.efi-overlay-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line2)}
+.efi-overlay-head h3{margin:0;font-size:17px}
+
+/* ---------- Pastas por período e por motorista (mesmo padrão visual) ---------- */
+#efiFolders{gap:12px}
+#efiMotoristaFolders{margin-bottom:6px;margin-top:2px;gap:12px}
+
+/* ---------- Grade de veículos (cards) ---------- */
+.efi-vcard-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:14px}
+.efi-vcard{
+  background:rgba(30,30,29,.84);
+  border:1px solid var(--line2);
+  border-radius:var(--radius);
+  box-shadow:0 10px 26px rgba(0,0,0,.16);
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.efi-vcard-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+.efi-vcard-head .efi-open-detalhe{font-size:15px;font-weight:900;display:inline-flex;align-items:center;gap:6px}
+.efi-vcard-avisos{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.efi-vcard-kml{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted);font-weight:800}
+.efi-vcard-kml > span:first-child{font-size:16px}
+.efi-vcard-kml .efi-kml-input{max-width:78px;flex:0 0 auto}
+.efi-vcard-kml .efi-mini-bar{flex-basis:100%;order:5}
+.efi-vcard-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:4px;border-top:1px solid rgba(255,255,255,.05)}
+.efi-vcard-footer .efi-driver-registros{font-size:13px}
+.efi-vcard-footer .efi-driver-registros strong{font-size:16px;color:var(--yellow2)}
+.efi-vcard-motoristas-resumo .efi-open-detalhe{color:var(--muted);font-weight:800;font-size:12px;text-decoration:underline;text-decoration-color:rgba(255,180,0,.4);text-underline-offset:3px}
+.efi-vcard-motoristas-resumo .efi-open-detalhe:hover{color:var(--yellow2)}
+
+/* ---------- Lista de motoristas (dentro do painel de detalhe e da visão focada) ---------- */
+.efi-driver-list{display:flex;flex-direction:column;gap:8px}
+.efi-driver-row{border:1px solid var(--line2);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)}
+.efi-driver-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.efi-driver-name{font-weight:900;font-size:14px}
+.efi-driver-kml{font-weight:1000;color:var(--yellow2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.efi-driver-kml small{color:var(--muted);font-weight:800}
+.efi-driver-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;flex-wrap:wrap}
+.efi-driver-registros{font-size:13px;color:var(--muted);font-weight:700}
+.efi-driver-registros strong{font-size:20px;color:var(--text);font-weight:1000;margin-right:4px}
+.efi-roteiro-input-mini{max-width:220px;flex:1;min-width:140px;font-size:12px;padding:6px 9px}
+
+/* ---------- Botão placa / abrir detalhe ---------- */
+.efi-open-detalhe{background:none;border:none;padding:0;cursor:pointer;font:inherit;color:inherit}
+.efi-open-detalhe .plate{transition:border-color .15s ease}
+.efi-open-detalhe:hover .plate{border-color:rgba(255,180,0,.65)}
+
+/* ---------- Inputs inline reutilizáveis ---------- */
+.efi-inline-input{background:#111;border:1px solid var(--line2);color:var(--text);border-radius:6px;padding:7px 9px;font:inherit;outline:none;transition:border-color .15s ease}
+.efi-inline-input:focus{border-color:var(--yellow)}
+.efi-registros-input{max-width:80px;text-align:center}
+.efi-roteiro-input{min-width:180px}
+.efi-inline-input:disabled{opacity:.4;cursor:not-allowed}
+
+/* ---------- Grupo por modelo ---------- */
+.efi-modelo-group{margin-bottom:24px}
+.efi-modelo-group-head{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;padding-left:2px;border-left:3px solid var(--yellow)}
+.efi-modelo-group-head h4{margin:0 0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow2);font-weight:1000}
+.efi-modelo-group-head span{margin-left:auto}
+
+@media (max-width:760px){
+  .efi-hero{padding:20px}
+  .efi-hero-top{flex-direction:column;align-items:center;gap:20px}
+  .efi-hero-gauge-col{width:100%}
+  .efi-hero-side{width:100%}
+  .efi-hero-actions{justify-content:center}
+  .efi-rank-row{grid-template-columns:22px 1fr auto;row-gap:6px}
+  .efi-rank-row .tag{grid-column:1/-1;justify-self:start;margin-top:2px}
+  .efi-vcard-grid{grid-template-columns:1fr}
+  .efi-overlay-panel{padding:18px}
+}
