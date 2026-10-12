@@ -5,223 +5,263 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="img/luiz.webp">
 <title>Luiz Dias — Portfólio</title>
-<meta name="description" content="Luiz Dias — solução de problemas, automação de processos e desenvolvimento de soluções digitais para empresas, com projetos e demonstrações interativas.">
+<meta name="description" content="Luiz Dias — solução de problemas, automação de processos e desenvolvimento de soluções digitais para empresas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: página única — apresentação, problemas que resolvo, método, projetos (fichas com período, situação e contribuição), trajetória datada, matriz de competências e contato */
+/* Layout: uma coluna técnica — apresentação, problemas → soluções, projetos em fichas, ORION em destaque com pipeline e capturas reais, trajetória, matriz de competências, contato */
 :root {
-  --paper: #f3f5f6;
-  --sheet: #ffffff;
-  --ink: #16212b;
-  --ink-soft: #4a5866;
-  --line: #d8dee3;
-  --signal: #c98a00;
-  --signal-ink: #1b1400;
-  --signal-soft: #fff3cf;
-  --ok: #1f7a4d;   --ok-soft: #e1f3e9;
-  --info: #1f5f99; --info-soft: #e2eef9;
-  --warn: #9a5b00; --warn-soft: #fbecd6;
-  --mute: #5b6875; --mute-soft: #e9edf0;
-  --plate: #ffffff; --plate-band: #1d3f8f;
-  --shadow: 0 1px 2px rgba(22,33,43,.06), 0 8px 24px rgba(22,33,43,.07);
-  --f-display: "Archivo", "Arial Narrow", Arial, sans-serif;
-  --f-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --panel-2: #eef0f4;
+  --ink: #12151b;
+  --ink-2: #4b5363;
+  --ink-3: #6b7383;
+  --line: #dde1e8;
+  --accent: #4f5df0;
+  --accent-soft: #e7e9fe;
+  --accent-ink: #ffffff;
+  --ok: #157f55; --ok-soft: #dcf3e8;
+  --info: #2266b8; --info-soft: #e1edfb;
+  --warn: #9a5a00; --warn-soft: #fbedd8;
+  --mute: #5b6475; --mute-soft: #eceef2;
+  --grid: rgba(18, 21, 27, .05);
+  --shadow: 0 1px 2px rgba(18,21,27,.05), 0 10px 28px rgba(18,21,27,.06);
+  --f-sans: "Geist", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #10161c; --sheet: #171f27; --ink: #e7ecf0; --ink-soft: #a5b1bc; --line: #2a3540;
-    --signal: #f2b730; --signal-ink: #1b1400; --signal-soft: #3a2d0b;
-    --ok: #5fd39a; --ok-soft: #12301f; --info: #7db7ee; --info-soft: #13283c; --warn: #f0b25a; --warn-soft: #3a280e;
-    --mute: #a5b1bc; --mute-soft: #222c36;
-    --plate: #f4f6f8; --plate-band: #2b56b8;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+    --bg: #0b0e13; --panel: #11151c; --panel-2: #161b24; --ink: #e8ebf1; --ink-2: #aab2c0; --ink-3: #828b9b; --line: #232a35;
+    --accent: #8c96ff; --accent-soft: #1d2140; --accent-ink: #0b0e13;
+    --ok: #5fd3a0; --ok-soft: #10291f; --info: #7fb4f5; --info-soft: #132538; --warn: #f2b45e; --warn-soft: #34260f; --mute: #9aa3b2; --mute-soft: #1b2029;
+    --grid: rgba(255,255,255,.035);
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #10161c; --sheet: #171f27; --ink: #e7ecf0; --ink-soft: #a5b1bc; --line: #2a3540;
-  --signal: #f2b730; --signal-ink: #1b1400; --signal-soft: #3a2d0b;
-  --ok: #5fd39a; --ok-soft: #12301f; --info: #7db7ee; --info-soft: #13283c; --warn: #f0b25a; --warn-soft: #3a280e;
-  --mute: #a5b1bc; --mute-soft: #222c36;
-  --plate: #f4f6f8; --plate-band: #2b56b8;
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  --bg: #0b0e13; --panel: #11151c; --panel-2: #161b24; --ink: #e8ebf1; --ink-2: #aab2c0; --ink-3: #828b9b; --line: #232a35;
+  --accent: #8c96ff; --accent-soft: #1d2140; --accent-ink: #0b0e13;
+  --ok: #5fd3a0; --ok-soft: #10291f; --info: #7fb4f5; --info-soft: #132538; --warn: #f2b45e; --warn-soft: #34260f; --mute: #9aa3b2; --mute-soft: #1b2029;
+  --grid: rgba(255,255,255,.035);
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { background: var(--paper); color: var(--ink); font: 400 1rem/1.6 var(--f-body); }
+html { overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 1rem/1.6 var(--f-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 .wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, 4vw); padding-block: 0 64px; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; border-radius: 4px; }
-.eyebrow { font: 700 .74rem/1.3 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
-h2.sec { font: 800 clamp(1.5rem, 3vw, 2rem)/1.1 var(--f-display); font-stretch: 112%; margin: 10px 0 0; text-wrap: balance; }
-section.block { margin-top: 72px; scroll-margin-top: 72px; }
-.sec-head { display: grid; gap: 4px; margin-bottom: 22px; }
-.sec-head p { margin: 8px 0 0; color: var(--ink-soft); max-width: 66ch; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.mono { font-family: var(--f-mono); }
+.label { font: 500 .75rem/1.3 var(--f-mono); letter-spacing: .02em; color: var(--ink-3); }
+.label b { color: var(--accent); font-weight: 600; }
+h2.sec { font: 600 clamp(1.5rem, 3vw, 2rem)/1.15 var(--f-sans); letter-spacing: -.02em; margin: 8px 0 0; text-wrap: balance; }
+section.block { margin-top: 80px; scroll-margin-top: 72px; }
+.sec-head { display: grid; gap: 2px; margin-bottom: 24px; }
+.sec-head p { margin: 10px 0 0; color: var(--ink-2); max-width: 66ch; }
 
 /* navegação */
-.topnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.topnav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
-.brand { font: 800 1.05rem/1 var(--f-display); font-stretch: 112%; text-decoration: none; white-space: nowrap; }
-.topnav nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
-.topnav nav a { text-decoration: none; font-size: .9rem; font-weight: 600; color: var(--ink-soft); padding: 6px 10px; border-radius: 7px; white-space: nowrap; }
-.topnav nav a:hover { color: var(--ink); background: var(--sheet); }
+.topnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.topnav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { font: 600 .95rem/1 var(--f-mono); text-decoration: none; white-space: nowrap; display: inline-flex; gap: 8px; align-items: center; }
+.brand i { width: 8px; height: 8px; border-radius: 2px; background: var(--accent); display: inline-block; }
+.topnav nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.topnav nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--ink-2); padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+.topnav nav a:hover { color: var(--ink); background: var(--panel-2); }
 
 /* apresentação */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: center; padding-block: 52px 8px; }
-.hero h1 { font: 800 clamp(2.4rem, 5.6vw, 4rem)/1 var(--f-display); font-stretch: 112%; margin: 12px 0 10px; letter-spacing: -.01em; }
-.role { font: 600 clamp(1.05rem, 2vw, 1.28rem)/1.35 var(--f-body); margin: 0 0 16px; max-width: 36ch; }
-.role span { color: var(--signal); }
-.lede { max-width: 62ch; color: var(--ink-soft); margin: 0; font-size: 1.06rem; }
-.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.hero-wrap { position: relative; }
+.hero-wrap::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, #000 40%, transparent); -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent); pointer-events: none; z-index: -1; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; align-items: center; padding-block: 64px 12px; }
+.hero h1 { font: 600 clamp(2.5rem, 6vw, 4.2rem)/1 var(--f-sans); letter-spacing: -.035em; margin: 14px 0 14px; }
+.role { font: 500 clamp(1.1rem, 2vw, 1.35rem)/1.4 var(--f-sans); margin: 0 0 16px; max-width: 34ch; color: var(--ink); }
+.role span { color: var(--accent); }
+.lede { max-width: 62ch; color: var(--ink-2); margin: 0; font-size: 1.04rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .portrait { margin: 0; position: relative; }
-.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-.portrait figcaption { position: absolute; left: 12px; bottom: 12px; display: inline-flex; flex-direction: column; border: 2px solid #111; border-radius: 6px; overflow: hidden; background: var(--plate); color: #111; font: 700 .85rem/1 var(--f-mono); letter-spacing: .08em; text-align: center; }
-.portrait figcaption i { font: 700 .46rem/1 var(--f-body); letter-spacing: .12em; font-style: normal; color: #fff; background: var(--plate-band); padding: 3px 0 2px; }
-.portrait figcaption span { padding: 4px 9px 5px; }
-.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 36px; border: 1px solid var(--line); border-radius: 14px; background: var(--sheet); overflow: hidden; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.portrait figcaption { position: absolute; left: 10px; bottom: 10px; font: 500 .72rem/1 var(--f-mono); background: rgba(11,14,19,.78); color: #e8ebf1; padding: 6px 8px; border-radius: 6px; display: inline-flex; gap: 6px; align-items: center; }
+.portrait figcaption i { width: 7px; height: 7px; border-radius: 50%; background: #5fd3a0; display: inline-block; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 40px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; }
 .strip div { padding: 16px 18px; display: grid; gap: 4px; }
 .strip div + div { border-left: 1px solid var(--line); }
-.strip b { font: 700 1.6rem/1 var(--f-mono); font-variant-numeric: tabular-nums; }
-.strip span { font-size: .88rem; color: var(--ink-soft); }
+.strip b { font: 600 1.55rem/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+.strip span { font-size: .86rem; color: var(--ink-2); }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 600 .95rem/1 var(--f-body); padding: 11px 16px; border-radius: 9px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
-.btn:hover { filter: brightness(1.12); }
-.btn.alt { background: transparent; color: var(--ink); border-color: var(--line); }
-.btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 .93rem/1 var(--f-sans); padding: 11px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+.btn:hover { filter: brightness(1.08); }
+.btn.alt { background: var(--panel); color: var(--ink); border-color: var(--line); }
+.btn.alt:hover { border-color: var(--ink-3); filter: none; }
 
-/* problemas que resolvo */
-.problems { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.prob { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; }
-.prob .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 700; }
-.prob .from { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--signal); text-decoration-thickness: 2px; font-weight: 600; }
-.prob .arrow { color: var(--signal); font-family: var(--f-mono); }
-.prob p { margin: 0; font-size: .94rem; color: var(--ink-soft); }
+/* problemas */
+.problems { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.prob { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; }
+.prob .flow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-weight: 600; }
+.prob .from { color: var(--ink-3); font: 500 .85rem var(--f-mono); }
+.prob .arrow { color: var(--accent); font-family: var(--f-mono); }
+.prob p { margin: 0; font-size: .94rem; color: var(--ink-2); }
 .prob .where { display: flex; flex-wrap: wrap; gap: 6px; }
-.prob .where a { font: 600 .78rem/1 var(--f-mono); text-decoration: none; padding: 5px 8px; border-radius: 6px; background: var(--paper); border: 1px solid var(--line); }
-.prob .where a:hover { border-color: var(--ink-soft); }
+.prob .where a { font: 500 .76rem/1 var(--f-mono); text-decoration: none; padding: 5px 8px; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line); color: var(--ink-2); }
+.prob .where a:hover { color: var(--ink); border-color: var(--ink-3); }
 
 /* método */
-.method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: s; }
-.method li { counter-increment: s; background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-.method li::before { content: counter(s, decimal-leading-zero); display: block; font: 700 .78rem/1 var(--f-mono); color: var(--signal); margin-bottom: 10px; letter-spacing: .1em; }
-.method b { display: block; font-size: 1rem; margin-bottom: 4px; }
-.method span { font-size: .9rem; color: var(--ink-soft); }
+.method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; counter-reset: s; }
+.method li { counter-increment: s; padding: 18px; }
+.method li + li { border-left: 1px solid var(--line); }
+.method li::before { content: counter(s, decimal-leading-zero); display: block; font: 600 .75rem/1 var(--f-mono); color: var(--accent); margin-bottom: 12px; }
+.method b { display: block; font-size: .98rem; font-weight: 600; margin-bottom: 4px; }
+.method span { font-size: .9rem; color: var(--ink-2); }
 
 /* projetos */
-.index { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-.index a { text-decoration: none; display: inline-flex; gap: 8px; align-items: center; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--sheet); font-weight: 600; font-size: .9rem; }
-.index a:hover { border-color: var(--ink-soft); }
-.index span { font: 700 .72rem/1 var(--f-mono); color: var(--ink-soft); }
-.note { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--signal-soft); color: var(--ink); font-size: .93rem; }
-.note b { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em; background: var(--signal); color: var(--signal-ink); padding: 2px 7px; border-radius: 5px; flex: none; margin-top: 2px; }
-.project { margin-top: 28px; background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; scroll-margin-top: 72px; }
-.p-head { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between; padding: 22px 24px 18px; border-bottom: 1px solid var(--line); }
-.p-title { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; min-width: 0; }
-.p-title h3 { font: 800 clamp(1.3rem, 2.4vw, 1.65rem)/1.1 var(--f-display); font-stretch: 112%; margin: 0; text-wrap: balance; }
-.plate { display: inline-flex; flex-direction: column; border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; background: var(--plate); color: #111; font: 700 .9rem/1 var(--f-mono); letter-spacing: .08em; min-width: 92px; text-align: center; }
-.plate i { font: 700 .48rem/1 var(--f-body); letter-spacing: .12em; font-style: normal; color: #fff; background: var(--plate-band); padding: 3px 0 2px; }
-.plate span { padding: 4px 8px 5px; }
-.status { font: 700 .74rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 6px; white-space: nowrap; }
+.index { display: flex; flex-wrap: wrap; gap: 6px; }
+.index a { text-decoration: none; display: inline-flex; gap: 8px; align-items: center; padding: 6px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); font-weight: 500; font-size: .88rem; }
+.index a:hover { border-color: var(--ink-3); }
+.index span { font: 500 .72rem/1 var(--f-mono); color: var(--accent); }
+.note { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--accent-soft); font-size: .92rem; }
+.note b { font: 600 .72rem/1 var(--f-mono); background: var(--accent); color: var(--accent-ink); padding: 4px 7px; border-radius: 5px; flex: none; }
+.project { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; scroll-margin-top: 72px; }
+.p-head { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; padding: 20px 22px 16px; border-bottom: 1px solid var(--line); }
+.p-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+.p-num { font: 600 .78rem/1 var(--f-mono); color: var(--accent); }
+.p-title h3 { font: 600 clamp(1.2rem, 2.2vw, 1.5rem)/1.15 var(--f-sans); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.status { font: 500 .72rem/1 var(--f-mono); padding: 5px 8px; border-radius: 6px; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .s-ok { background: var(--ok-soft); color: var(--ok); }
 .s-info { background: var(--info-soft); color: var(--info); }
 .s-warn { background: var(--warn-soft); color: var(--warn); }
 .s-mute { background: var(--mute-soft); color: var(--mute); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.ficha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-bottom: 1px solid var(--line); background: var(--paper); }
-.ficha div { padding: 12px 24px; display: grid; gap: 2px; }
+.ficha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+.ficha div { padding: 12px 22px; display: grid; gap: 3px; }
 .ficha div + div { border-left: 1px solid var(--line); }
-.ficha dt { font: 700 .68rem/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
-.ficha dd { margin: 0; font-size: .92rem; font-weight: 600; }
-.ficha dd small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .82rem; }
+.ficha dt { font: 500 .7rem/1.2 var(--f-mono); color: var(--ink-3); text-transform: lowercase; }
+.ficha dd { margin: 0; font-size: .92rem; font-weight: 500; }
+.ficha dd small { display: block; font: 400 .76rem/1.4 var(--f-mono); color: var(--ink-3); margin-top: 2px; }
 .p-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
-.story { padding: 22px 24px 24px; display: grid; gap: 16px; align-content: start; border-right: 1px solid var(--line); }
-.story h4 { font: 700 .72rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 6px; }
+.story { padding: 20px 22px 22px; display: grid; gap: 16px; align-content: start; border-right: 1px solid var(--line); }
+.story h4 { font: 500 .72rem/1 var(--f-mono); color: var(--ink-3); margin: 0 0 6px; text-transform: lowercase; }
+.story h4::before { content: "// "; color: var(--accent); }
 .story p { margin: 0; max-width: 60ch; }
 .story ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
-.story li::marker { color: var(--signal); }
-.tools { font: 500 .8rem/1.5 var(--f-mono); color: var(--ink-soft); padding-top: 12px; border-top: 1px dashed var(--line); }
-.login { font-size: .88rem; color: var(--ink-soft); margin: 0; }
-.login code { font: 600 .82rem var(--f-mono); color: var(--ink); background: var(--paper); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
-.offline { display: none; font-size: .86rem; color: var(--ink-soft); max-width: 46ch; margin: 0; }
-.no-demos .offline { display: block; }
-.gallery { padding: 18px; display: grid; gap: 12px; align-content: start; background: var(--paper); }
-.shot { margin: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--sheet); }
+.story li::marker { color: var(--accent); }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.tools span { font: 500 .74rem/1 var(--f-mono); color: var(--ink-2); padding: 5px 7px; border-radius: 5px; background: var(--panel-2); border: 1px solid var(--line); }
+.login { font-size: .86rem; color: var(--ink-2); margin: 0; }
+.login code { font: 500 .8rem var(--f-mono); color: var(--ink); background: var(--panel-2); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.gallery { padding: 16px; display: grid; gap: 10px; align-content: start; background: var(--panel-2); }
+.shot { margin: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
 .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
-.shot figcaption { font-size: .85rem; color: var(--ink-soft); padding: 9px 12px; border-top: 1px solid var(--line); }
-.thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); gap: 8px; }
-.thumbs button { padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; cursor: pointer; background: var(--sheet); }
-.thumbs button[aria-pressed="true"] { border-color: var(--signal); }
+.shot figcaption { font-size: .84rem; color: var(--ink-2); padding: 9px 12px; border-top: 1px solid var(--line); }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; }
+.thumbs button { padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; cursor: pointer; background: var(--panel); }
+.thumbs button[aria-pressed="true"] { border-color: var(--accent); }
 .thumbs img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
 .thumbs .phone img { object-fit: contain; background: #0e131a; }
-.compact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.compact { margin-top: 0; }
-.compact .story { border-right: 0; }
-.compact .ficha { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.minis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
-.mini { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
-.mini .k { font: 700 .72rem/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
-.mini h4 { margin: 0; font: 800 1.12rem/1.2 var(--f-display); font-stretch: 112%; }
-.mini p { margin: 0; font-size: .94rem; color: var(--ink-soft); }
+
+/* ORION em destaque */
+.orion { margin-top: 24px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--panel); box-shadow: var(--shadow); scroll-margin-top: 72px; }
+.orion-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 0; }
+.orion-intro { padding: 26px 26px 24px; display: grid; gap: 14px; align-content: start; border-right: 1px solid var(--line); }
+.orion-intro h3 { margin: 0; font: 600 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--f-sans); letter-spacing: -.03em; }
+.orion-intro p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+.caps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.caps li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); font-size: .9rem; }
+.caps li b { display: block; font-weight: 600; font-size: .9rem; }
+.caps li span { color: var(--ink-2); font-size: .84rem; }
+.log { margin: 0; padding: 22px 24px; background: #0a0d12; color: #c9d1dc; font: 400 .76rem/1.75 var(--f-mono); overflow-x: auto; }
+.log .t { color: #6f7a8b; }
+.log .k { color: #8c96ff; }
+.log .ok { color: #5fd3a0; }
+.log .s { color: #f2c46d; }
+.log-head { display: flex; justify-content: space-between; gap: 10px; padding: 10px 24px; background: #0a0d12; border-bottom: 1px solid #1c222c; font: 500 .72rem/1 var(--f-mono); color: #6f7a8b; }
+.log-head i { display: inline-flex; gap: 5px; }
+.log-head i::before, .log-head i::after, .log-head i span { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #2a313d; display: inline-block; }
+.pipeline { padding: 22px 24px; border-top: 1px solid var(--line); background: var(--panel-2); overflow-x: auto; }
+.pipeline ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(120px, 1fr)); gap: 0; min-width: 760px; counter-reset: p; }
+.pipeline li { counter-increment: p; position: relative; padding: 0 14px 0 0; }
+.pipeline li::before { content: counter(p); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font: 600 .75rem/1 var(--f-mono); background: var(--panel); position: relative; z-index: 1; }
+.pipeline li::after { content: ""; position: absolute; left: 26px; right: 0; top: 13px; height: 1px; background: var(--line); }
+.pipeline li:last-child::after { display: none; }
+.pipeline b { display: block; margin-top: 10px; font-size: .9rem; font-weight: 600; }
+.pipeline span { display: block; font-size: .82rem; color: var(--ink-2); margin-top: 2px; }
+.pipeline code { font: 500 .74rem var(--f-mono); color: var(--accent); }
+.orion-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); border-top: 1px solid var(--line); }
+.built { padding: 20px 22px; display: grid; gap: 14px; align-content: start; border-right: 1px solid var(--line); }
+.built ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.built li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font: 500 .82rem/1.3 var(--f-mono); }
+.built li span { color: var(--ink-3); white-space: nowrap; }
+.built p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+.built blockquote { margin: 0; padding: 10px 12px; border-left: 2px solid var(--accent); background: var(--panel-2); border-radius: 0 8px 8px 0; font-size: .9rem; }
+.built blockquote small { display: block; color: var(--ink-3); font: 400 .74rem var(--f-mono); margin-top: 4px; }
+
+.minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.mini { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; scroll-margin-top: 72px; }
+.mini .k { font: 500 .72rem/1.3 var(--f-mono); color: var(--ink-3); }
+.mini h4 { margin: 0; font: 600 1.05rem/1.25 var(--f-sans); }
+.mini p { margin: 0; font-size: .92rem; color: var(--ink-2); }
 
 /* trajetória */
-.timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 0; }
-.timeline li { display: grid; grid-template-columns: 170px 24px minmax(0, 1fr); gap: 0 14px; }
-.t-date { font: 700 .82rem/1.4 var(--f-mono); text-align: right; padding-top: 2px; }
-.t-date small { display: block; font-weight: 500; color: var(--ink-soft); font-size: .72rem; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 170px 22px minmax(0, 1fr); gap: 0 14px; }
+.t-date { font: 500 .8rem/1.4 var(--f-mono); text-align: right; padding-top: 2px; }
+.t-date small { display: block; color: var(--ink-3); font-size: .72rem; }
 .t-dot { position: relative; }
-.t-dot::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); background: var(--line); }
-.t-dot::after { content: ""; position: absolute; left: 50%; top: 6px; width: 12px; height: 12px; transform: translateX(-50%); border-radius: 50%; background: var(--sheet); border: 3px solid var(--signal); }
+.t-dot::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); background: var(--line); }
+.t-dot::after { content: ""; position: absolute; left: 50%; top: 6px; width: 10px; height: 10px; transform: translateX(-50%); border-radius: 3px; background: var(--panel); border: 2px solid var(--accent); }
 .timeline li:last-child .t-dot::before { bottom: auto; height: 12px; }
 .t-body { padding-bottom: 22px; }
-.t-body b { display: block; }
-.t-body span { color: var(--ink-soft); font-size: .93rem; }
+.t-body b { display: block; font-weight: 600; }
+.t-body span { color: var(--ink-2); font-size: .92rem; }
 
-/* matriz de competências */
-.matrix-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--sheet); }
+/* matriz */
+.matrix-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
 table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-size: .9rem; }
 .matrix th, .matrix td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: center; }
-.matrix thead th { font: 700 .7rem/1.25 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); vertical-align: bottom; }
-.matrix tbody th { text-align: left; font-weight: 600; }
-.matrix tbody th small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .8rem; }
+.matrix thead th { font: 500 .72rem/1.25 var(--f-mono); color: var(--ink-3); vertical-align: bottom; }
+.matrix tbody th { text-align: left; font-weight: 500; }
+.matrix tbody th small { display: block; font-weight: 400; color: var(--ink-3); font-size: .8rem; }
 .matrix tr:last-child th, .matrix tr:last-child td { border-bottom: 0; }
-.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); }
-.dot.half { background: transparent; border: 2px solid var(--signal); }
-.legend { display: flex; gap: 16px; font-size: .85rem; color: var(--ink-soft); margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--accent); }
+.dot.half { background: transparent; border: 2px solid var(--accent); }
+.legend { display: flex; gap: 16px; font-size: .84rem; color: var(--ink-2); margin-top: 10px; flex-wrap: wrap; align-items: center; }
 
 /* formação e contato */
-.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
-.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
-.card h3 { margin: 0 0 4px; font: 800 1.15rem/1.2 var(--f-display); font-stretch: 112%; }
-.card p { margin: 0; color: var(--ink-soft); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.card h3 { margin: 0 0 4px; font: 600 1.1rem/1.25 var(--f-sans); }
+.card p { margin: 0; color: var(--ink-2); }
 .contact { display: grid; gap: 10px; }
 .contact div { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
 .contact div:last-child { border-bottom: 0; padding-bottom: 0; }
-.contact span { color: var(--ink-soft); font-size: .9rem; }
-.contact a, .contact code { font-weight: 600; overflow-wrap: anywhere; }
-.contact code { font: 600 .92rem var(--f-mono); }
-.copy { font: 600 .8rem/1 var(--f-body); padding: 6px 10px; border-radius: 7px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
-.foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .86rem; display: grid; gap: 6px; }
+.contact span { color: var(--ink-3); font: 500 .8rem var(--f-mono); }
+.contact a, .contact code { font-weight: 500; overflow-wrap: anywhere; }
+.contact code { font: 500 .9rem var(--f-mono); }
+.copy { font: 500 .78rem/1 var(--f-mono); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); cursor: pointer; }
+.foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-3); font: 400 .8rem/1.6 var(--f-mono); display: grid; gap: 4px; }
 
 @media (max-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 32px 0; }
-  .portrait { max-width: 240px; order: -1; }
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px 0; gap: 28px; }
+  .portrait { max-width: 220px; order: -1; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .strip div:nth-child(3) { border-left: 0; }
   .strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .two, .problems, .compact-grid, .minis { grid-template-columns: minmax(0, 1fr); }
+  .two, .problems, .minis, .orion-top, .orion-body, .p-body { grid-template-columns: minmax(0, 1fr); }
   .method { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .p-body { grid-template-columns: minmax(0, 1fr); }
-  .story { border-right: 0; border-bottom: 1px solid var(--line); }
+  .method li:nth-child(3) { border-left: 0; }
+  .method li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .story, .orion-intro, .built { border-right: 0; border-bottom: 1px solid var(--line); }
   .ficha { grid-template-columns: minmax(0, 1fr); }
   .ficha div + div { border-left: 0; border-top: 1px solid var(--line); }
-  .timeline li { grid-template-columns: 96px 20px minmax(0, 1fr); gap: 0 10px; }
+  .caps { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: 96px 18px minmax(0, 1fr); gap: 0 10px; }
 }
 @media (max-width: 560px) {
   .method { grid-template-columns: minmax(0, 1fr); }
-  .topnav nav a { padding: 6px 7px; font-size: .84rem; }
+  .method li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .topnav nav a { padding: 6px 7px; font-size: .82rem; }
 }
 </style>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
@@ -231,10 +271,11 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
 <header class="topnav">
   <div class="wrap">
-    <a class="brand" href="#inicio">Luiz Dias</a>
+    <a class="brand" href="#inicio"><i></i>luiz.dias</a>
     <nav aria-label="Seções">
       <a href="#problemas">O que resolvo</a>
       <a href="#projetos">Projetos</a>
+      <a href="#orion">ORION</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#competencias">Competências</a>
       <a href="#contato">Contato</a>
@@ -243,62 +284,65 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 </header>
 
 <main class="wrap" id="inicio">
-  <section class="hero">
-    <div>
-      <div class="eyebrow">Solução de problemas · Automação de processos · Soluções digitais</div>
-      <h1>Luiz Dias</h1>
-      <p class="role">Transformo processos manuais em <span>fluxos digitais organizados</span></p>
-      <p class="lede">Tenho experiência prática em processos empresariais, iniciativa para identificar problemas e capacidade de desenvolver soluções digitais para automatizar rotinas, organizar informações e melhorar a eficiência operacional. Apliquei isso na DIME Distribuidora, criando sistemas internos para áreas diferentes da empresa.</p>
-      <div class="cta">
-        <a class="btn" href="#projetos">Ver projetos</a>
-        <a class="btn alt" href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn alt" href="https://github.com/luizdiaz1" target="_blank" rel="noopener">GitHub ↗</a>
+  <div class="hero-wrap">
+    <section class="hero">
+      <div>
+        <div class="label"><b>&gt;</b> solução de problemas · automação de processos · soluções digitais</div>
+        <h1>Luiz Dias</h1>
+        <p class="role">Transformo processos manuais em <span>fluxos digitais organizados</span>.</p>
+        <p class="lede">Tenho experiência prática em processos empresariais, iniciativa para identificar problemas e capacidade de desenvolver soluções digitais para automatizar rotinas, organizar informações e melhorar a eficiência operacional. Apliquei isso na DIME Distribuidora, criando sistemas internos para diferentes áreas da empresa, e no ORION, um assistente que constrói sistemas a partir de pedidos em linguagem natural.</p>
+        <div class="cta">
+          <a class="btn" href="#projetos">Ver projetos</a>
+          <a class="btn alt" href="#orion">Conhecer o ORION</a>
+          <a class="btn alt" href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn alt" href="https://github.com/luizdiaz1" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
+      <figure class="portrait">
+        <img src="img/luiz.webp" alt="Foto de Luiz Dias" width="640" height="640">
+        <figcaption><i></i>Rio de Janeiro – RJ</figcaption>
+      </figure>
+    </section>
+    <div class="strip" aria-label="Resumo">
+      <div><b>6</b><span>soluções internas desenvolvidas</span></div>
+      <div><b>4</b><span>áreas envolvidas: frota, comercial, qualidade e transporte terceirizado</span></div>
+      <div><b>10</b><span>sistemas gerados pelo ORION em testes</span></div>
+      <div><b>334</b><span>notas fiscais lidas por automação (OCR)</span></div>
     </div>
-    <figure class="portrait">
-      <img src="img/luiz.webp" alt="Foto de Luiz Dias" width="640" height="640">
-      <figcaption aria-hidden="true"><i>BRASIL</i><span>LDS2026</span></figcaption>
-    </figure>
-  </section>
-  <div class="strip" aria-label="Resumo">
-    <div><b>6</b><span>soluções internas desenvolvidas</span></div>
-    <div><b>4</b><span>áreas envolvidas: frota, comercial, qualidade e transporte terceirizado</span></div>
-    <div><b>4</b><span>demonstrações interativas neste portfólio</span></div>
-    <div><b>334</b><span>notas fiscais lidas por automação (OCR)</span></div>
   </div>
 
   <section class="block" id="problemas">
     <div class="sec-head">
-      <div class="eyebrow">O que eu resolvo</div>
-      <h2 class="sec">Problemas comuns em qualquer empresa — e como resolvi cada um</h2>
-      <p>Os problemas abaixo apareceram na operação de uma distribuidora, mas existem em empresas de qualquer setor. Cada um aponta para o projeto em que foi tratado.</p>
+      <div class="label"><b>01</b> / o que eu resolvo</div>
+      <h2 class="sec">Problemas comuns em qualquer empresa, e como resolvi cada um</h2>
+      <p>Estes problemas apareceram na operação de uma distribuidora, mas existem em empresas de qualquer setor. Cada um aponta para o projeto em que foi tratado.</p>
     </div>
     <div class="problems">
       <article class="prob">
-        <div class="flow"><span class="from">Informação espalhada em planilhas</span><span class="arrow">→</span><span>Dados centralizados</span></div>
-        <p>Uma base única por processo, com histórico, anexos e consulta por registro, em vez de arquivos separados que precisam ser consolidados à mão.</p>
-        <div class="where"><a href="#frota">Gestão de Frota</a><a href="#passeio">Veículos de Passeio</a></div>
+        <div class="flow"><span class="from">informação espalhada em planilhas</span><span class="arrow">→</span><span>Dados centralizados</span></div>
+        <p>Uma base única por processo, com histórico, anexos e consulta por registro, em vez de arquivos separados consolidados à mão.</p>
+        <div class="where"><a href="#frota">gestão de frota</a><a href="#passeio">veículos de passeio</a></div>
       </article>
       <article class="prob">
-        <div class="flow"><span class="from">Cálculo e conferência manuais</span><span class="arrow">→</span><span>Regras automatizadas</span></div>
-        <p>Comissões, consumo médio e leitura de documentos feitos pelo sistema com regras definidas, reduzindo trabalho repetitivo e erro de digitação.</p>
-        <div class="where"><a href="#agregados">Agregados e CIOT</a><a href="#outras">Relatórios de eficiência</a><a href="#outras">OCR de notas</a></div>
+        <div class="flow"><span class="from">cálculo e conferência manuais</span><span class="arrow">→</span><span>Regras automatizadas</span></div>
+        <p>Comissões, consumo médio e leitura de documentos feitos pelo sistema com regras definidas, reduzindo trabalho repetitivo.</p>
+        <div class="where"><a href="#agregados">agregados e ciot</a><a href="#outras">relatórios de eficiência</a><a href="#outras">ocr de notas</a></div>
       </article>
       <article class="prob">
-        <div class="flow"><span class="from">Registro sem comprovação</span><span class="arrow">→</span><span>Evidência digital</span></div>
-        <p>Assinatura digital, fotos, vídeo e trilha de alterações ligados a cada registro, para saber o que aconteceu, quando e por quem.</p>
-        <div class="where"><a href="#passeio">Veículos de Passeio</a><a href="#checklists">Checklists e Ocorrências</a><a href="#qualidade">Qualidade 10S</a></div>
+        <div class="flow"><span class="from">registro sem comprovação</span><span class="arrow">→</span><span>Evidência digital</span></div>
+        <p>Assinatura digital, fotos, vídeo e trilha de alterações ligados a cada registro: o que aconteceu, quando e por quem.</p>
+        <div class="where"><a href="#passeio">veículos de passeio</a><a href="#checklists">checklists</a><a href="#qualidade">qualidade 10s</a></div>
       </article>
       <article class="prob">
-        <div class="flow"><span class="from">Prazos sem acompanhamento</span><span class="arrow">→</span><span>Alertas e status</span></div>
-        <p>Vencimentos, pendências e ações corretivas com status calculado e alertas, em vez de depender da memória ou de conferência periódica.</p>
-        <div class="where"><a href="#frota">Gestão de Frota</a><a href="#qualidade">Qualidade 10S</a><a href="#rodoviario">Central do Rodoviário</a></div>
+        <div class="flow"><span class="from">sistema novo demora a sair</span><span class="arrow">→</span><span>Geração assistida</span></div>
+        <p>Um pedido em linguagem natural vira especificação, código, testes e sistema no ar, pronto para ser ajustado por conversa.</p>
+        <div class="where"><a href="#orion">orion</a></div>
       </article>
     </div>
   </section>
 
   <section class="block" aria-labelledby="como">
-    <div class="sec-head"><div class="eyebrow">Como eu trabalho</div><h2 class="sec" id="como">Do problema observado à melhoria em uso</h2></div>
+    <div class="sec-head"><div class="label"><b>02</b> / como eu trabalho</div><h2 class="sec" id="como">Do problema observado à melhoria em uso</h2></div>
     <ol class="method">
       <li><b>Observar a rotina</b><span>Acompanhar como o trabalho é feito de verdade e onde ele trava.</span></li>
       <li><b>Identificar o gargalo</b><span>Tarefas manuais, retrabalho, informação espalhada, prazos sem controle.</span></li>
@@ -309,7 +353,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
   <section class="block" id="projetos">
     <div class="sec-head">
-      <div class="eyebrow">Projetos em destaque</div>
+      <div class="label"><b>03</b> / projetos em destaque</div>
       <h2 class="sec">Soluções criadas para problemas reais</h2>
       <p>Cada ficha mostra o período documentado, a situação atual e a minha contribuição. As demonstrações usam empresa e dados fictícios.</p>
     </div>
@@ -322,47 +366,42 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <a href="#rodoviario"><span>06</span>Central do Rodoviário</a>
       <a href="#orion"><span>07</span>ORION</a>
     </nav>
-    <div class="note" role="note"><b>DEMO</b><span>As demonstrações rodam no seu navegador com um banco simulado: dá para cadastrar e editar à vontade, e o botão “Restaurar dados” volta ao início.</span></div>
+    <div class="note" role="note"><b>demo</b><span>As demonstrações rodam no seu navegador com um banco simulado: dá para cadastrar e editar à vontade, e o botão “Restaurar dados” volta ao início.</span></div>
 
     <article class="project" id="frota">
       <div class="p-head">
-        <div class="p-title">
-          <span class="plate" aria-hidden="true"><i>BRASIL</i><span>FRT1A26</span></span>
-          <h3>Sistema de Gestão de Frota</h3>
-          <span class="status s-ok">Em uso · evolução contínua</span>
-        </div>
-        <div class="actions"><a class="btn demo-link" href="frota/index.html" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="p-title"><span class="p-num">01</span><h3>Sistema de Gestão de Frota</h3><span class="status s-ok">em uso · evolução contínua</span></div>
+        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/frota/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
-        <div><dt>Período</dt><dd>2026 – atual<small>registro mais antigo nos arquivos: 18/06/2026</small></dd></div>
-        <div><dt>Objetivo</dt><dd>Centralizar os controles de um setor inteiro e tirar a dependência de planilhas</dd></div>
-        <div><dt>Minha contribuição</dt><dd>Levantamento, definição dos fluxos, desenvolvimento, manutenção e evolução</dd></div>
+        <div><dt>período</dt><dd>2026 – atual<small>registro mais antigo: 18/06/2026</small></dd></div>
+        <div><dt>objetivo</dt><dd>Centralizar os controles de um setor inteiro e tirar a dependência de planilhas</dd></div>
+        <div><dt>minha contribuição</dt><dd>Levantamento, definição dos fluxos, desenvolvimento, manutenção e evolução</dd></div>
       </dl>
       <div class="p-body">
         <div class="story">
-          <div><h4>Problema</h4><p>Os controles do setor ficavam em planilhas separadas. Consolidar dados era manual, prazos dependiam de conferência e o histórico de cada item estava espalhado.</p></div>
-          <div><h4>Solução e funcionalidades</h4>
+          <div><h4>problema</h4><p>Os controles do setor ficavam em planilhas separadas. Consolidar dados era manual, prazos dependiam de conferência e o histórico de cada item estava espalhado.</p></div>
+          <div><h4>solução e funcionalidades</h4>
             <ul>
-              <li>Plataforma única com um módulo por processo (veículos, motoristas, multas, manutenções, óleo, tacógrafos, produção diária).</li>
+              <li>Plataforma única com um módulo por processo.</li>
               <li>Alertas automáticos de vencimento e status calculado.</li>
-              <li>Histórico consolidado de cada veículo em uma tela.</li>
+              <li>Histórico consolidado de cada item em uma tela.</li>
               <li>Indicador de consumo (km/L) a partir do relatório mensal de abastecimento.</li>
               <li>Relatórios em PDF e Excel, lixeira com restauração e auditoria de alterações.</li>
-              <li>Migração de registros antigos de planilhas e formulários em PDF.</li>
+              <li>Migração de registros antigos de planilhas e PDFs.</li>
             </ul>
           </div>
-          <div><h4>Resultados</h4><p>Informações do setor em um só lugar, rastreabilidade de quem alterou cada registro e relatórios mensais gerados pelo próprio sistema.</p></div>
+          <div><h4>resultados</h4><p>Informações do setor em um só lugar, rastreabilidade de quem alterou cada registro e relatórios mensais gerados pelo próprio sistema.</p></div>
           <p class="login">Entrar na demo: <code>qualquer usuário e senha</code></p>
-          <div class="tools">HTML · CSS · JavaScript · Supabase · Vercel · jsPDF · Chart.js</div>
-          <p class="offline">A demonstração interativa abre na versão publicada deste portfólio.</p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>PostgreSQL</span><span>Vercel</span><span>jsPDF</span><span>Chart.js</span></div>
         </div>
         <div class="gallery" data-gallery>
           <figure class="shot"><img src="img/frota-1.webp" alt="Painel inicial com alertas" width="1440" height="900" loading="lazy"><figcaption>Painel com o que precisa de atenção hoje</figcaption></figure>
           <div class="thumbs">
             <button type="button" aria-pressed="true" data-src="img/frota-1.webp" data-cap="Painel com o que precisa de atenção hoje"><img src="img/frota-1.webp" alt="Painel" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/frota-2.webp" data-cap="Indicador de consumo (km/L) frente à meta"><img src="img/frota-2.webp" alt="Eficiência" loading="lazy"></button>
-            <button type="button" aria-pressed="false" data-src="img/frota-3.webp" data-cap="Histórico completo de um veículo"><img src="img/frota-3.webp" alt="Histórico do veículo" loading="lazy"></button>
-            <button type="button" aria-pressed="false" data-src="img/frota-4.webp" data-cap="Chamados recebidos dos motoristas"><img src="img/frota-4.webp" alt="Chamados" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/frota-3.webp" data-cap="Histórico completo de um item em uma tela"><img src="img/frota-3.webp" alt="Histórico" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/frota-4.webp" data-cap="Chamados recebidos pelo sistema"><img src="img/frota-4.webp" alt="Chamados" loading="lazy"></button>
           </div>
         </div>
       </div>
@@ -370,25 +409,21 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
     <article class="project" id="passeio">
       <div class="p-head">
-        <div class="p-title">
-          <span class="plate" aria-hidden="true"><i>BRASIL</i><span>PRM2B26</span></span>
-          <h3>Controle de Veículos de Passeio</h3>
-          <span class="status s-ok">Publicado · em evolução</span>
-        </div>
+        <div class="p-title"><span class="p-num">02</span><h3>Controle de Veículos de Passeio</h3><span class="status s-ok">publicado · em evolução</span></div>
         <div class="actions">
-          <a class="btn demo-link" href="promotor/index.html" target="_blank" rel="noopener">Painel de controle ↗</a>
-          <a class="btn alt demo-link" href="promotor/index.html#/condutor" target="_blank" rel="noopener">Área do condutor ↗</a>
+          <a class="btn" href="https://luizdiaz1.github.io/portif-lio/promotor/" target="_blank" rel="noopener">Painel de controle ↗</a>
+          <a class="btn alt" href="https://luizdiaz1.github.io/portif-lio/promotor/#/condutor" target="_blank" rel="noopener">Área do condutor ↗</a>
         </div>
       </div>
       <dl class="ficha">
-        <div><dt>Período</dt><dd>2026<small>versão analisada: 08/10/2026 · início a confirmar</small></dd></div>
-        <div><dt>Objetivo</dt><dd>Comprovar e acompanhar o uso dos carros da equipe comercial</dd></div>
-        <div><dt>Minha contribuição</dt><dd>Levantamento, definição do fluxo de retirada e devolução, desenvolvimento e ajustes</dd></div>
+        <div><dt>período</dt><dd>2026<small>versão analisada: 08/10/2026 · início a confirmar</small></dd></div>
+        <div><dt>objetivo</dt><dd>Comprovar e acompanhar o uso dos carros da equipe comercial</dd></div>
+        <div><dt>minha contribuição</dt><dd>Levantamento, definição do fluxo de retirada e devolução, desenvolvimento e ajustes</dd></div>
       </dl>
       <div class="p-body">
         <div class="story">
-          <div><h4>Problema</h4><p>Era preciso saber quem estava com cada carro, por onde passou e ter comprovação da retirada e da devolução.</p></div>
-          <div><h4>Solução e funcionalidades</h4>
+          <div><h4>problema</h4><p>Era preciso saber quem estava com cada carro, por onde passou e ter comprovação da retirada e da devolução.</p></div>
+          <div><h4>solução e funcionalidades</h4>
             <ul>
               <li>Saída e devolução com assinatura digital do condutor.</li>
               <li>Roteiro de clientes com mapa e fotos de antes e depois do atendimento.</li>
@@ -396,15 +431,14 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
               <li>Perfis de acesso, manutenções, ocorrências e auditoria.</li>
             </ul>
           </div>
-          <div><h4>Resultados</h4><p>Retiradas e devoluções sem papel, visão dos carros em uso e histórico por veículo e por condutor.</p></div>
+          <div><h4>resultados</h4><p>Retiradas e devoluções sem papel, visão dos carros em uso e histórico por veículo e por condutor.</p></div>
           <p class="login">Controle: <code>admin@exemplo.com</code> · Condutor: <code>condutor@exemplo.com</code> · qualquer senha</p>
-          <div class="tools">HTML · CSS · JavaScript · Supabase · Leaflet</div>
-          <p class="offline">A demonstração interativa abre na versão publicada deste portfólio.</p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>Leaflet</span><span>PWA</span></div>
         </div>
         <div class="gallery" data-gallery>
-          <figure class="shot"><img src="img/promotor-1.webp" alt="Resumo da frota comercial" width="1440" height="900" loading="lazy"><figcaption>Resumo da frota comercial</figcaption></figure>
+          <figure class="shot"><img src="img/promotor-1.webp" alt="Resumo da frota comercial" width="1440" height="900" loading="lazy"><figcaption>Resumo dos carros da equipe comercial</figcaption></figure>
           <div class="thumbs">
-            <button type="button" aria-pressed="true" data-src="img/promotor-1.webp" data-cap="Resumo da frota comercial"><img src="img/promotor-1.webp" alt="Resumo" loading="lazy"></button>
+            <button type="button" aria-pressed="true" data-src="img/promotor-1.webp" data-cap="Resumo dos carros da equipe comercial"><img src="img/promotor-1.webp" alt="Resumo" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/promotor-2.webp" data-cap="Rotas: saída, clientes visitados e devolução"><img src="img/promotor-2.webp" alt="Rotas" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/promotor-3.webp" data-cap="Uso por dia e por veículo"><img src="img/promotor-3.webp" alt="Dashboard" loading="lazy"></button>
             <button type="button" aria-pressed="false" class="phone" data-src="img/promotor-mobile.webp" data-cap="Área do condutor no celular" data-phone="1"><img src="img/promotor-mobile.webp" alt="Celular" loading="lazy"></button>
@@ -415,22 +449,18 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
     <article class="project" id="qualidade">
       <div class="p-head">
-        <div class="p-title">
-          <span class="plate" aria-hidden="true"><i>BRASIL</i><span>QLD3C26</span></span>
-          <h3>Sistema de Qualidade 10S</h3>
-          <span class="status s-info">Em implantação</span>
-        </div>
-        <div class="actions"><a class="btn demo-link" href="qualidade/index.html" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="p-title"><span class="p-num">03</span><h3>Sistema de Qualidade 10S</h3><span class="status s-info">em implantação</span></div>
+        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/qualidade/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
-        <div><dt>Período</dt><dd>2026<small>versão analisada: 06/10/2026 · início a confirmar</small></dd></div>
-        <div><dt>Objetivo</dt><dd>Digitalizar vistorias e auditorias e acompanhar as correções</dd></div>
-        <div><dt>Minha contribuição</dt><dd>Tradução do relatório e das planilhas oficiais em fluxo digital, desenvolvimento e ajustes</dd></div>
+        <div><dt>período</dt><dd>2026<small>versão analisada: 06/10/2026 · início a confirmar</small></dd></div>
+        <div><dt>objetivo</dt><dd>Digitalizar vistorias e auditorias e acompanhar as correções</dd></div>
+        <div><dt>minha contribuição</dt><dd>Tradução do relatório e das planilhas oficiais em fluxo digital, desenvolvimento e ajustes</dd></div>
       </dl>
       <div class="p-body">
         <div class="story">
-          <div><h4>Problema</h4><p>O relatório de vistoria era um documento estático. Fotos, não conformidades, prazos e verificação de eficácia não ficavam ligados nem eram acompanhados de forma centralizada.</p></div>
-          <div><h4>Solução e funcionalidades</h4>
+          <div><h4>problema</h4><p>O relatório de vistoria era um documento estático. Fotos, não conformidades, prazos e verificação de eficácia não ficavam ligados nem eram acompanhados de forma centralizada.</p></div>
+          <div><h4>solução e funcionalidades</h4>
             <ul>
               <li>Fluxo: vistoria, não conformidades, fotos pelo celular, ações corretivas e verificação de eficácia.</li>
               <li>Relatório A4 gerado automaticamente a partir dos registros.</li>
@@ -438,10 +468,9 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
               <li>Central de alertas para prazos vencidos e eficácia pendente.</li>
             </ul>
           </div>
-          <div><h4>Resultados</h4><p>Registros padronizados, evidências ligadas a cada não conformidade e relatório pronto sem montagem manual.</p></div>
+          <div><h4>resultados</h4><p>Registros padronizados, evidências ligadas a cada não conformidade e relatório pronto sem montagem manual.</p></div>
           <p class="login">Entrar na demo: <code>qualquer e-mail e senha</code></p>
-          <div class="tools">HTML · CSS · JavaScript · Supabase · jsPDF · docx</div>
-          <p class="offline">A demonstração interativa abre na versão publicada deste portfólio.</p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>Realtime</span><span>jsPDF</span><span>docx</span></div>
         </div>
         <div class="gallery" data-gallery>
           <figure class="shot"><img src="img/qualidade-1.webp" alt="Painel da qualidade" width="1440" height="900" loading="lazy"><figcaption>Painel de vistorias e não conformidades</figcaption></figure>
@@ -456,31 +485,26 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
     <article class="project" id="checklists">
       <div class="p-head">
-        <div class="p-title">
-          <span class="plate" aria-hidden="true"><i>BRASIL</i><span>CHK4D26</span></span>
-          <h3>Checklists e Ocorrências</h3>
-          <span class="status s-ok">Implementado</span>
-        </div>
-        <div class="actions"><a class="btn demo-link" href="frota/index.html" target="_blank" rel="noopener">Ver na demo de frota ↗</a></div>
+        <div class="p-title"><span class="p-num">04</span><h3>Checklists e Ocorrências</h3><span class="status s-ok">implementado</span></div>
+        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/frota/" target="_blank" rel="noopener">Ver na demo ↗</a></div>
       </div>
       <dl class="ficha">
-        <div><dt>Período</dt><dd>2026<small>versão analisada do app de checklist: 01/10/2026 · início a confirmar</small></dd></div>
-        <div><dt>Objetivo</dt><dd>Documentar o estado dos veículos e as ocorrências com evidência</dd></div>
-        <div><dt>Minha contribuição</dt><dd>Definição dos registros, desenvolvimento do app de checklist e dos módulos de ocorrências</dd></div>
+        <div><dt>período</dt><dd>2026<small>versão analisada do app: 01/10/2026 · início a confirmar</small></dd></div>
+        <div><dt>objetivo</dt><dd>Documentar o estado dos veículos e as ocorrências com evidência</dd></div>
+        <div><dt>minha contribuição</dt><dd>Definição dos registros, desenvolvimento do app e dos módulos de ocorrências</dd></div>
       </dl>
       <div class="p-body">
         <div class="story">
-          <div><h4>Problema</h4><p>Avarias e ocorrências eram difíceis de comprovar depois: faltava registrar o estado do veículo na chegada e guardar fotos, vídeos e documentos junto do caso.</p></div>
-          <div><h4>Solução e funcionalidades</h4>
+          <div><h4>problema</h4><p>Avarias e ocorrências eram difíceis de comprovar depois: faltava registrar o estado do veículo na chegada e guardar fotos, vídeos e documentos junto do caso.</p></div>
+          <div><h4>solução e funcionalidades</h4>
             <ul>
-              <li>App de checklist com vídeo da volta completa no veículo, consultável no histórico.</li>
-              <li>Funciona sem internet e envia os checklists pendentes em lote quando há conexão.</li>
-              <li>Registro de sinistros, avarias e ocorrências com fotos, vídeos e PDFs anexados.</li>
+              <li>App de checklist com vídeo da volta completa no veículo.</li>
+              <li>Funciona sem internet e envia os pendentes em lote quando há conexão.</li>
+              <li>Registro de sinistros, avarias e ocorrências com fotos, vídeos e PDFs.</li>
             </ul>
           </div>
-          <div><h4>Resultados</h4><p>Registros padronizados com evidência, ligados ao veículo e consultáveis no sistema de frota.</p></div>
-          <div class="tools">HTML · CSS · JavaScript (PWA, IndexedDB) · Supabase Storage</div>
-          <p class="offline">A demonstração interativa abre na versão publicada deste portfólio.</p>
+          <div><h4>resultados</h4><p>Registros padronizados com evidência, consultáveis no sistema principal.</p></div>
+          <div class="tools"><span>PWA</span><span>IndexedDB</span><span>MediaRecorder</span><span>Supabase Storage</span></div>
         </div>
         <div class="gallery" data-gallery>
           <figure class="shot"><img src="img/checklist-2.webp" alt="Vídeo de checklist" width="1440" height="900" loading="lazy"><figcaption>Vídeo do checklist de chegada</figcaption></figure>
@@ -495,32 +519,27 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
     <article class="project" id="agregados">
       <div class="p-head">
-        <div class="p-title">
-          <span class="plate" aria-hidden="true"><i>BRASIL</i><span>AGR5E26</span></span>
-          <h3>Controle de Agregados e CIOT</h3>
-          <span class="status s-warn">Em desenvolvimento</span>
-        </div>
-        <div class="actions"><a class="btn demo-link" href="agregados/index.html" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="p-title"><span class="p-num">05</span><h3>Controle de Agregados e CIOT</h3><span class="status s-warn">em desenvolvimento</span></div>
+        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/agregados/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
-        <div><dt>Período</dt><dd>2026<small>versão analisada: 05/10/2026 · início a confirmar</small></dd></div>
-        <div><dt>Objetivo</dt><dd>Organizar serviços de terceiros e padronizar o cálculo da remuneração</dd></div>
-        <div><dt>Minha contribuição</dt><dd>Estruturação das informações e das regras, desenvolvimento</dd></div>
+        <div><dt>período</dt><dd>2026<small>versão analisada: 05/10/2026 · início a confirmar</small></dd></div>
+        <div><dt>objetivo</dt><dd>Organizar serviços de terceiros e padronizar o cálculo da remuneração</dd></div>
+        <div><dt>minha contribuição</dt><dd>Estruturação das informações e das regras, desenvolvimento</dd></div>
       </dl>
       <div class="p-body">
         <div class="story">
-          <div><h4>Problema</h4><p>Serviços de motoristas agregados, CIOTs, ocorrências e o cálculo da remuneração precisavam ser organizados e conferidos manualmente.</p></div>
-          <div><h4>Solução e funcionalidades</h4>
+          <div><h4>problema</h4><p>Serviços de motoristas agregados, CIOTs, ocorrências e o cálculo da remuneração precisavam ser organizados e conferidos manualmente.</p></div>
+          <div><h4>solução e funcionalidades</h4>
             <ul>
               <li>Abertura e finalização de serviços com notas na saída e no retorno, entregas e ocorrências.</li>
               <li>Cálculo automático de comissão e bonificação por regras de desempenho.</li>
               <li>Calculadora de pagamento por quinzena, CIOTs, relatórios e auditoria.</li>
             </ul>
           </div>
-          <div><h4>Resultados</h4><p>Ainda em desenvolvimento. Na demonstração, as regras de remuneração já são aplicadas de forma padronizada.</p></div>
+          <div><h4>resultados</h4><p>Ainda em desenvolvimento. Na demonstração, as regras de remuneração já são aplicadas de forma padronizada.</p></div>
           <p class="login">Entrar na demo: <code>qualquer e-mail e senha</code></p>
-          <div class="tools">HTML · CSS · JavaScript · Supabase</div>
-          <p class="offline">A demonstração interativa abre na versão publicada deste portfólio.</p>
+          <div class="tools"><span>JavaScript (ES modules)</span><span>Supabase</span></div>
         </div>
         <div class="gallery" data-gallery>
           <figure class="shot"><img src="img/agregados-1.webp" alt="Resumo por motorista" width="1440" height="900" loading="lazy"><figcaption>Resumo financeiro e operacional por motorista</figcaption></figure>
@@ -533,84 +552,154 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       </div>
     </article>
 
-    <div class="compact-grid">
-      <article class="project compact" id="rodoviario">
-        <div class="p-head">
-          <div class="p-title"><h3>Central do Rodoviário</h3><span class="status s-mute">Situação a confirmar</span></div>
-        </div>
-        <dl class="ficha">
-          <div><dt>Período</dt><dd>2026<small>referência documentada: 30/07/2026</small></dd></div>
-          <div><dt>Minha contribuição</dt><dd>Concepção e desenvolvimento</dd></div>
-        </dl>
-        <div class="story">
-          <div><h4>Problema</h4><p>Os motoristas precisavam de um canal simples para informar problemas do veículo à equipe de frota.</p></div>
-          <div><h4>Solução</h4><p>Aplicação independente, acessada pelo celular via QR Code, em que o motorista registra o problema e define a prioridade em quatro níveis. Os chamados chegam ao sistema de frota para tratamento.</p></div>
-          <div class="tools">PWA · QR Code · Supabase</div>
-        </div>
-      </article>
-      <article class="project compact" id="orion">
-        <div class="p-head">
-          <div class="p-title"><h3>ORION</h3><span class="status s-warn">Em desenvolvimento</span></div>
-        </div>
-        <dl class="ficha">
-          <div><dt>Período</dt><dd>2026 – atual<small>etapa documentada desde 07/10/2026</small></dd></div>
-          <div><dt>Tipo</dt><dd>Projeto pessoal</dd></div>
-        </dl>
-        <div class="story">
-          <div><h4>Objetivo</h4><p>Automatizar tarefas do dia a dia no computador com um assistente que entende comandos em linguagem natural.</p></div>
-          <div><h4>Solução</h4><p>Assistente para Windows com comandos por voz e texto, reconhecimento e síntese de fala, memória e execução de automações. A arquitetura permite trocar o modelo de IA, inclusive por modelos locais.</p></div>
-          <div class="tools">IA · voz · automação de tarefas · integração de ferramentas</div>
-        </div>
-      </article>
-    </div>
+    <article class="project" id="rodoviario">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">06</span><h3>Central do Rodoviário</h3><span class="status s-mute">situação a confirmar</span></div>
+      </div>
+      <dl class="ficha">
+        <div><dt>período</dt><dd>2026<small>referência documentada: 30/07/2026</small></dd></div>
+        <div><dt>objetivo</dt><dd>Dar aos motoristas um canal simples para informar problemas</dd></div>
+        <div><dt>minha contribuição</dt><dd>Concepção e desenvolvimento</dd></div>
+      </dl>
+      <div class="story" style="border-right:0">
+        <div><h4>solução</h4><p>Aplicação independente, acessada pelo celular via QR Code, em que o motorista registra o problema do veículo e define a prioridade em quatro níveis. Os chamados chegam ao sistema de gestão para tratamento.</p></div>
+        <div class="tools"><span>PWA</span><span>QR Code</span><span>Supabase</span></div>
+      </div>
+    </article>
 
-    <div class="minis" id="outras" style="scroll-margin-top:72px">
+    <div class="minis" id="outras">
       <article class="mini">
-        <span class="k">Indicadores · abril a julho de 2026</span>
+        <span class="k">indicadores · abr–jul/2026</span>
         <h4>Relatórios mensais de eficiência de combustível</h4>
-        <p>Definição do critério de consumo médio ponderado (km/L) e de regras para descartar leituras de hodômetro inconsistentes, com relatórios para a gestão.</p>
+        <p>Critério de consumo médio ponderado (km/L) e regras para descartar leituras de hodômetro inconsistentes, com relatórios para a gestão.</p>
       </article>
       <article class="mini">
-        <span class="k">Automação · OCR · 2026</span>
+        <span class="k">automação · ocr · 2026</span>
         <h4>Leitura automática de 334 notas fiscais</h4>
         <p>Reconhecimento de texto em notas fiscais de serviço para localizar as placas dos veículos, sem conferir documento por documento.</p>
+      </article>
+      <article class="mini">
+        <span class="k">projeto pessoal</span>
+        <h4>ORION</h4>
+        <p>Assistente que gera sistemas completos a partir de um pedido em linguagem natural. Detalhes logo abaixo.</p>
       </article>
     </div>
   </section>
 
+  <section class="block" id="orion">
+    <div class="sec-head">
+      <div class="label"><b>04</b> / projeto pessoal em destaque</div>
+      <h2 class="sec">ORION: do pedido em linguagem natural ao sistema funcionando</h2>
+      <p>O ORION é o projeto em que levo a automação um passo adiante: em vez de construir cada sistema à mão, construo o assistente que os constrói.</p>
+    </div>
+    <article class="orion">
+      <div class="orion-top">
+        <div class="orion-intro">
+          <span class="status s-warn" style="justify-self:start">em desenvolvimento · desde 07/10/2026 (etapa documentada)</span>
+          <h3>Um assistente de IA para Windows que cria e mantém sistemas</h3>
+          <p>A partir de um pedido como “faça um sistema completo de gestão de frota”, o ORION define a estrutura, gera o código, testa o resultado e coloca o sistema no ar no próprio computador. Depois, aceita mudanças por conversa (“adicione o campo X”, “crie um relatório de Y”) e guarda cada versão.</p>
+          <ul class="caps">
+            <li><b>Voz e texto</b><span>Comandos em linguagem natural, com reconhecimento e síntese de fala.</span></li>
+            <li><b>IA substituível</b><span>Arquitetura independente de fornecedor, inclusive com modelos locais.</span></li>
+            <li><b>Testes automáticos</b><span>Cada versão é verificada antes de ser entregue.</span></li>
+            <li><b>Versões e migrações</b><span>Histórico da estrutura e scripts de migração do banco.</span></li>
+            <li><b>Memória de decisões</b><span>Registra objetivo, decisões e histórico de cada projeto.</span></li>
+            <li><b>Espaço protegido</b><span>Código personalizado em <code class="mono">custom/</code> nunca é sobrescrito.</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="log-head"><i><span></span></i><span>orion.project.json · gestao-de-frota-2</span></div>
+<pre class="log"><span class="t">11/10/2026 16:11</span> <span class="k">pedido</span>  <span class="s">“faça um sistema completo de gestão de frota”</span>
+<span class="t">11/10/2026 16:11</span> <span class="k">build</span>   Versão 1: Veículos, Motoristas, Usos,
+                         Manutenções, Abastecimentos, com login
+<span class="t">11/10/2026 16:11</span> <span class="k">test</span>    <span class="ok">45/45 verificações passaram</span>
+<span class="t">11/10/2026 16:12</span> <span class="k">run</span>     No ar em 127.0.0.1:3807
+<span class="t">11/10/2026 16:12</span> <span class="k">change</span>  Visual: escuro, ciano, painéis translúcidos
+<span class="t">11/10/2026 16:15</span> <span class="k">change</span>  Novos indicadores e gráfico de combustível
+<span class="t">11/10/2026 16:15</span> <span class="k">test</span>    <span class="ok">45/45 verificações passaram</span>
+
+<span class="t">stack gerada</span>  Node.js 22 · SQLite · HTML/CSS/JS sem dependências
+<span class="t">regras</span>        retorno ≥ saída · km retorno ≥ km saída · valor &gt; 0</pre>
+        </div>
+      </div>
+      <div class="pipeline" aria-label="Como o ORION constrói um sistema">
+        <ol>
+          <li><b>Pedido</b><span>Uma frase em linguagem natural, por voz ou texto.</span></li>
+          <li><b>Especificação</b><span>Cadastros, campos, regras e relatórios em <code>spec.json</code>.</span></li>
+          <li><b>Código</b><span>Servidor, banco, telas, login e perfis.</span></li>
+          <li><b>Testes</b><span>Verificações automáticas de cadastros, regras e relatórios.</span></li>
+          <li><b>No ar</b><span>O sistema abre no navegador, pronto para uso.</span></li>
+          <li><b>Evolução</b><span>Mudanças por conversa, com nova versão e migração.</span></li>
+        </ol>
+      </div>
+      <div class="orion-body">
+        <div class="built">
+          <div class="story" style="padding:0;border:0">
+            <div><h4>sistemas já gerados pelo orion</h4></div>
+          </div>
+          <ul>
+            <li>controle-de-estoque<span>09/10</span></li>
+            <li>troca-de-senha<span>09/10</span></li>
+            <li>controle-de-folhas-de-pontos<span>09/10</span></li>
+            <li>controle-de-mins<span>09/10</span></li>
+            <li>gestao-de-frota<span>09/10</span></li>
+            <li>sistema-de-gestao-de-tarefas<span>10/10</span></li>
+            <li>sistema-de-cadastro-e-gestao-complexo<span>10/10</span></li>
+            <li>controle-de-funcionarios<span>10/10</span></li>
+            <li>sistema-de-gestao-de-recursos-humanos<span>11/10</span></li>
+            <li>gestao-de-frota-2<span>11/10</span></li>
+          </ul>
+          <blockquote>“não quero um sistema simples, faça algo complexo”<small>pedido real → sistema de despesas com relatórios, login e perfis · 23/23 testes</small></blockquote>
+          <p>Datas tiradas dos arquivos de cada projeto (outubro de 2026). As capturas ao lado são do sistema de frota gerado pelo ORION, rodando com dados de teste.</p>
+          <div class="tools"><span>modelos de IA trocáveis</span><span>voz</span><span>Node.js</span><span>SQLite</span><span>Docker</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="img/orion/orion-indicadores.webp" alt="Indicadores do sistema gerado pelo ORION" width="1440" height="900" loading="lazy"><figcaption>Indicadores e gráficos do sistema de frota gerado pelo ORION</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="img/orion/orion-indicadores.webp" data-cap="Indicadores e gráficos do sistema de frota gerado pelo ORION"><img src="img/orion/orion-indicadores.webp" alt="Indicadores" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/orion/orion-painel.webp" data-cap="Tela inicial: o que precisa de atenção hoje"><img src="img/orion/orion-painel.webp" alt="Painel" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/orion/orion-abastecimentos.webp" data-cap="Cadastro gerado com busca, importação e exportação CSV"><img src="img/orion/orion-abastecimentos.webp" alt="Abastecimentos" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/orion/orion-relatorio.webp" data-cap="Relatório de custo de manutenção por veículo"><img src="img/orion/orion-relatorio.webp" alt="Relatório" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="img/orion/orion-historico.webp" data-cap="Histórico de alterações com autor e data"><img src="img/orion/orion-historico.webp" alt="Histórico" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
   <section class="block" id="trajetoria">
     <div class="sec-head">
-      <div class="eyebrow">Trajetória</div>
+      <div class="label"><b>05</b> / trajetória</div>
       <h2 class="sec">Da operação para a criação de soluções</h2>
       <p>A experiência na DIME Distribuidora foi onde aprendi a enxergar processos de dentro: primeiro executando, depois identificando o que travava e construindo a solução.</p>
     </div>
     <ol class="timeline">
-      <li><div class="t-date">Expedição<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Expedição</b><span>Contato com o fluxo operacional de distribuição e com a ligação entre operação e áreas administrativas.</span></div></li>
+      <li><div class="t-date">Expedição<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Expedição</b><span>Contato com o fluxo operacional e com a ligação entre operação e áreas administrativas.</span></div></li>
       <li><div class="t-date">Frota · atual<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Auxiliar de Frota</b><span>Rotinas administrativas e operacionais do setor; apoio à continuidade das atividades durante as férias do supervisor.</span></div></li>
       <li><div class="t-date">abr–jul/2026<small>relatórios</small></div><div class="t-dot"></div><div class="t-body"><b>Indicadores para a gestão</b><span>Relatórios mensais de eficiência de combustível com critério de cálculo definido.</span></div></li>
       <li><div class="t-date">18/06/2026<small>registro mais antigo</small></div><div class="t-dot"></div><div class="t-body"><b>Sistema de Gestão de Frota</b><span>Plataforma que substitui as planilhas do setor; segue em uso e evolução.</span></div></li>
       <li><div class="t-date">30/07/2026<small>referência documentada</small></div><div class="t-dot"></div><div class="t-body"><b>Central do Rodoviário</b><span>Canal próprio para os motoristas informarem problemas.</span></div></li>
       <li><div class="t-date">out/2026<small>versões analisadas</small></div><div class="t-dot"></div><div class="t-body"><b>Soluções para outras áreas</b><span>Veículos de Passeio (comercial), Qualidade 10S, Checklists e Ocorrências, Agregados e CIOT.</span></div></li>
-      <li><div class="t-date">07/10/2026<small>etapa documentada</small></div><div class="t-dot"></div><div class="t-body"><b>ORION</b><span>Projeto pessoal de automação inteligente.</span></div></li>
+      <li><div class="t-date">07/10/2026<small>etapa documentada</small></div><div class="t-dot"></div><div class="t-body"><b>ORION</b><span>Assistente que gera sistemas; 10 sistemas gerados entre 09 e 11/10/2026.</span></div></li>
     </ol>
   </section>
 
   <section class="block" id="competencias">
     <div class="sec-head">
-      <div class="eyebrow">Competências demonstradas</div>
+      <div class="label"><b>06</b> / competências demonstradas</div>
       <h2 class="sec">Onde cada competência aparece</h2>
       <p>Em vez de uma lista solta, a tabela liga cada competência aos projetos que a comprovam.</p>
     </div>
     <div class="matrix-wrap">
       <table class="matrix">
-        <thead><tr><th scope="col"></th><th scope="col">Frota</th><th scope="col">Passeio</th><th scope="col">Qualidade</th><th scope="col">Checklists</th><th scope="col">Agregados</th><th scope="col">Rodoviário</th><th scope="col">ORION</th></tr></thead>
+        <thead><tr><th scope="col"></th><th scope="col">frota</th><th scope="col">passeio</th><th scope="col">qualidade</th><th scope="col">checklists</th><th scope="col">agregados</th><th scope="col">rodoviário</th><th scope="col">orion</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Análise de processos<small>mapear a rotina e achar o gargalo</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td></td></tr>
-          <tr><th scope="row">Digitalização de controles<small>do papel e da planilha para o sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td></td></tr>
+          <tr><th scope="row">Análise de processos<small>mapear a rotina e achar o gargalo</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot half" title="Parcial"></span></td></tr>
+          <tr><th scope="row">Digitalização de controles<small>do papel e da planilha para o sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
           <tr><th scope="row">Automação de cálculos e alertas<small>regras aplicadas pelo sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td></td><td><span class="dot" title="Sim"></span></td></tr>
-          <tr><th scope="row">Estruturação de fluxos<small>etapas, status e responsáveis</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td></td></tr>
-          <tr><th scope="row">Rastreabilidade e evidências<small>histórico, anexos, auditoria</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td></td><td></td></tr>
-          <tr><th scope="row">Integração de ferramentas<small>banco, armazenamento, mapas, IA</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Estruturação de fluxos<small>etapas, status e responsáveis</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Rastreabilidade e evidências<small>histórico, anexos, auditoria</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Integração de ferramentas e IA<small>banco, armazenamento, mapas, modelos de IA</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
         </tbody>
       </table>
     </div>
@@ -619,25 +708,25 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 
   <section class="block two" aria-label="Formação e contato">
     <div>
-      <div class="sec-head"><div class="eyebrow">Formação</div><h2 class="sec">Formação acadêmica</h2></div>
+      <div class="sec-head"><div class="label"><b>07</b> / formação</div><h2 class="sec">Formação acadêmica</h2></div>
       <div class="card">
         <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
         <p>UNISUAM · em andamento</p>
       </div>
     </div>
     <div id="contato" style="scroll-margin-top:72px">
-      <div class="sec-head"><div class="eyebrow">Contato</div><h2 class="sec">Vamos conversar</h2></div>
+      <div class="sec-head"><div class="label"><b>08</b> / contato</div><h2 class="sec">Vamos conversar</h2></div>
       <div class="card contact">
-        <div><span>E-mail</span><code id="email">guilhermeluiz671@gmail.com</code><button type="button" class="copy" id="copyEmail">Copiar</button></div>
-        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">linkedin.com/in/luiz-dias-76ab892b9</a></div>
-        <div><span>GitHub</span><a href="https://github.com/luizdiaz1" target="_blank" rel="noopener">github.com/luizdiaz1</a></div>
-        <div><span>Local</span><b>Rio de Janeiro – RJ</b></div>
+        <div><span>e-mail</span><code id="email">guilhermeluiz671@gmail.com</code><button type="button" class="copy" id="copyEmail">copiar</button></div>
+        <div><span>linkedin</span><a href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">linkedin.com/in/luiz-dias-76ab892b9</a></div>
+        <div><span>github</span><a href="https://github.com/luizdiaz1" target="_blank" rel="noopener">github.com/luizdiaz1</a></div>
+        <div><span>local</span><b>Rio de Janeiro – RJ</b></div>
       </div>
     </div>
   </section>
 
   <footer class="foot">
-    <span>Luiz Dias · Portfólio</span>
+    <span>luiz dias · portfólio</span>
     <span>As datas indicam a referência mais antiga encontrada nos arquivos e registros de cada projeto; onde o início não foi confirmado, isso está indicado. As demonstrações usam empresa, pessoas e valores fictícios.</span>
   </footer>
 </main>
@@ -660,13 +749,8 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
   btn.addEventListener('click', function () {
     var t = document.getElementById('email').textContent;
     try {
-      navigator.clipboard.writeText(t).then(function () { btn.textContent = 'Copiado'; setTimeout(function () { btn.textContent = 'Copiar'; }, 1600); }, selectEmail);
+      navigator.clipboard.writeText(t).then(function () { btn.textContent = 'copiado'; setTimeout(function () { btn.textContent = 'copiar'; }, 1600); }, selectEmail);
     } catch (e) { selectEmail(); }
-  });
-  // As demos só existem na versão publicada (Vercel/GitHub Pages). Sem elas, os botões ficam desativados.
-  fetch('frota/README.md', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(); }).catch(function () {
-    document.body.classList.add('no-demos');
-    document.querySelectorAll('.demo-link').forEach(function (a) { a.setAttribute('aria-disabled', 'true'); a.setAttribute('tabindex', '-1'); a.removeAttribute('href'); });
   });
 })();
 </script>
