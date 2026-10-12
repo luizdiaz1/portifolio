@@ -1,0 +1,262 @@
+/* Impressão do Relatório de Vistoria — A4 */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html, body {
+    width: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box;
+  }
+
+  body.printing-report .sidebar,
+  body.printing-report .topbar,
+  body.printing-report #toast-container,
+  body.printing-report .no-print,
+  body.printing-report .lightbox-overlay,
+  body.printing-report .modal-overlay {
+    display: none !important;
+  }
+
+  body.printing-report .main-area {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  body.printing-report .content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+
+  body.printing-report .report-page {
+    width: 194mm !important;
+    max-width: 194mm !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    color: #111 !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
+  }
+
+  .official-report-header {
+    display: grid !important;
+    grid-template-columns: 1fr 1.7fr 1fr !important;
+    gap: 8mm !important;
+    min-height: 20mm !important;
+    margin-bottom: 5mm !important;
+    align-items: center !important;
+  }
+
+  .official-logo-wrap { height: auto !important; }
+  .official-logo-wrap img { width: 34mm !important; max-height: 18mm !important; object-fit: contain !important; }
+  .official-title { padding: 0 !important; }
+  .official-title h1 { font-size: 15pt !important; margin: 0 0 3mm !important; }
+  .official-title div { font-size: 8pt !important; }
+  .official-cover { text-align: right !important; }
+  .official-cover img { width: 28mm !important; height: 17mm !important; object-fit: cover !important; }
+
+  .official-section {
+    margin-top: 4mm !important;
+    padding: 2.2mm 2.5mm !important;
+    font-size: 9pt !important;
+    line-height: 1.1 !important;
+    break-after: avoid !important;
+  }
+
+  .official-table { width: 100% !important; }
+  .official-table.four-cols { grid-template-columns: repeat(4, 1fr) !important; }
+  .official-table.two-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  .official-cell { min-width: 0 !important; overflow-wrap: anywhere !important; }
+  .official-cell-label { padding: 1.6mm 1.8mm !important; font-size: 7pt !important; }
+  .official-cell-value { padding: 1.8mm !important; font-size: 8.5pt !important; line-height: 1.25 !important; min-height: 0 !important; }
+  .summary-table .official-cell-value { font-size: 9pt !important; }
+
+  .official-label {
+    margin: 3.5mm 0 1.5mm !important;
+    font-size: 7.5pt !important;
+    break-after: avoid !important;
+  }
+
+  .official-observation {
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    margin-bottom: 2mm !important;
+  }
+
+  /* NCs podem atravessar páginas; não forçamos o bloco inteiro a caber em uma página. */
+  .official-nc {
+    margin-top: 3mm !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .nc-meta,
+  .nc-description,
+  .risk-action { break-inside: avoid !important; page-break-inside: avoid !important; }
+
+  .body-copy { font-size: 8pt !important; line-height: 1.25 !important; min-height: 0 !important; }
+  .senso-list { font-size: 7.5pt !important; min-height: 0 !important; gap: 1mm !important; }
+
+  .official-photo-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    width: 100% !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .official-photo {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 2.5mm 2mm !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .official-photo img {
+    width: 100% !important;
+    height: 38mm !important;
+    max-height: 38mm !important;
+    object-fit: contain !important;
+    background: #f2f4f5 !important;
+  }
+
+  .photo-title { font-size: 7.5pt !important; margin-bottom: 1.5mm !important; }
+
+  .official-action-table-wrap {
+    width: 100% !important;
+    overflow: visible !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .official-action-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 7.5pt !important;
+  }
+
+  .official-action-table th {
+    padding: 1.5mm 1mm !important;
+    font-size: 7pt !important;
+  }
+
+  .official-action-table td {
+    padding: 1.4mm 1mm !important;
+    overflow-wrap: anywhere !important;
+    vertical-align: top !important;
+  }
+
+  .official-action-table tr { break-inside: avoid !important; page-break-inside: avoid !important; }
+
+  .efficacy-table { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .efficacy-table .official-cell-value { min-height: 0 !important; font-size: 8pt !important; }
+  .official-footer { font-size: 7.5pt !important; margin-top: 5mm !important; }
+
+  a[href]::after { content: none !important; }
+}
+
+
+/* --- Relatório da Auditoria 10S (A4) --- */
+@media print {
+  .rel10s-legenda { font-size: 6.8pt !important; margin: 1.5mm 0 0 !important; }
+  .rel10s-senso { break-inside: avoid !important; page-break-inside: avoid !important; margin-top: 2mm !important; }
+  .rel10s-senso-head { font-size: 7.8pt !important; padding: 1.4mm 1.8mm !important; }
+  .rel10s-aviso { font-size: 7.5pt !important; padding: 1.6mm 1.8mm !important; }
+  .rel10s-table td, .rel10s-plano td, .rel10s-nota td { font-size: 7.4pt !important; }
+  .rel10s-obs-row td { font-size: 6.8pt !important; }
+  .rel10s-fx { font-size: 6.6pt !important; }
+  .official-action-table thead { display: table-header-group !important; }
+  .rel10s-nota-bloco { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .rel10s-nota tr.rel10s-total td { font-size: 8pt !important; }
+}
+
+/* =========================================================
+   RELATÓRIO DE VISTORIA (layout técnico) — impressão A4
+   ========================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 13mm 14mm;
+    @bottom-left { content: "Distribuidora Exemplo · Gestão da Qualidade · Relatório de Vistoria"; font: 7.5pt Arial, sans-serif; color: #586971; }
+    @bottom-right { content: "Página " counter(page) " de " counter(pages); font: bold 7.5pt Arial, sans-serif; color: #103A5E; }
+  }
+  body.printing-report .report-page.rpt {
+    width: 100% !important; max-width: none !important; padding: 0 !important; margin: 0 !important;
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    font-family: Arial, Helvetica, sans-serif !important; font-size: 9pt !important; line-height: 1.35 !important; color: #1d2a33 !important;
+  }
+  .rpt * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .rpt-cabecalho { grid-template-columns: auto minmax(0, 1fr) auto auto !important; gap: 5mm !important; padding-bottom: 2.5mm !important; }
+  .rpt-logo img { width: 30mm !important; max-height: 15mm !important; }
+  .rpt-titulo h1 { font-size: 16pt !important; }
+  .rpt-titulo-sup { font-size: 6.8pt !important; }
+  .rpt-doc { grid-column: auto !important; grid-row: auto !important; grid-template-columns: 1fr !important; border-left: 2.5px solid #F5D83B !important; border-top: 0 !important; padding: 0 0 0 3mm !important; gap: .6mm !important; }
+  .rpt-doc div { grid-template-columns: 19mm auto !important; font-size: 8pt !important; }
+  .rpt-doc dt { font-size: 6.5pt !important; }
+  .rpt-abelha img { height: 19mm !important; }
+  .rpt-secao { margin-top: 5mm !important; }
+  .rpt-h2 { font-size: 9pt !important; padding: 1.8mm 2.5mm !important; margin-bottom: 2.5mm !important; break-after: avoid !important; page-break-after: avoid !important; }
+  .rpt-grade, .rpt-kpis, .rpt-bloco, .rpt-nc-cab, .rpt-evid-cab { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .rpt-nc-cab, .rpt-evid-cab { break-after: avoid !important; page-break-after: avoid !important; }
+  .rpt-grade.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .rpt-grade.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .rpt-grade.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .rpt-kpis { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  .rpt-campo { padding: 1.6mm 2mm !important; }
+  .rpt-rotulo { font-size: 6.5pt !important; }
+  .rpt-valor { font-size: 9pt !important; }
+  .rpt-texto { padding: 1.8mm 2.2mm !important; }
+  .rpt-kpi strong { font-size: 14pt !important; }
+  .rpt-kpi strong.txt { font-size: 9.5pt !important; }
+  .rpt-kpi span { font-size: 6.3pt !important; }
+  .rpt-sensos { font-size: 8pt !important; grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  .rpt-nc { margin-top: 4mm !important; padding-top: 3mm !important; }
+  .rpt-fotos { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 3mm !important; }
+  .rpt.dens-9 .rpt-fotos { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2.5mm !important; }
+  .rpt-fotos.unica { grid-template-columns: minmax(0, 1fr) !important; }
+  .rpt-foto { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .rpt-foto-img { aspect-ratio: auto !important; height: 66mm !important; cursor: default !important; }
+  .rpt.dens-9 .rpt-foto-img { height: 50mm !important; }
+  .rpt-fotos.unica .rpt-foto-img { height: 115mm !important; }
+  .rpt-foto figcaption { font-size: 7pt !important; padding: 1mm 2mm !important; }
+  .rpt-tabela-wrap { overflow: visible !important; }
+  .rpt-tabela { font-size: 8pt !important; }
+  .rpt-tabela thead { display: table-header-group !important; }
+  .rpt-tabela th { font-size: 6.8pt !important; padding: 1.5mm 2mm !important; }
+  .rpt-tabela td { padding: 1.5mm 2mm !important; }
+  .rpt-tabela tr { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .rpt-rodape { display: none !important; }
+
+  /* Auditoria 10S */
+  .rpt-aud-resultado { grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) !important; gap: 2.5mm !important; break-inside: avoid !important; }
+  .rpt-aud-comps { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2mm !important; }
+  .rpt-aud-geral { padding: 2.5mm 3mm !important; }
+  .rpt-aud-geral strong { font-size: 22pt !important; }
+  .rpt-aud-comp { padding: 2mm 2.5mm !important; }
+  .rpt-aud-comp strong { font-size: 13pt !important; }
+  .rpt-aud-comp-det, .rpt-aud-geral-sub { font-size: 7pt !important; }
+  .rpt-kpis.k4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .rpt-senso-cab { break-after: avoid !important; page-break-after: avoid !important; break-inside: avoid !important; }
+  .rpt-senso-cab h3 { font-size: 9.5pt !important; }
+  .rpt-senso-pts, .rpt-legenda { font-size: 7.5pt !important; }
+  .rpt-res, .rpt-st { font-size: 6.5pt !important; }
+  .rpt-chk .c-res { width: 22mm !important; }
+  .rpt-grade.g2c { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .rpt-tabela tr.rpt-total td { background: #fbf2cf !important; }
+}
