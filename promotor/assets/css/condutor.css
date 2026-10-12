@@ -1,0 +1,269 @@
+/* =====================================================================
+   Tela do condutor (/condutor) — camada visual
+   Carrega depois de style.css e redesign.css e vale SOMENTE dentro de .cd-app.
+   Não altera o restante do sistema. Tema grafite fixo nesta tela.
+   ===================================================================== */
+body:has(.cd-app){background:#0d1014}
+body[data-theme] .cd-app{
+  --cd-bg:#0d1014; --cd-surface:#151a20; --cd-surface-2:#1b2129; --cd-inset:#11151a;
+  --cd-line:#262d36; --cd-line-2:#323a45;
+  --cd-text:#e8ecf1; --cd-muted:#8b95a3; --cd-soft:#b9c2cd;
+  --cd-yellow:#f6c500; --cd-yellow-press:#ddb000; --cd-yellow-ink:#16140c;
+  --cd-green:#34c27a; --cd-green-bg:rgba(52,194,122,.12);
+  --cd-blue:#5aa7f0; --cd-blue-bg:rgba(90,167,240,.12);
+  --cd-red:#ef5b5b;
+  --cd-radius:12px; --cd-radius-sm:9px;
+  color:var(--cd-text);
+  max-width:760px; width:100%; margin:0 auto; padding:16px 16px 40px;
+  min-height:100vh; display:block; box-sizing:border-box;
+  font-family:var(--font-body,"IBM Plex Sans",system-ui,sans-serif);
+  color-scheme:dark;
+}
+body[data-theme] .cd-app *,body[data-theme] .cd-app *::before,body[data-theme] .cd-app *::after{box-sizing:border-box}
+body[data-theme] .cd-app .ico{width:20px;height:20px;flex:none}
+body[data-theme] .cd-app > .driver-card{background:transparent;border:0;border-radius:0;padding:0;box-shadow:none;width:100%;min-width:0}
+
+/* ---------- Cabeçalho ---------- */
+body[data-theme] .cd-app .cd-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 0 16px;margin-bottom:16px;border-bottom:1px solid var(--cd-line)}
+body[data-theme] .cd-app .cd-brand{display:flex;align-items:center;gap:12px;min-width:0}
+body[data-theme] .cd-app .cd-brand .logo{width:40px;height:40px;margin:0;flex:none}
+body[data-theme] .cd-app .cd-brand-text{display:grid;gap:2px;min-width:0;padding-left:12px;border-left:1px solid var(--cd-line-2)}
+body[data-theme] .cd-app .cd-brand-text strong{font:600 15px/1.2 var(--font-display,"Space Grotesk",sans-serif);color:var(--cd-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body[data-theme] .cd-app .cd-brand-text span{font-size:12.5px;color:var(--cd-muted)}
+body[data-theme] .cd-app .cd-chip{display:inline-flex;align-items:center;gap:7px;flex:none;padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;white-space:nowrap}
+body[data-theme] .cd-app .cd-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+body[data-theme] .cd-app .cd-chip.ok{color:var(--cd-green);background:var(--cd-green-bg)}
+body[data-theme] .cd-app .cd-chip.info{color:var(--cd-blue);background:var(--cd-blue-bg)}
+body[data-theme] .cd-app .monitor-return-btn{width:100%;min-height:46px;margin:0 0 14px}
+
+/* ---------- Início sem rota ---------- */
+body[data-theme] .cd-app .cd-welcome{margin:8px 0 18px}
+body[data-theme] .cd-app .cd-welcome h1{margin:0;font:600 24px/1.2 var(--font-display,"Space Grotesk",sans-serif);letter-spacing:-.01em;color:var(--cd-text)}
+body[data-theme] .cd-app .cd-welcome p{margin:8px 0 0;color:var(--cd-muted);font-size:15px;line-height:1.5}
+body[data-theme] .cd-app .cd-options{display:grid;gap:12px;margin:0}
+body[data-theme] .cd-app .cd-option,body[data-theme] .cd-app .cd-action{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;width:100%;min-height:76px;padding:14px 16px;border-radius:var(--cd-radius);text-align:left;justify-content:stretch;font-weight:600}
+body[data-theme] .cd-app .cd-option .cd-option-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.14)}
+body[data-theme] .cd-app .cd-option:not(.primary) .cd-option-ico{background:var(--cd-surface-2);color:var(--cd-soft)}
+body[data-theme] .cd-app .cd-option-text,body[data-theme] .cd-app .cd-action > span{display:grid;gap:3px;min-width:0}
+body[data-theme] .cd-app .cd-option-text b,body[data-theme] .cd-app .cd-action b{font-size:16px;font-weight:700}
+body[data-theme] .cd-app .cd-option-text small,body[data-theme] .cd-app .cd-action small{font-size:13px;font-weight:500;line-height:1.35;opacity:.78;white-space:normal}
+body[data-theme] .cd-app .cd-option-arrow{width:18px;height:18px;opacity:.7}
+
+/* ---------- Botões base nesta tela ---------- */
+body[data-theme] .cd-app .btn{background:var(--cd-surface-2);border:1px solid var(--cd-line-2);color:var(--cd-text);min-height:44px;border-radius:var(--cd-radius-sm);font-weight:600;text-decoration:none;box-shadow:none}
+body[data-theme] .cd-app .btn:hover{background:#222932;border-color:#3b4450}
+body[data-theme] .cd-app .btn.primary{background:var(--cd-yellow);border-color:var(--cd-yellow);color:var(--cd-yellow-ink)}
+body[data-theme] .cd-app .btn.primary:hover{background:var(--cd-yellow-press);border-color:var(--cd-yellow-press)}
+body[data-theme] .cd-app .btn.ghost{background:transparent;border-color:transparent}
+body[data-theme] .cd-app .btn:focus-visible,body[data-theme] .cd-app select:focus-visible,body[data-theme] .cd-app input:focus-visible,body[data-theme] .cd-app textarea:focus-visible{outline:2px solid var(--cd-yellow);outline-offset:2px}
+body[data-theme] .cd-app .btn[disabled]{opacity:.5}
+
+/* ---------- Painéis ---------- */
+body[data-theme] .cd-app .cd-panel{background:var(--cd-surface);border:1px solid var(--cd-line);border-radius:var(--cd-radius);padding:16px;margin-bottom:12px;min-width:0}
+body[data-theme] .cd-app .cd-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+body[data-theme] .cd-app .cd-panel-head h3{display:flex;align-items:center;gap:9px;margin:0;font:600 16px/1.2 var(--font-display,"Space Grotesk",sans-serif)}
+body[data-theme] .cd-app .cd-panel-head h3 .ico{color:var(--cd-yellow)}
+body[data-theme] .cd-app .cd-muted{color:var(--cd-muted);font-size:13px}
+
+/* Resumo veículo / condutor */
+body[data-theme] .cd-app .cd-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:14px}
+body[data-theme] .cd-app .cd-summary-item{display:flex;align-items:center;gap:12px;min-width:0}
+body[data-theme] .cd-app .cd-summary-item + .cd-summary-item{padding-left:14px;border-left:1px solid var(--cd-line)}
+body[data-theme] .cd-app .cd-summary-ico{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:10px;background:var(--cd-surface-2);color:var(--cd-soft)}
+body[data-theme] .cd-app .cd-summary-item div{display:grid;gap:2px;min-width:0}
+body[data-theme] .cd-app .cd-summary-item small{font-size:12px;color:var(--cd-muted)}
+body[data-theme] .cd-app .cd-summary-item strong{font:600 18px/1.2 var(--font-display,"Space Grotesk",sans-serif);overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-summary-item span{font-size:13px;color:var(--cd-soft);overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-summary-chip{align-self:start}
+
+/* Jornada */
+body[data-theme] .cd-app .cd-track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative}
+body[data-theme] .cd-app .cd-track li{position:relative;display:grid;justify-items:center;gap:4px;text-align:center;min-width:0;padding:0 4px}
+body[data-theme] .cd-app .cd-track li::before{content:"";position:absolute;top:13px;left:-50%;right:50%;height:2px;background:var(--cd-line-2);z-index:0}
+body[data-theme] .cd-app .cd-track li:first-child::before{display:none}
+body[data-theme] .cd-app .cd-track li.done::before,body[data-theme] .cd-app .cd-track li.current::before{background:var(--cd-green)}
+body[data-theme] .cd-app .cd-dot{position:relative;z-index:1;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cd-surface-2);border:2px solid var(--cd-line-2);color:#0d1014}
+body[data-theme] .cd-app .cd-dot .ico{width:15px;height:15px;stroke-width:2.6}
+body[data-theme] .cd-app .cd-track li.done .cd-dot{background:var(--cd-green);border-color:var(--cd-green)}
+body[data-theme] .cd-app .cd-track li.current .cd-dot{background:var(--cd-surface);border-color:var(--cd-green);box-shadow:inset 0 0 0 5px var(--cd-surface),inset 0 0 0 14px var(--cd-green)}
+body[data-theme] .cd-app .cd-track b{margin-top:4px;font-size:14px;font-weight:600;color:var(--cd-text);overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-track small{font-size:12.5px;color:var(--cd-muted)}
+body[data-theme] .cd-app .cd-track li.current small{color:var(--cd-green)}
+body[data-theme] .cd-app .cd-stops{margin-top:16px;border-top:1px solid var(--cd-line);padding-top:12px}
+body[data-theme] .cd-app .cd-stops summary{cursor:pointer;min-height:36px;display:flex;align-items:center;color:var(--cd-soft);font-size:14px;font-weight:600}
+body[data-theme] .cd-app .cd-stops ol{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:stop}
+body[data-theme] .cd-app .cd-stops li{counter-increment:stop;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px}
+body[data-theme] .cd-app .cd-stops li::before{content:counter(stop);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--cd-surface-2);font-size:12px;color:var(--cd-soft)}
+body[data-theme] .cd-app .cd-stops li.done::before{background:var(--cd-green-bg);color:var(--cd-green)}
+body[data-theme] .cd-app .cd-stops li.current::before{background:var(--cd-yellow);color:var(--cd-yellow-ink)}
+body[data-theme] .cd-app .cd-stops li span{min-width:0;overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-stops li small{color:var(--cd-muted);font-size:12.5px}
+body[data-theme] .cd-app .cd-stops li.current small{color:var(--cd-green)}
+
+/* Cliente atual */
+body[data-theme] .cd-app .cd-client{border-left:3px solid var(--cd-blue)}
+body[data-theme] .cd-app .cd-client.finished{border-left-color:var(--cd-green)}
+body[data-theme] .cd-app .cd-label{display:block;font-size:13px;font-weight:600;color:var(--cd-blue);text-transform:none;letter-spacing:0}
+body[data-theme] .cd-app .cd-client.finished .cd-label{color:var(--cd-green)}
+body[data-theme] .cd-app .cd-client h2{margin:6px 0 0;font:600 24px/1.2 var(--font-display,"Space Grotesk",sans-serif);letter-spacing:-.01em;overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-address{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;color:var(--cd-soft);font-size:14.5px;line-height:1.45}
+body[data-theme] .cd-app .cd-address .ico{width:18px;height:18px;margin-top:1px;color:var(--cd-blue)}
+body[data-theme] .cd-app .cd-nav-links{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px;margin-top:16px}
+body[data-theme] .cd-app .cd-nav-btn{min-height:48px;justify-content:center;font-size:15px}
+body[data-theme] .cd-app .cd-nav-btn.primary-nav{background:#1f4b7a;border-color:#2a5f97;color:#fff}
+body[data-theme] .cd-app .cd-nav-btn.primary-nav:hover{background:#245689}
+
+/* Ações */
+body[data-theme] .cd-app .cd-help{margin:16px 2px 10px;color:var(--cd-muted);font-size:14px;line-height:1.5}
+body[data-theme] .cd-app .cd-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body[data-theme] .cd-app .cd-actions.single{grid-template-columns:1fr}
+body[data-theme] .cd-app .cd-action{min-height:72px;grid-template-columns:auto minmax(0,1fr) auto}
+body[data-theme] .cd-app .cd-action > .ico:first-child{width:22px;height:22px}
+body[data-theme] .cd-app .cd-actions.single .cd-action > span{font-size:16px;font-weight:700}
+
+/* ---------- Etapas (formulários) ---------- */
+body[data-theme] .cd-app .cd-step-head{margin:0 0 14px}
+body[data-theme] .cd-app .cd-back{min-height:44px;padding:0 10px 0 4px;margin:0 0 6px -4px;color:var(--cd-soft);gap:6px;width:auto}
+body[data-theme] .cd-app .cd-step-head h2{margin:0;font:600 22px/1.2 var(--font-display,"Space Grotesk",sans-serif);letter-spacing:-.01em}
+body[data-theme] .cd-app .cd-step-head p{margin:6px 0 0;color:var(--cd-muted);font-size:14.5px;line-height:1.5}
+body[data-theme] .cd-app .cd-form{display:grid;gap:12px;min-width:0}
+body[data-theme] .cd-app .cd-context{display:grid;gap:3px;padding:14px 16px;border-radius:var(--cd-radius);background:var(--cd-surface);border:1px solid var(--cd-line);border-left:3px solid var(--cd-blue)}
+body[data-theme] .cd-app .cd-context small{font-size:13px;color:var(--cd-blue);font-weight:600}
+body[data-theme] .cd-app .cd-context strong{font:600 19px/1.25 var(--font-display,"Space Grotesk",sans-serif);overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-context span{font-size:13.5px;color:var(--cd-soft)}
+body[data-theme] .cd-app .cd-section{background:var(--cd-surface);border:1px solid var(--cd-line);border-radius:var(--cd-radius);padding:16px;min-width:0}
+body[data-theme] .cd-app .cd-section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+body[data-theme] .cd-app .cd-section-ico{display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:9px;background:var(--cd-surface-2);color:var(--cd-yellow)}
+body[data-theme] .cd-app .cd-section-head h3{margin:0;font:600 16px/1.25 var(--font-display,"Space Grotesk",sans-serif)}
+body[data-theme] .cd-app .cd-section-head p{margin:3px 0 0;font-size:13px;color:var(--cd-muted)}
+body[data-theme] .cd-app .cd-section-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;min-width:0}
+body[data-theme] .cd-app .cd-section-body > .field{min-width:0}
+
+/* Campos */
+body[data-theme] .cd-app .field label{font-size:13px;font-weight:600;color:var(--cd-soft);text-transform:none;letter-spacing:0;line-height:1.35}
+body[data-theme] .cd-app .field input:not([type=checkbox]):not([type=file]),body[data-theme] .cd-app .field select,body[data-theme] .cd-app .field textarea{background:var(--cd-inset);border:1px solid var(--cd-line-2);color:var(--cd-text);border-radius:var(--cd-radius-sm);min-height:48px;font-size:16px;padding:12px 13px}
+body[data-theme] .cd-app .field textarea{min-height:88px}
+body[data-theme] .cd-app .field select option{background:#151a20;color:var(--cd-text)}
+body[data-theme] .cd-app .field input::placeholder,body[data-theme] .cd-app .field textarea::placeholder{color:#6d7785}
+body[data-theme] .cd-app .cd-confirm{display:flex;align-items:flex-start;gap:12px;min-height:52px;padding:13px 14px;border-radius:var(--cd-radius-sm);background:rgba(246,197,0,.07);border:1px solid rgba(246,197,0,.22);border-left-width:1px;color:var(--cd-text);font-size:14.5px;font-weight:500;line-height:1.4;cursor:pointer}
+body[data-theme] .cd-app .cd-confirm input{width:22px;height:22px;min-height:0;margin:0;flex:none;accent-color:var(--cd-yellow)}
+body[data-theme] .cd-app .driver-picker-card{background:var(--cd-inset);border:1px solid var(--cd-line-2);border-radius:var(--cd-radius-sm)}
+body[data-theme] .cd-app .driver-picker-card .btn{min-height:44px}
+body[data-theme] .cd-app .driver-active-use-summary{background:var(--cd-inset);border:1px solid var(--cd-line-2);border-left:3px solid var(--cd-green);border-radius:var(--cd-radius-sm)}
+body[data-theme] .cd-app .driver-active-use-summary small{color:var(--cd-green);text-transform:none;letter-spacing:0;font-size:13px}
+body[data-theme] .cd-app .destination-actions .btn,body[data-theme] .cd-app [data-client-picker] .btn{min-height:44px}
+body[data-theme] .cd-app .notice{background:rgba(246,197,0,.07);border-color:rgba(246,197,0,.22);color:var(--cd-text)}
+
+/* Mapa (mesmo componente; só tamanho e moldura) */
+body[data-theme] .cd-app .destination-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+body[data-theme] .cd-app .destination-actions .btn{width:100%;min-width:0;padding:8px 6px;font-size:13.5px;white-space:normal;line-height:1.2;text-align:center}
+body[data-theme] .cd-app .destination-map{height:260px;min-height:260px;border:1px solid var(--cd-line-2);border-radius:var(--cd-radius-sm);background:var(--cd-inset);overflow:hidden}
+body[data-theme] .cd-app .destination-details{background:var(--cd-inset);border:1px solid var(--cd-line);border-radius:var(--cd-radius-sm);color:var(--cd-soft);font-size:13.5px;line-height:1.5;padding:11px 13px}
+body[data-theme] .cd-app .destination-results{min-width:0}
+
+/* Assinatura */
+body[data-theme] .cd-app .signature-pad{position:relative;border:1px dashed #4a5361;border-radius:var(--cd-radius-sm);background:#fff;overflow:hidden;min-height:170px}
+body[data-theme] .cd-app .signature-pad canvas{display:block;width:100%;height:170px;touch-action:none}
+body[data-theme] .cd-app .signature-pad [data-signature-clear]{position:absolute;top:8px;right:8px;min-height:40px;padding:6px 14px;background:#f1f3f6;border:1px solid #d5dae1;color:#1d232b;font-size:13px;opacity:1}
+body[data-theme] .cd-app .signature-hint{font-size:12.5px;color:var(--cd-muted)}
+
+/* Fotos */
+body[data-theme] .cd-app .delivery-photos-card{background:transparent;border:0;padding:0;border-radius:0}
+body[data-theme] .cd-app .delivery-photos-head{margin-bottom:10px}
+body[data-theme] .cd-app .delivery-photos-head strong{font-size:14.5px}
+body[data-theme] .cd-app .delivery-photos-head p{margin:3px 0 0;font-size:13px;color:var(--cd-muted)}
+body[data-theme] .cd-app .delivery-photos-grid{display:grid;grid-template-columns:1fr;gap:10px}
+body[data-theme] .cd-app .delivery-photo-column{background:var(--cd-inset);border:1px solid var(--cd-line-2);border-radius:var(--cd-radius-sm);padding:13px;min-width:0}
+body[data-theme] .cd-app .delivery-photo-title{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+body[data-theme] .cd-app .delivery-photo-title strong{font-size:15px}
+body[data-theme] .cd-app .delivery-photo-title span{font-size:12px;color:var(--cd-muted);text-transform:none;letter-spacing:0}
+body[data-theme] .cd-app .delivery-photo-helper{margin:4px 0 10px;font-size:13px;color:var(--cd-muted)}
+body[data-theme] .cd-app .delivery-photo-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+body[data-theme] .cd-app .delivery-photo-actions .btn{min-height:46px;width:100%;gap:8px;font-size:14px;text-transform:none;letter-spacing:0}
+body[data-theme] .cd-app .delivery-photo-actions .btn .ico{width:18px;height:18px}
+body[data-theme] .cd-app .delivery-photo-count{margin-top:8px;font-size:12.5px;color:var(--cd-muted);font-family:inherit}
+body[data-theme] .cd-app .delivery-photo-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;margin-top:8px}
+body[data-theme] .cd-app .delivery-photo-preview img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:7px}
+
+/* Envio */
+body[data-theme] .cd-app .cd-submit{min-height:56px;font-size:16px;border-radius:var(--cd-radius);gap:10px;margin-top:4px}
+
+/* Sucesso */
+body[data-theme] .cd-app .success-box{background:var(--cd-surface);border:1px solid var(--cd-line);border-left:3px solid var(--cd-green);border-radius:var(--cd-radius);padding:18px;margin:0 0 12px}
+body[data-theme] .cd-app .success-box h2{font:600 20px/1.25 var(--font-display,"Space Grotesk",sans-serif);color:var(--cd-text)}
+body[data-theme] .cd-app .success-box .use-number{color:var(--cd-yellow);font-size:26px;overflow-wrap:anywhere}
+body[data-theme] .cd-app #driverSuccess .btn.block{min-height:54px;margin-top:10px;width:100%}
+
+/* ---------- Responsivo ---------- */
+@media (min-width:480px){
+  body[data-theme] .cd-app .delivery-photos-grid{grid-template-columns:1fr 1fr}
+}
+@media (min-width:900px){
+  body[data-theme] .cd-app{padding:28px 24px 56px}
+  body[data-theme] .cd-app .destination-map{height:320px;min-height:320px}
+}
+@media (max-width:640px){
+  body[data-theme] .cd-app .cd-section-body{grid-template-columns:1fr}
+  body[data-theme] .cd-app .cd-actions{grid-template-columns:1fr}
+  body[data-theme] .cd-app .cd-summary{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  body[data-theme] .cd-app .cd-summary-chip{display:none}
+}
+@media (max-width:420px){
+  body[data-theme] .cd-app{padding:12px 12px 32px}
+  body[data-theme] .cd-app .cd-panel,body[data-theme] .cd-app .cd-section{padding:14px}
+  body[data-theme] .cd-app .cd-summary{grid-template-columns:1fr;gap:12px}
+  body[data-theme] .cd-app .cd-summary-item + .cd-summary-item{padding-left:0;border-left:0;padding-top:12px;border-top:1px solid var(--cd-line)}
+  body[data-theme] .cd-app .cd-brand-text span{display:none}
+  body[data-theme] .cd-app .cd-brand-text strong{font-size:14px}
+  body[data-theme] .cd-app .cd-welcome h1{font-size:22px}
+  body[data-theme] .cd-app .cd-client h2{font-size:21px}
+  body[data-theme] .cd-app .destination-actions{grid-template-columns:1fr 1fr}
+  body[data-theme] .cd-app .destination-actions .btn:last-child{grid-column:1/-1}
+  body[data-theme] .cd-app .destination-map{height:230px;min-height:230px}
+}
+@media (max-width:350px){
+  body[data-theme] .cd-app .cd-header{flex-wrap:wrap}
+  body[data-theme] .cd-app .cd-brand-text{padding-left:10px}
+  body[data-theme] .cd-app .cd-chip{font-size:12px;padding:5px 9px}
+  body[data-theme] .cd-app .cd-nav-links{grid-template-columns:1fr}
+  body[data-theme] .cd-app .cd-option,body[data-theme] .cd-app .cd-action{gap:11px;padding:12px}
+  body[data-theme] .cd-app .cd-option .cd-option-ico{width:38px;height:38px}
+  body[data-theme] .cd-app .delivery-photo-actions{grid-template-columns:1fr}
+  body[data-theme] .cd-app .cd-track b{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){body[data-theme] .cd-app *{transition:none!important}}
+body[data-theme] .cd-app .destination-map.leaflet-container > span{display:none}
+@media (max-width:480px){
+  body[data-theme] .cd-app .cd-header{flex-wrap:wrap;row-gap:10px}
+  body[data-theme] .cd-app .cd-header .cd-chip{order:2}
+}
+
+
+/* ---------- Roteiro definido pelo controle ---------- */
+body[data-theme] .cd-app .cd-stops li.pending::before{background:var(--cd-surface-2);color:var(--cd-soft)}
+body[data-theme] .cd-app .cd-stops li.skipped::before{background:rgba(239,91,91,.14);color:var(--cd-red)}
+body[data-theme] .cd-app .cd-stops li.skipped small{color:var(--cd-red)}
+body[data-theme] .cd-app .cd-stops li::before{content:"•"}
+body[data-theme] .cd-app .cd-roteiro-options{display:grid;gap:8px}
+body[data-theme] .cd-app .cd-roteiro-option{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--cd-line-2);border-radius:var(--cd-radius-sm);background:var(--cd-inset);cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;color:var(--cd-text)}
+body[data-theme] .cd-app .cd-roteiro-option.selected{border-color:var(--cd-yellow);background:rgba(246,197,0,.07)}
+body[data-theme] .cd-app .cd-roteiro-option input{width:20px;height:20px;accent-color:var(--cd-yellow)}
+body[data-theme] .cd-app .cd-roteiro-option span{display:grid;gap:3px;min-width:0}
+body[data-theme] .cd-app .cd-roteiro-option small{color:var(--cd-muted);font-size:12.5px;font-weight:500}
+body[data-theme] .cd-app .cd-roteiro-clients{margin:0;padding:0 0 0 22px;display:grid;gap:8px}
+body[data-theme] .cd-app .cd-roteiro-clients li{padding-left:4px}
+body[data-theme] .cd-app .cd-roteiro-clients li b{display:block;font-size:15px}
+body[data-theme] .cd-app .cd-roteiro-clients li small{display:block;color:var(--cd-muted);font-size:13px}
+body[data-theme] .cd-app .cd-roteiro-note{margin:8px 0 0;color:var(--cd-soft);font-size:13px}
+body[data-theme] .cd-app .cd-field-hint{font-size:13px;color:var(--cd-muted)}
+body[data-theme] .cd-app .cd-order-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+body[data-theme] .cd-app .cd-order-item{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--cd-line);border-radius:var(--cd-radius-sm);background:var(--cd-surface)}
+body[data-theme] .cd-app .cd-order-n{display:grid;place-items:center;height:34px;border-radius:8px;background:var(--cd-surface-2);font-weight:700}
+body[data-theme] .cd-app .cd-order-item:first-child .cd-order-n{background:var(--cd-yellow);color:var(--cd-yellow-ink)}
+body[data-theme] .cd-app .cd-order-name{display:grid;gap:2px;min-width:0}
+body[data-theme] .cd-app .cd-order-name b{overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-order-name small{color:var(--cd-muted);font-size:12.5px;overflow-wrap:anywhere}
+body[data-theme] .cd-app .cd-order-actions{display:flex;gap:6px}
+body[data-theme] .cd-app .cd-order-actions .btn{min-width:44px;min-height:40px;padding:0}
+body[data-theme] .cd-app .cd-end-link{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;color:var(--cd-muted);font-weight:500;font-size:14px}
+body[data-theme] .cd-app .cd-end-link .ico{width:16px;height:16px}
