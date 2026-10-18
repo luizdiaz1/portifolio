@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../img/luiz.webp">
+<title>Luiz Dias — Portfolio</title>
+<link rel="alternate" hreflang="pt-BR" href="https://portfolio-luizdias.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://portfolio-luizdias.vercel.app/en/">
+<meta name="description" content="Luiz Dias — process automation, internal tools and process analysis. Portfolio with live demos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: uma coluna técnica — apresentação, problemas → soluções, projetos em fichas, ORION em destaque com pipeline e capturas reais, trajetória, matriz de competências, contato */
+:root {
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --panel-2: #eef0f4;
+  --ink: #12151b;
+  --ink-2: #4b5363;
+  --ink-3: #6b7383;
+  --line: #dde1e8;
+  --accent: #4f5df0;
+  --accent-soft: #e7e9fe;
+  --accent-ink: #ffffff;
+  --ok: #157f55; --ok-soft: #dcf3e8;
+  --info: #2266b8; --info-soft: #e1edfb;
+  --warn: #9a5a00; --warn-soft: #fbedd8;
+  --mute: #5b6475; --mute-soft: #eceef2;
+  --grid: rgba(18, 21, 27, .05);
+  --shadow: 0 1px 2px rgba(18,21,27,.05), 0 10px 28px rgba(18,21,27,.06);
+  --f-sans: "Geist", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0e13; --panel: #11151c; --panel-2: #161b24; --ink: #e8ebf1; --ink-2: #aab2c0; --ink-3: #828b9b; --line: #232a35;
+    --accent: #8c96ff; --accent-soft: #1d2140; --accent-ink: #0b0e13;
+    --ok: #5fd3a0; --ok-soft: #10291f; --info: #7fb4f5; --info-soft: #132538; --warn: #f2b45e; --warn-soft: #34260f; --mute: #9aa3b2; --mute-soft: #1b2029;
+    --grid: rgba(255,255,255,.035);
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0e13; --panel: #11151c; --panel-2: #161b24; --ink: #e8ebf1; --ink-2: #aab2c0; --ink-3: #828b9b; --line: #232a35;
+  --accent: #8c96ff; --accent-soft: #1d2140; --accent-ink: #0b0e13;
+  --ok: #5fd3a0; --ok-soft: #10291f; --info: #7fb4f5; --info-soft: #132538; --warn: #f2b45e; --warn-soft: #34260f; --mute: #9aa3b2; --mute-soft: #1b2029;
+  --grid: rgba(255,255,255,.035);
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 1rem/1.6 var(--f-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, 4vw); padding-block: 0 64px; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.mono { font-family: var(--f-mono); }
+.label { font: 500 .75rem/1.3 var(--f-mono); letter-spacing: .02em; color: var(--ink-3); }
+.label b { color: var(--accent); font-weight: 600; }
+h2.sec { font: 600 clamp(1.5rem, 3vw, 2rem)/1.15 var(--f-sans); letter-spacing: -.02em; margin: 8px 0 0; text-wrap: balance; }
+section.block { margin-top: 80px; scroll-margin-top: 72px; }
+.sec-head { display: grid; gap: 2px; margin-bottom: 24px; }
+.sec-head p { margin: 10px 0 0; color: var(--ink-2); max-width: 66ch; }
+
+/* navegação */
+.topnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.topnav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { font: 600 .95rem/1 var(--f-mono); text-decoration: none; white-space: nowrap; display: inline-flex; gap: 8px; align-items: center; }
+.brand i { width: 8px; height: 8px; border-radius: 2px; background: var(--accent); display: inline-block; }
+.topnav nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.topnav nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--ink-2); padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+.topnav nav a:hover { color: var(--ink); background: var(--panel-2); }
+
+/* idioma */
+.topnav .right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; min-width: 0; flex: 1 1 auto; }
+.lang-switch { display: inline-flex; flex: none; border: 1.5px solid var(--accent); border-radius: 8px; overflow: hidden; font: 600 .8rem/1 var(--f-mono); }
+.lang-switch a { text-decoration: none; padding: 7px 10px; color: var(--accent); display: inline-flex; gap: 6px; align-items: center; }
+.lang-switch a[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.lang-switch a:not([aria-current="true"]):hover { background: var(--accent-soft); }
+@media (max-width: 560px) { .lang-switch a { padding: 6px 8px; } .lang-switch .full { display: none; } }
+/* apresentação */
+.hero-wrap { position: relative; }
+.hero-wrap::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, #000 40%, transparent); -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent); pointer-events: none; z-index: -1; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; align-items: center; padding-block: 64px 12px; }
+.hero h1 { font: 600 clamp(2.5rem, 6vw, 4.2rem)/1 var(--f-sans); letter-spacing: -.035em; margin: 14px 0 14px; }
+.role { font: 500 clamp(1.1rem, 2vw, 1.35rem)/1.4 var(--f-sans); margin: 0 0 16px; max-width: 34ch; color: var(--ink); }
+.role span { color: var(--accent); }
+.lede { max-width: 62ch; color: var(--ink-2); margin: 0; font-size: 1.04rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.portrait { margin: 0; position: relative; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.portrait figcaption { position: absolute; left: 10px; bottom: 10px; font: 500 .72rem/1 var(--f-mono); background: rgba(11,14,19,.78); color: #e8ebf1; padding: 6px 8px; border-radius: 6px; display: inline-flex; gap: 6px; align-items: center; }
+.portrait figcaption i { width: 7px; height: 7px; border-radius: 50%; background: #5fd3a0; display: inline-block; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 40px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; }
+.strip div { padding: 16px 18px; display: grid; gap: 4px; }
+.strip div + div { border-left: 1px solid var(--line); }
+.strip b { font: 600 1.55rem/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+.strip span { font-size: .86rem; color: var(--ink-2); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 .93rem/1 var(--f-sans); padding: 11px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+.btn:hover { filter: brightness(1.08); }
+.btn.alt { background: var(--panel); color: var(--ink); border-color: var(--line); }
+.btn.alt:hover { border-color: var(--ink-3); filter: none; }
+
+/* problemas */
+.problems { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.prob { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; }
+.prob .flow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-weight: 600; }
+.prob .from { color: var(--ink-3); font: 500 .85rem var(--f-mono); }
+.prob .arrow { color: var(--accent); font-family: var(--f-mono); }
+.prob p { margin: 0; font-size: .94rem; color: var(--ink-2); }
+.prob .where { display: flex; flex-wrap: wrap; gap: 6px; }
+.prob .where a { font: 500 .76rem/1 var(--f-mono); text-decoration: none; padding: 5px 8px; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line); color: var(--ink-2); }
+.prob .where a:hover { color: var(--ink); border-color: var(--ink-3); }
+
+/* método */
+.method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; counter-reset: s; }
+.method li { counter-increment: s; padding: 18px; }
+.method li + li { border-left: 1px solid var(--line); }
+.method li::before { content: counter(s, decimal-leading-zero); display: block; font: 600 .75rem/1 var(--f-mono); color: var(--accent); margin-bottom: 12px; }
+.method b { display: block; font-size: .98rem; font-weight: 600; margin-bottom: 4px; }
+.method span { font-size: .9rem; color: var(--ink-2); }
+
+/* projetos */
+.index { display: flex; flex-wrap: wrap; gap: 6px; }
+.index a { text-decoration: none; display: inline-flex; gap: 8px; align-items: center; padding: 6px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); font-weight: 500; font-size: .88rem; }
+.index a:hover { border-color: var(--ink-3); }
+.index span { font: 500 .72rem/1 var(--f-mono); color: var(--accent); }
+.note { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--accent-soft); font-size: .92rem; }
+.note b { font: 600 .72rem/1 var(--f-mono); background: var(--accent); color: var(--accent-ink); padding: 4px 7px; border-radius: 5px; flex: none; }
+.project { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; scroll-margin-top: 72px; }
+.p-head { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; padding: 20px 22px 16px; border-bottom: 1px solid var(--line); }
+.p-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+.p-num { font: 600 .78rem/1 var(--f-mono); color: var(--accent); }
+.p-title h3 { font: 600 clamp(1.2rem, 2.2vw, 1.5rem)/1.15 var(--f-sans); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.status { font: 500 .72rem/1 var(--f-mono); padding: 5px 8px; border-radius: 6px; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.s-ok { background: var(--ok-soft); color: var(--ok); }
+.s-info { background: var(--info-soft); color: var(--info); }
+.s-warn { background: var(--warn-soft); color: var(--warn); }
+.s-mute { background: var(--mute-soft); color: var(--mute); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ficha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+.ficha div { padding: 12px 22px; display: grid; gap: 3px; }
+.ficha div + div { border-left: 1px solid var(--line); }
+.ficha dt { font: 500 .7rem/1.2 var(--f-mono); color: var(--ink-3); text-transform: lowercase; }
+.ficha dd { margin: 0; font-size: .92rem; font-weight: 500; }
+.ficha dd small { display: block; font: 400 .76rem/1.4 var(--f-mono); color: var(--ink-3); margin-top: 2px; }
+.p-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+.story { padding: 20px 22px 22px; display: grid; gap: 16px; align-content: start; border-right: 1px solid var(--line); }
+.story h4 { font: 500 .72rem/1 var(--f-mono); color: var(--ink-3); margin: 0 0 6px; text-transform: lowercase; }
+.story h4::before { content: "// "; color: var(--accent); }
+.story p { margin: 0; max-width: 60ch; }
+.story ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.story li::marker { color: var(--accent); }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.tools span { font: 500 .74rem/1 var(--f-mono); color: var(--ink-2); padding: 5px 7px; border-radius: 5px; background: var(--panel-2); border: 1px solid var(--line); }
+.login { font-size: .86rem; color: var(--ink-2); margin: 0; }
+.login code { font: 500 .8rem var(--f-mono); color: var(--ink); background: var(--panel-2); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.gallery { padding: 16px; display: grid; gap: 10px; align-content: start; background: var(--panel-2); }
+.shot { margin: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+.shot figcaption { font-size: .84rem; color: var(--ink-2); padding: 9px 12px; border-top: 1px solid var(--line); }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; }
+.thumbs button { padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; cursor: pointer; background: var(--panel); }
+.thumbs button[aria-pressed="true"] { border-color: var(--accent); }
+.thumbs img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+.thumbs .phone img { object-fit: contain; background: #0e131a; }
+
+/* ORION em destaque */
+.orion { margin-top: 24px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--panel); box-shadow: var(--shadow); scroll-margin-top: 72px; }
+.orion-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 0; }
+.orion-intro { padding: 26px 26px 24px; display: grid; gap: 14px; align-content: start; border-right: 1px solid var(--line); }
+.orion-intro h3 { margin: 0; font: 600 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--f-sans); letter-spacing: -.03em; }
+.orion-intro p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+.caps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.caps li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); font-size: .9rem; }
+.caps li b { display: block; font-weight: 600; font-size: .9rem; }
+.caps li span { color: var(--ink-2); font-size: .84rem; }
+.log { margin: 0; padding: 22px 24px; background: #0a0d12; color: #c9d1dc; font: 400 .76rem/1.75 var(--f-mono); overflow-x: auto; }
+.log .t { color: #6f7a8b; }
+.log .k { color: #8c96ff; }
+.log .ok { color: #5fd3a0; }
+.log .s { color: #f2c46d; }
+.log-head { display: flex; justify-content: space-between; gap: 10px; padding: 10px 24px; background: #0a0d12; border-bottom: 1px solid #1c222c; font: 500 .72rem/1 var(--f-mono); color: #6f7a8b; }
+.log-head i { display: inline-flex; gap: 5px; }
+.log-head i::before, .log-head i::after, .log-head i span { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #2a313d; display: inline-block; }
+.pipeline { padding: 22px 24px; border-top: 1px solid var(--line); background: var(--panel-2); overflow-x: auto; }
+.pipeline ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(120px, 1fr)); gap: 0; min-width: 760px; counter-reset: p; }
+.pipeline li { counter-increment: p; position: relative; padding: 0 14px 0 0; }
+.pipeline li::before { content: counter(p); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font: 600 .75rem/1 var(--f-mono); background: var(--panel); position: relative; z-index: 1; }
+.pipeline li::after { content: ""; position: absolute; left: 26px; right: 0; top: 13px; height: 1px; background: var(--line); }
+.pipeline li:last-child::after { display: none; }
+.pipeline b { display: block; margin-top: 10px; font-size: .9rem; font-weight: 600; }
+.pipeline span { display: block; font-size: .82rem; color: var(--ink-2); margin-top: 2px; }
+.pipeline code { font: 500 .74rem var(--f-mono); color: var(--accent); }
+.orion-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); border-top: 1px solid var(--line); }
+.built { padding: 20px 22px; display: grid; gap: 14px; align-content: start; border-right: 1px solid var(--line); }
+.built ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.built li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font: 500 .82rem/1.3 var(--f-mono); }
+.built li span { color: var(--ink-3); white-space: nowrap; }
+.built p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+.built blockquote { margin: 0; padding: 10px 12px; border-left: 2px solid var(--accent); background: var(--panel-2); border-radius: 0 8px 8px 0; font-size: .9rem; }
+.built blockquote small { display: block; color: var(--ink-3); font: 400 .74rem var(--f-mono); margin-top: 4px; }
+
+.minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.mini { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; scroll-margin-top: 72px; }
+.mini .k { font: 500 .72rem/1.3 var(--f-mono); color: var(--ink-3); }
+.mini h4 { margin: 0; font: 600 1.05rem/1.25 var(--f-sans); }
+.mini p { margin: 0; font-size: .92rem; color: var(--ink-2); }
+
+/* trajetória */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 170px 22px minmax(0, 1fr); gap: 0 14px; }
+.t-date { font: 500 .8rem/1.4 var(--f-mono); text-align: right; padding-top: 2px; }
+.t-date small { display: block; color: var(--ink-3); font-size: .72rem; }
+.t-dot { position: relative; }
+.t-dot::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); background: var(--line); }
+.t-dot::after { content: ""; position: absolute; left: 50%; top: 6px; width: 10px; height: 10px; transform: translateX(-50%); border-radius: 3px; background: var(--panel); border: 2px solid var(--accent); }
+.timeline li:last-child .t-dot::before { bottom: auto; height: 12px; }
+.t-body { padding-bottom: 22px; }
+.t-body b { display: block; font-weight: 600; }
+.t-body span { color: var(--ink-2); font-size: .92rem; }
+
+/* matriz */
+.matrix-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-size: .9rem; }
+.matrix th, .matrix td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: center; }
+.matrix thead th { font: 500 .72rem/1.25 var(--f-mono); color: var(--ink-3); vertical-align: bottom; }
+.matrix tbody th { text-align: left; font-weight: 500; }
+.matrix tbody th small { display: block; font-weight: 400; color: var(--ink-3); font-size: .8rem; }
+.matrix tr:last-child th, .matrix tr:last-child td { border-bottom: 0; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--accent); }
+.dot.half { background: transparent; border: 2px solid var(--accent); }
+.legend { display: flex; gap: 16px; font-size: .84rem; color: var(--ink-2); margin-top: 10px; flex-wrap: wrap; align-items: center; }
+
+/* formação e contato */
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.card h3 { margin: 0 0 4px; font: 600 1.1rem/1.25 var(--f-sans); }
+.card p { margin: 0; color: var(--ink-2); }
+.contact { display: grid; gap: 10px; }
+.contact div { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+.contact div:last-child { border-bottom: 0; padding-bottom: 0; }
+.contact span { color: var(--ink-3); font: 500 .8rem var(--f-mono); }
+.contact a, .contact code { font-weight: 500; overflow-wrap: anywhere; }
+.contact code { font: 500 .9rem var(--f-mono); }
+.copy { font: 500 .78rem/1 var(--f-mono); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); cursor: pointer; }
+.foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-3); font: 400 .8rem/1.6 var(--f-mono); display: grid; gap: 4px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px 0; gap: 28px; }
+  .portrait { max-width: 220px; order: -1; }
+  .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strip div:nth-child(3) { border-left: 0; }
+  .strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .two, .problems, .minis, .orion-top, .orion-body, .p-body { grid-template-columns: minmax(0, 1fr); }
+  .method { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .method li:nth-child(3) { border-left: 0; }
+  .method li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .story, .orion-intro, .built { border-right: 0; border-bottom: 1px solid var(--line); }
+  .ficha { grid-template-columns: minmax(0, 1fr); }
+  .ficha div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .caps { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: 96px 18px minmax(0, 1fr); gap: 0 10px; }
+}
+@media (max-width: 560px) {
+  .method { grid-template-columns: minmax(0, 1fr); }
+  .method li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .topnav nav a { padding: 6px 7px; font-size: .82rem; }
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><i></i>luiz.dias</a>
+    <div class="right">
+    <nav aria-label="Sections">
+      <a href="#problemas">What I solve</a>
+      <a href="#projetos">Projects</a>
+      <a href="#orion">ORION</a>
+      <a href="#trajetoria">Background</a>
+      <a href="#competencias">Skills</a>
+      <a href="#contato">Contact</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language / Idioma">
+      <a href="../" lang="pt-BR" hreflang="pt-BR" title="Versão em português">PT<span class="full"> · Português</span></a>
+      <a href="./" aria-current="true" lang="en" hreflang="en">EN</a>
+    </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="inicio">
+  <div class="hero-wrap">
+    <section class="hero">
+      <div>
+        <div class="label"><b>&gt;</b> problem solving · process automation · internal tools</div>
+        <h1>Luiz Dias</h1>
+        <p class="role">I turn manual processes into <span>organized digital workflows</span>.</p>
+        <p class="lede">I've been working as an apprentice at DIME Distribuidora, a distribution company in Rio de Janeiro, since January 2026. In the fleet department every control lived in a separate spreadsheet, so I started building systems to fix that. There are five now, used across four areas of the company. I'm also building ORION, an assistant that creates systems from plain-language requests. I study Systems Analysis and Development at UNISUAM (5th semester).</p>
+        <div class="cta">
+          <a class="btn" href="#projetos">See projects</a>
+          <a class="btn alt" href="../cv/Resume_Luiz_Dias.pdf" target="_blank" rel="noopener">Resume (PDF) ↓</a>
+          <a class="btn alt" href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn alt" href="https://github.com/luizdiaz1" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="../img/luiz.webp" alt="Photo of Luiz Dias" width="640" height="640">
+        <figcaption><i></i>Rio de Janeiro, Brazil</figcaption>
+      </figure>
+    </section>
+    <div class="strip" aria-label="Summary">
+      <div><b>5</b><span>internal systems built</span></div>
+      <div><b>4</b><span>areas: fleet, sales, quality and third-party transport</span></div>
+      <div><b>10</b><span>systems generated by ORION during testing</span></div>
+      <div><b>334</b><span>invoices read automatically (OCR)</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="problemas">
+    <div class="sec-head">
+      <div class="label"><b>01</b> / what I solve</div>
+      <h2 class="sec">Problems every company has, and how I solved each one</h2>
+      <p>These problems showed up in a distribution company's operation, but they exist in any industry. Each one links to the project where I dealt with it.</p>
+    </div>
+    <div class="problems">
+      <article class="prob">
+        <div class="flow"><span class="from">data scattered across spreadsheets</span><span class="arrow">→</span><span>Centralized data</span></div>
+        <p>One database per process, with history, attachments and per-record lookup, instead of separate files merged by hand.</p>
+        <div class="where"><a href="#frota">fleet management</a><a href="#passeio">company cars</a></div>
+      </article>
+      <article class="prob">
+        <div class="flow"><span class="from">manual calculations and checks</span><span class="arrow">→</span><span>Automated rules</span></div>
+        <p>Commissions, fuel efficiency and document reading handled by the system with defined rules, cutting repetitive work.</p>
+        <div class="where"><a href="#agregados">contract drivers</a><a href="#outras">fuel reports</a><a href="#outras">invoice ocr</a></div>
+      </article>
+      <article class="prob">
+        <div class="flow"><span class="from">records with no proof</span><span class="arrow">→</span><span>Digital evidence</span></div>
+        <p>Digital signature, photos, video and a change log attached to each record: what happened, when and by whom.</p>
+        <div class="where"><a href="#passeio">company cars</a><a href="#checklists">checklists</a><a href="#qualidade">10s quality</a></div>
+      </article>
+      <article class="prob">
+        <div class="flow"><span class="from">new systems take too long</span><span class="arrow">→</span><span>Assisted generation</span></div>
+        <p>A plain-language request becomes a spec, code, tests and a running system, ready to be adjusted through conversation.</p>
+        <div class="where"><a href="#orion">orion</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="como">
+    <div class="sec-head"><div class="label"><b>02</b> / how I work</div><h2 class="sec" id="como">From the problem I see to an improvement in use</h2></div>
+    <ol class="method">
+      <li><b>Watch the routine</b><span>See how the work is really done and where it gets stuck.</span></li>
+      <li><b>Find the bottleneck</b><span>Manual tasks, rework, scattered data, deadlines nobody tracks.</span></li>
+      <li><b>Build the solution</b><span>Define the workflow and build the system, using digital tools and AI to move faster.</span></li>
+      <li><b>Adjust with the users</b><span>Put it into operation, listen to the people using it and keep improving.</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="projetos">
+    <div class="sec-head">
+      <div class="label"><b>03</b> / featured projects</div>
+      <h2 class="sec">Solutions built for real problems</h2>
+      <p>Each card shows the documented period, the current status and my contribution. The demos use a fictional company and sample data. The demo interfaces are in Portuguese, as they are in daily use.</p>
+    </div>
+    <nav class="index" aria-label="Projects">
+      <a href="#frota"><span>01</span>Fleet Management</a>
+      <a href="#passeio"><span>02</span>Company Cars</a>
+      <a href="#qualidade"><span>03</span>10S Quality</a>
+      <a href="#checklists"><span>04</span>Checklists and Incidents</a>
+      <a href="#agregados"><span>05</span>Contract Drivers and CIOT</a>
+      <a href="#orion"><span>06</span>ORION</a>
+    </nav>
+    <div class="note" role="note"><b>demo</b><span>The demos run in your browser with a simulated database: create and edit as much as you like, and the “Restaurar dados” (restore data) button resets everything.</span></div>
+
+    <article class="project" id="frota">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">01</span><h3>Fleet Management System</h3><span class="status s-ok">in use · continuously improved</span></div>
+        <div class="actions"><a class="btn" href="../frota/" target="_blank" rel="noopener">Open demo ↗</a><a class="btn alt" href="https://github.com/luizdiaz1/gestao-de-frota" target="_blank" rel="noopener">Code ↗</a></div>
+      </div>
+      <dl class="ficha">
+        <div><dt>period</dt><dd>2026 – present<small>oldest record: Jun 18, 2026</small></dd></div>
+        <div><dt>goal</dt><dd>Centralize a whole department's controls and stop depending on spreadsheets</dd></div>
+        <div><dt>my contribution</dt><dd>Requirements, workflow design, development, maintenance and improvements</dd></div>
+      </dl>
+      <div class="p-body">
+        <div class="story">
+          <div><h4>problem</h4><p>The department's controls lived in separate spreadsheets. Merging data was manual, deadlines depended on someone checking, and each item's history was scattered.</p></div>
+          <div><h4>solution and features</h4>
+            <ul>
+              <li>One platform with a module per process.</li>
+              <li>Automatic expiry alerts and calculated status.</li>
+              <li>Each item's full history on one screen.</li>
+              <li>Fuel efficiency indicator (km/L) from the monthly fueling report.</li>
+              <li>PDF and Excel reports, recycle bin with restore and a change log.</li>
+              <li>Old records migrated from spreadsheets and PDFs.</li>
+            </ul>
+          </div>
+          <div><h4>results</h4><p>All the department's information in one place, a record of who changed each entry and monthly reports generated by the system itself.</p></div>
+          <p class="login">Demo login: <code>any username and password</code></p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>PostgreSQL</span><span>Vercel</span><span>jsPDF</span><span>Chart.js</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/frota-1.webp" alt="Dashboard with alerts" width="1440" height="900" loading="lazy"><figcaption>Dashboard with what needs attention today</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/frota-1.webp" data-cap="Dashboard with what needs attention today"><img src="../img/frota-1.webp" alt="Dashboard" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/frota-2.webp" data-cap="Fuel efficiency (km/L) against the target"><img src="../img/frota-2.webp" alt="Efficiency" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/frota-3.webp" data-cap="An item's full history on one screen"><img src="../img/frota-3.webp" alt="History" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/frota-4.webp" data-cap="Tickets received by the system"><img src="../img/frota-4.webp" alt="Tickets" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" id="passeio">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">02</span><h3>Company Car Control</h3><span class="status s-ok">live · still evolving</span></div>
+        <div class="actions">
+          <a class="btn" href="../promotor/" target="_blank" rel="noopener">Control panel ↗</a>
+          <a class="btn alt" href="../promotor/#/condutor" target="_blank" rel="noopener">Driver area ↗</a>
+          <a class="btn alt" href="https://github.com/luizdiaz1/controle-veiculos-passeio" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </div>
+      <dl class="ficha">
+        <div><dt>period</dt><dd>2026<small>version reviewed: Oct 8, 2026 · start date unconfirmed</small></dd></div>
+        <div><dt>goal</dt><dd>Prove and track how the sales team uses the company cars</dd></div>
+        <div><dt>my contribution</dt><dd>Requirements, check-out and return workflow, development and adjustments</dd></div>
+      </dl>
+      <div class="p-body">
+        <div class="story">
+          <div><h4>problem</h4><p>We needed to know who had each car, where it had been, and to have proof of check-out and return.</p></div>
+          <div><h4>solution and features</h4>
+            <ul>
+              <li>Check-out and return with the driver's digital signature.</li>
+              <li>Customer route on a map with before and after photos of each visit.</li>
+              <li>Mobile driver area, separate from the control panel.</li>
+              <li>Access profiles, maintenance, incidents and audit log.</li>
+            </ul>
+          </div>
+          <div><h4>results</h4><p>Paperless check-outs and returns, a view of which cars are in use, and history per car and per driver.</p></div>
+          <p class="login">Control panel: <code>admin@exemplo.com</code> · Driver: <code>condutor@exemplo.com</code> · any password</p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>Leaflet</span><span>PWA</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/promotor-1.webp" alt="Sales fleet overview" width="1440" height="900" loading="lazy"><figcaption>Overview of the sales team's cars</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/promotor-1.webp" data-cap="Overview of the sales team's cars"><img src="../img/promotor-1.webp" alt="Overview" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/promotor-2.webp" data-cap="Routes: check-out, customers visited and return"><img src="../img/promotor-2.webp" alt="Routes" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/promotor-3.webp" data-cap="Use per day and per vehicle"><img src="../img/promotor-3.webp" alt="Dashboard" loading="lazy"></button>
+            <button type="button" aria-pressed="false" class="phone" data-src="../img/promotor-mobile.webp" data-cap="Driver area on a phone" data-phone="1"><img src="../img/promotor-mobile.webp" alt="Phone" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" id="qualidade">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">03</span><h3>10S Quality System</h3><span class="status s-info">being rolled out</span></div>
+        <div class="actions"><a class="btn" href="../qualidade/" target="_blank" rel="noopener">Open demo ↗</a><a class="btn alt" href="https://github.com/luizdiaz1/qualidade-10s" target="_blank" rel="noopener">Code ↗</a></div>
+      </div>
+      <dl class="ficha">
+        <div><dt>period</dt><dd>2026<small>version reviewed: Oct 6, 2026 · start date unconfirmed</small></dd></div>
+        <div><dt>goal</dt><dd>Digitize inspections and audits and follow up on corrections</dd></div>
+        <div><dt>my contribution</dt><dd>Turning the official report and spreadsheets into a digital workflow, development and adjustments</dd></div>
+      </dl>
+      <div class="p-body">
+        <div class="story">
+          <div><h4>problem</h4><p>The inspection report was a static document. Photos, non-conformities, deadlines and effectiveness checks weren't linked or tracked in one place.</p></div>
+          <div><h4>solution and features</h4>
+            <ul>
+              <li>Workflow: inspection, non-conformities, photos from a phone, corrective actions and effectiveness check.</li>
+              <li>A4 report generated automatically from the records.</li>
+              <li>10S audits with checklist, action plan and score, based on the official spreadsheets.</li>
+              <li>Alert center for overdue deadlines and pending effectiveness checks.</li>
+            </ul>
+          </div>
+          <div><h4>results</h4><p>Standardized records, evidence linked to each non-conformity and a ready report with no manual assembly.</p></div>
+          <p class="login">Demo login: <code>any email and password</code></p>
+          <div class="tools"><span>JavaScript</span><span>Supabase</span><span>Realtime</span><span>jsPDF</span><span>docx</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/qualidade-1.webp" alt="Quality dashboard" width="1440" height="900" loading="lazy"><figcaption>Inspections and non-conformities dashboard</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/qualidade-1.webp" data-cap="Inspections and non-conformities dashboard"><img src="../img/qualidade-1.webp" alt="Dashboard" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/qualidade-2.webp" data-cap="Inspection report generated by the system"><img src="../img/qualidade-2.webp" alt="Report" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/qualidade-3.webp" data-cap="Photo evidence gallery"><img src="../img/qualidade-3.webp" alt="Evidence" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" id="checklists">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">04</span><h3>Checklists and Incidents</h3><span class="status s-ok">implemented</span></div>
+        <div class="actions"><a class="btn" href="../frota/" target="_blank" rel="noopener">See in the demo ↗</a></div>
+      </div>
+      <dl class="ficha">
+        <div><dt>period</dt><dd>2026<small>app version reviewed: Oct 1, 2026 · start date unconfirmed</small></dd></div>
+        <div><dt>goal</dt><dd>Document vehicle condition and incidents with evidence</dd></div>
+        <div><dt>my contribution</dt><dd>Defining the records, building the app and the incident modules</dd></div>
+      </dl>
+      <div class="p-body">
+        <div class="story">
+          <div><h4>problem</h4><p>Damage and incidents were hard to prove later: there was no record of the vehicle's condition on arrival, and photos, videos and documents weren't kept with the case.</p></div>
+          <div><h4>solution and features</h4>
+            <ul>
+              <li>Checklist app with a full walk-around video of the vehicle.</li>
+              <li>Works offline and uploads pending records in batch when back online.</li>
+              <li>Accidents, damage and incidents logged with photos, videos and PDFs.</li>
+            </ul>
+          </div>
+          <div><h4>results</h4><p>Standardized records with evidence, searchable in the main system.</p></div>
+          <div class="tools"><span>PWA</span><span>IndexedDB</span><span>MediaRecorder</span><span>Supabase Storage</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/checklist-2.webp" alt="Checklist video" width="1440" height="900" loading="lazy"><figcaption>Arrival checklist video</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/checklist-2.webp" data-cap="Arrival checklist video"><img src="../img/checklist-2.webp" alt="Video" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/checklist-1.webp" data-cap="Checklists received by plate and driver"><img src="../img/checklist-1.webp" alt="List" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/checklist-3.webp" data-cap="Accidents and damage with attached files"><img src="../img/checklist-3.webp" alt="Accidents" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" id="agregados">
+      <div class="p-head">
+        <div class="p-title"><span class="p-num">05</span><h3>Contract Drivers and CIOT Control</h3><span class="status s-warn">in development</span></div>
+        <div class="actions"><a class="btn" href="../agregados/" target="_blank" rel="noopener">Open demo ↗</a><a class="btn alt" href="https://github.com/luizdiaz1/controle-agregados-ciot" target="_blank" rel="noopener">Code ↗</a></div>
+      </div>
+      <dl class="ficha">
+        <div><dt>period</dt><dd>2026<small>version reviewed: Oct 5, 2026 · start date unconfirmed</small></dd></div>
+        <div><dt>goal</dt><dd>Organize third-party jobs and standardize how pay is calculated</dd></div>
+        <div><dt>my contribution</dt><dd>Structuring the data and the rules, development</dd></div>
+      </dl>
+      <div class="p-body">
+        <div class="story">
+          <div><h4>problem</h4><p>Contract drivers' jobs, CIOT freight records, incidents and pay calculations had to be organized and checked by hand.</p></div>
+          <div><h4>solution and features</h4>
+            <ul>
+              <li>Opening and closing jobs with invoices on departure and return, deliveries and incidents.</li>
+              <li>Automatic commission and bonus calculation from performance rules.</li>
+              <li>Fortnightly pay calculator, CIOTs, reports and audit log.</li>
+            </ul>
+          </div>
+          <div><h4>results</h4><p>Still in development. In the demo, the pay rules are already applied consistently.</p></div>
+          <p class="login">Demo login: <code>any email and password</code></p>
+          <div class="tools"><span>JavaScript (ES modules)</span><span>Supabase</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/agregados-1.webp" alt="Summary per driver" width="1440" height="900" loading="lazy"><figcaption>Financial and operational summary per driver</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/agregados-1.webp" data-cap="Financial and operational summary per driver"><img src="../img/agregados-1.webp" alt="Summary" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/agregados-2.webp" data-cap="Job with commission and bonus calculated"><img src="../img/agregados-2.webp" alt="Job" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/agregados-3.webp" data-cap="Fortnightly pay calculator"><img src="../img/agregados-3.webp" alt="Calculator" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis" id="outras">
+      <article class="mini">
+        <span class="k">metrics · apr–jul 2026</span>
+        <h4>Monthly fuel efficiency reports</h4>
+        <p>Weighted average km/L method and rules to discard inconsistent odometer readings, with reports for management.</p>
+      </article>
+      <article class="mini">
+        <span class="k">automation · ocr · 2026</span>
+        <h4>334 invoices read automatically</h4>
+        <p>Text recognition on service invoices to find the vehicle plates, without checking each document by hand.</p>
+      </article>
+      <article class="mini">
+        <span class="k">personal project</span>
+        <h4>ORION</h4>
+        <p>An assistant that generates complete systems from a plain-language request. Details below.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="orion">
+    <div class="sec-head">
+      <div class="label"><b>04</b> / featured personal project</div>
+      <h2 class="sec">ORION: from a plain-language request to a working system</h2>
+      <p>ORION is where I take automation one step further: instead of building each system by hand, I'm building the assistant that builds them.</p>
+    </div>
+    <article class="orion">
+      <div class="orion-top">
+        <div class="orion-intro">
+          <span class="status s-warn" style="justify-self:start">in development · since Oct 7, 2026 (documented stage)</span>
+          <h3>An AI assistant for Windows that creates and maintains systems</h3>
+          <p>From a request like “build a complete fleet management system”, ORION defines the structure, generates the code, tests the result and runs the system on the computer. After that it takes changes through conversation (“add field X”, “create a Y report”) and keeps every version.</p>
+          <ul class="caps">
+            <li><b>Voice and text</b><span>Plain-language commands, with speech recognition and synthesis.</span></li>
+            <li><b>Swappable AI</b><span>Vendor-independent design, including local models.</span></li>
+            <li><b>Automated tests</b><span>Every version is checked before delivery.</span></li>
+            <li><b>Versions and migrations</b><span>Schema history and database migration scripts.</span></li>
+            <li><b>Decision memory</b><span>Keeps each project's goal, decisions and history.</span></li>
+            <li><b>Protected space</b><span>Custom code in <code class="mono">custom/</code> is never overwritten.</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="log-head"><i><span></span></i><span>orion.project.json · gestao-de-frota-2</span></div>
+<pre class="log"><span class="t">10/11/2026 16:11</span> <span class="k">request</span> <span class="s">“build a complete fleet management system”</span>
+<span class="t">10/11/2026 16:11</span> <span class="k">build</span>   Version 1: Vehicles, Drivers, Trips,
+                         Maintenance, Fueling, with login
+<span class="t">10/11/2026 16:11</span> <span class="k">test</span>    <span class="ok">45/45 checks passed</span>
+<span class="t">10/11/2026 16:12</span> <span class="k">run</span>     Running at 127.0.0.1:3807
+<span class="t">10/11/2026 16:12</span> <span class="k">change</span>  Look: dark, cyan, translucent panels
+<span class="t">10/11/2026 16:15</span> <span class="k">change</span>  New indicators and fuel chart
+<span class="t">10/11/2026 16:15</span> <span class="k">test</span>    <span class="ok">45/45 checks passed</span>
+
+<span class="t">generated stack</span> Node.js 22 · SQLite · dependency-free HTML/CSS/JS
+<span class="t">rules</span>           return ≥ departure · km return ≥ km departure · value &gt; 0</pre>
+        </div>
+      </div>
+      <div class="pipeline" aria-label="How ORION builds a system">
+        <ol>
+          <li><b>Request</b><span>One plain-language sentence, by voice or text.</span></li>
+          <li><b>Spec</b><span>Records, fields, rules and reports in <code>spec.json</code>.</span></li>
+          <li><b>Code</b><span>Server, database, screens, login and roles.</span></li>
+          <li><b>Tests</b><span>Automated checks of records, rules and reports.</span></li>
+          <li><b>Live</b><span>The system opens in the browser, ready to use.</span></li>
+          <li><b>Evolution</b><span>Changes through conversation, with a new version and migration.</span></li>
+        </ol>
+      </div>
+      <div class="orion-body">
+        <div class="built">
+          <div class="story" style="padding:0;border:0">
+            <div><h4>systems already generated by orion</h4></div>
+          </div>
+          <ul>
+            <li>controle-de-estoque<span>10/09</span></li>
+            <li>troca-de-senha<span>10/09</span></li>
+            <li>controle-de-folhas-de-pontos<span>10/09</span></li>
+            <li>controle-de-mins<span>10/09</span></li>
+            <li>gestao-de-frota<span>10/09</span></li>
+            <li>sistema-de-gestao-de-tarefas<span>10/10</span></li>
+            <li>sistema-de-cadastro-e-gestao-complexo<span>10/10</span></li>
+            <li>controle-de-funcionarios<span>10/10</span></li>
+            <li>sistema-de-gestao-de-recursos-humanos<span>10/11</span></li>
+            <li>gestao-de-frota-2<span>10/11</span></li>
+          </ul>
+          <blockquote>“I don't want a simple system, make something complex”<small>real request → expense system with reports, login and roles · 23/23 tests</small></blockquote>
+          <p>Dates taken from each project's files (October 2026). The screenshots are from the fleet system generated by ORION, running with test data. Project names are in Portuguese because the requests were.</p>
+          <div class="tools"><span>swappable AI models</span><span>voice</span><span>Node.js</span><span>SQLite</span><span>Docker</span></div>
+        </div>
+        <div class="gallery" data-gallery>
+          <figure class="shot"><img src="../img/orion/orion-indicadores.webp" alt="Indicators in the system generated by ORION" width="1440" height="900" loading="lazy"><figcaption>Indicators and charts in the fleet system generated by ORION</figcaption></figure>
+          <div class="thumbs">
+            <button type="button" aria-pressed="true" data-src="../img/orion/orion-indicadores.webp" data-cap="Indicators and charts in the fleet system generated by ORION"><img src="../img/orion/orion-indicadores.webp" alt="Indicators" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/orion/orion-painel.webp" data-cap="Home screen: what needs attention today"><img src="../img/orion/orion-painel.webp" alt="Dashboard" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/orion/orion-abastecimentos.webp" data-cap="Generated records screen with search and CSV import/export"><img src="../img/orion/orion-abastecimentos.webp" alt="Fueling" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/orion/orion-relatorio.webp" data-cap="Maintenance cost report per vehicle"><img src="../img/orion/orion-relatorio.webp" alt="Report" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-src="../img/orion/orion-historico.webp" data-cap="Change history with author and date"><img src="../img/orion/orion-historico.webp" alt="History" loading="lazy"></button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="block" id="trajetoria">
+    <div class="sec-head">
+      <div class="label"><b>05</b> / background</div>
+      <h2 class="sec">From operations to building solutions</h2>
+      <p>DIME Distribuidora is where I learned to see processes from the inside: first doing the work, then spotting what slowed it down and building the fix.</p>
+    </div>
+    <ol class="timeline">
+      <li><div class="t-date">jan–mar 2026<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Shipping Assistant (Apprentice)</b><span>First contact with the distribution operation and how it connects to the administrative teams.</span></div></li>
+      <li><div class="t-date">apr 2026 · now<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Fleet Assistant (Apprentice)</b><span>Administrative and operational routines of the fleet department; covered the work while the supervisor was on vacation.</span></div></li>
+      <li><div class="t-date">apr–jul 2026<small>reports</small></div><div class="t-dot"></div><div class="t-body"><b>Metrics for management</b><span>Monthly fuel efficiency reports with a defined calculation method.</span></div></li>
+      <li><div class="t-date">jun 18, 2026<small>oldest record</small></div><div class="t-dot"></div><div class="t-body"><b>Fleet Management System</b><span>Platform that replaces the department's spreadsheets; still in use and evolving.</span></div></li>
+      <li><div class="t-date">oct 2026<small>versions reviewed</small></div><div class="t-dot"></div><div class="t-body"><b>Solutions for other areas</b><span>Company Cars (sales), 10S Quality, Checklists and Incidents, Contract Drivers and CIOT.</span></div></li>
+      <li><div class="t-date">oct 7, 2026<small>documented stage</small></div><div class="t-dot"></div><div class="t-body"><b>ORION</b><span>Assistant that generates systems; 10 systems generated between Oct 9 and 11, 2026.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="block" id="competencias">
+    <div class="sec-head">
+      <div class="label"><b>06</b> / skills in practice</div>
+      <h2 class="sec">Where each skill shows up</h2>
+      <p>Instead of a loose list, this table links each skill to the projects that show it.</p>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col"></th><th scope="col">fleet</th><th scope="col">cars</th><th scope="col">quality</th><th scope="col">checklists</th><th scope="col">drivers</th><th scope="col">orion</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Process analysis<small>map the routine and find the bottleneck</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot half" title="Partly"></span></td></tr>
+          <tr><th scope="row">Digitizing controls<small>from paper and spreadsheets to a system</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td></tr>
+          <tr><th scope="row">Automated calculations and alerts<small>rules applied by the system</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot half" title="Partly"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot half" title="Partly"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td></tr>
+          <tr><th scope="row">Workflow design<small>steps, status and owners</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td></tr>
+          <tr><th scope="row">Traceability and evidence<small>history, attachments, audit log</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td></tr>
+          <tr><th scope="row">Tools and AI integration<small>database, storage, maps, AI models</small></th><td><span class="dot" title="Yes"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot half" title="Partly"></span></td><td><span class="dot" title="Yes"></span></td><td><span class="dot half" title="Partly"></span></td><td><span class="dot" title="Yes"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><span class="dot"></span> applied in the project</span><span><span class="dot half"></span> partly applied</span></div>
+  </section>
+
+  <section class="block two" aria-label="Education and contact">
+    <div>
+      <div class="sec-head"><div class="label"><b>07</b> / education</div><h2 class="sec">Education</h2></div>
+      <div class="card">
+        <h3>Associate degree in Systems Analysis and Development</h3>
+        <p>UNISUAM · 5th semester · expected Jul 2027</p>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <h3>Languages</h3>
+        <p>Portuguese (native) · English (intermediate)</p>
+      </div>
+    </div>
+    <div id="contato" style="scroll-margin-top:72px">
+      <div class="sec-head"><div class="label"><b>08</b> / contact</div><h2 class="sec">Let's talk</h2></div>
+      <div class="card contact">
+        <div><span>email</span><code id="email">guilhermeluiz671@gmail.com</code><button type="button" class="copy" id="copyEmail">copy</button></div>
+        <div><span>linkedin</span><a href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">linkedin.com/in/luiz-dias-76ab892b9</a></div>
+        <div><span>github</span><a href="https://github.com/luizdiaz1" target="_blank" rel="noopener">github.com/luizdiaz1</a></div>
+        <div><span>location</span><b>Rio de Janeiro, Brazil · open to remote</b></div>
+        <div><span>resume</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a href="../cv/Resume_Luiz_Dias.pdf" target="_blank" rel="noopener">English (PDF)</a><a href="../cv/Curriculo_Luiz_Dias.pdf" target="_blank" rel="noopener">Português (PDF)</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>luiz dias · portfolio</span>
+    <span>Dates show the oldest reference found in each project's files and records; where the start date wasn't confirmed, that's noted. The demos use a fictional company, people and values.</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-gallery]').forEach(function (g) {
+    var img = g.querySelector('.shot img'), cap = g.querySelector('.shot figcaption');
+    g.querySelectorAll('.thumbs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        img.src = b.dataset.src; img.alt = b.dataset.cap; cap.textContent = b.dataset.cap;
+        img.style.objectFit = b.dataset.phone ? 'contain' : 'cover';
+        img.style.background = b.dataset.phone ? '#0e131a' : '';
+        g.querySelectorAll('.thumbs button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      });
+    });
+  });
+  var btn = document.getElementById('copyEmail');
+  function selectEmail() { var r = document.createRange(); r.selectNodeContents(document.getElementById('email')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  btn.addEventListener('click', function () {
+    var t = document.getElementById('email').textContent;
+    try {
+      navigator.clipboard.writeText(t).then(function () { btn.textContent = 'copied'; setTimeout(function () { btn.textContent = 'copy'; }, 1600); }, selectEmail);
+    } catch (e) { selectEmail(); }
+  });
+})();
+</script>
+
+</body>
+</html>
