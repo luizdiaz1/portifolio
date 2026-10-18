@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="img/luiz.webp">
 <title>Luiz Dias — Portfólio</title>
+<link rel="alternate" hreflang="pt-BR" href="https://portfolio-luizdias.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://portfolio-luizdias.vercel.app/en/">
 <meta name="description" content="Luiz Dias — solução de problemas, automação de processos e desenvolvimento de soluções digitais para empresas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +74,13 @@ section.block { margin-top: 80px; scroll-margin-top: 72px; }
 .topnav nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--ink-2); padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
 .topnav nav a:hover { color: var(--ink); background: var(--panel-2); }
 
+/* idioma */
+.topnav .right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; min-width: 0; flex: 1 1 auto; }
+.lang-switch { display: inline-flex; flex: none; border: 1.5px solid var(--accent); border-radius: 8px; overflow: hidden; font: 600 .8rem/1 var(--f-mono); }
+.lang-switch a { text-decoration: none; padding: 7px 10px; color: var(--accent); display: inline-flex; gap: 6px; align-items: center; }
+.lang-switch a[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.lang-switch a:not([aria-current="true"]):hover { background: var(--accent-soft); }
+@media (max-width: 560px) { .lang-switch a { padding: 6px 8px; } .lang-switch .full { display: none; } }
 /* apresentação */
 .hero-wrap { position: relative; }
 .hero-wrap::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, #000 40%, transparent); -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent); pointer-events: none; z-index: -1; }
@@ -272,6 +281,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
 <header class="topnav">
   <div class="wrap">
     <a class="brand" href="#inicio"><i></i>luiz.dias</a>
+    <div class="right">
     <nav aria-label="Seções">
       <a href="#problemas">O que resolvo</a>
       <a href="#projetos">Projetos</a>
@@ -280,6 +290,11 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <a href="#competencias">Competências</a>
       <a href="#contato">Contato</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Idioma / Language">
+      <a href="./" aria-current="true" lang="pt-BR" hreflang="pt-BR">PT</a>
+      <a href="en/" lang="en" hreflang="en" title="English version">EN<span class="full"> · English</span></a>
+    </div>
+    </div>
   </div>
 </header>
 
@@ -290,10 +305,10 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
         <div class="label"><b>&gt;</b> solução de problemas · automação de processos · soluções digitais</div>
         <h1>Luiz Dias</h1>
         <p class="role">Transformo processos manuais em <span>fluxos digitais organizados</span>.</p>
-        <p class="lede">Tenho experiência prática em processos empresariais, iniciativa para identificar problemas e capacidade de desenvolver soluções digitais para automatizar rotinas, organizar informações e melhorar a eficiência operacional. Apliquei isso na DIME Distribuidora, criando sistemas internos para diferentes áreas da empresa, e no ORION, um assistente que constrói sistemas a partir de pedidos em linguagem natural.</p>
+        <p class="lede">Trabalho como jovem aprendiz na DIME Distribuidora desde janeiro de 2026. No setor de frota, os controles ficavam espalhados em planilhas, então comecei a desenvolver sistemas para resolver isso. Hoje são cinco, em quatro áreas da empresa. Também desenvolvo o ORION, um assistente que cria sistemas a partir de pedidos em linguagem natural. Curso Análise e Desenvolvimento de Sistemas na UNISUAM (5º período).</p>
         <div class="cta">
           <a class="btn" href="#projetos">Ver projetos</a>
-          <a class="btn alt" href="#orion">Conhecer o ORION</a>
+          <a class="btn alt" href="cv/Curriculo_Luiz_Dias.pdf" target="_blank" rel="noopener">Currículo (PDF) ↓</a>
           <a class="btn alt" href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a class="btn alt" href="https://github.com/luizdiaz1" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
@@ -304,7 +319,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       </figure>
     </section>
     <div class="strip" aria-label="Resumo">
-      <div><b>6</b><span>soluções internas desenvolvidas</span></div>
+      <div><b>5</b><span>sistemas internos desenvolvidos</span></div>
       <div><b>4</b><span>áreas envolvidas: frota, comercial, qualidade e transporte terceirizado</span></div>
       <div><b>10</b><span>sistemas gerados pelo ORION em testes</span></div>
       <div><b>334</b><span>notas fiscais lidas por automação (OCR)</span></div>
@@ -363,15 +378,14 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <a href="#qualidade"><span>03</span>Qualidade 10S</a>
       <a href="#checklists"><span>04</span>Checklists e Ocorrências</a>
       <a href="#agregados"><span>05</span>Agregados e CIOT</a>
-      <a href="#rodoviario"><span>06</span>Central do Rodoviário</a>
-      <a href="#orion"><span>07</span>ORION</a>
+      <a href="#orion"><span>06</span>ORION</a>
     </nav>
     <div class="note" role="note"><b>demo</b><span>As demonstrações rodam no seu navegador com um banco simulado: dá para cadastrar e editar à vontade, e o botão “Restaurar dados” volta ao início.</span></div>
 
     <article class="project" id="frota">
       <div class="p-head">
         <div class="p-title"><span class="p-num">01</span><h3>Sistema de Gestão de Frota</h3><span class="status s-ok">em uso · evolução contínua</span></div>
-        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/frota/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="actions"><a class="btn" href="frota/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
         <div><dt>período</dt><dd>2026 – atual<small>registro mais antigo: 18/06/2026</small></dd></div>
@@ -411,8 +425,8 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <div class="p-head">
         <div class="p-title"><span class="p-num">02</span><h3>Controle de Veículos de Passeio</h3><span class="status s-ok">publicado · em evolução</span></div>
         <div class="actions">
-          <a class="btn" href="https://luizdiaz1.github.io/portif-lio/promotor/" target="_blank" rel="noopener">Painel de controle ↗</a>
-          <a class="btn alt" href="https://luizdiaz1.github.io/portif-lio/promotor/#/condutor" target="_blank" rel="noopener">Área do condutor ↗</a>
+          <a class="btn" href="promotor/" target="_blank" rel="noopener">Painel de controle ↗</a>
+          <a class="btn alt" href="promotor/#/condutor" target="_blank" rel="noopener">Área do condutor ↗</a>
         </div>
       </div>
       <dl class="ficha">
@@ -450,7 +464,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
     <article class="project" id="qualidade">
       <div class="p-head">
         <div class="p-title"><span class="p-num">03</span><h3>Sistema de Qualidade 10S</h3><span class="status s-info">em implantação</span></div>
-        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/qualidade/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="actions"><a class="btn" href="qualidade/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
         <div><dt>período</dt><dd>2026<small>versão analisada: 06/10/2026 · início a confirmar</small></dd></div>
@@ -486,7 +500,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
     <article class="project" id="checklists">
       <div class="p-head">
         <div class="p-title"><span class="p-num">04</span><h3>Checklists e Ocorrências</h3><span class="status s-ok">implementado</span></div>
-        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/frota/" target="_blank" rel="noopener">Ver na demo ↗</a></div>
+        <div class="actions"><a class="btn" href="frota/" target="_blank" rel="noopener">Ver na demo ↗</a></div>
       </div>
       <dl class="ficha">
         <div><dt>período</dt><dd>2026<small>versão analisada do app: 01/10/2026 · início a confirmar</small></dd></div>
@@ -520,7 +534,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
     <article class="project" id="agregados">
       <div class="p-head">
         <div class="p-title"><span class="p-num">05</span><h3>Controle de Agregados e CIOT</h3><span class="status s-warn">em desenvolvimento</span></div>
-        <div class="actions"><a class="btn" href="https://luizdiaz1.github.io/portif-lio/agregados/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
+        <div class="actions"><a class="btn" href="agregados/" target="_blank" rel="noopener">Abrir demo ↗</a></div>
       </div>
       <dl class="ficha">
         <div><dt>período</dt><dd>2026<small>versão analisada: 05/10/2026 · início a confirmar</small></dd></div>
@@ -549,21 +563,6 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
             <button type="button" aria-pressed="false" data-src="img/agregados-3.webp" data-cap="Calculadora de pagamento por quinzena"><img src="img/agregados-3.webp" alt="Calculadora" loading="lazy"></button>
           </div>
         </div>
-      </div>
-    </article>
-
-    <article class="project" id="rodoviario">
-      <div class="p-head">
-        <div class="p-title"><span class="p-num">06</span><h3>Central do Rodoviário</h3><span class="status s-mute">situação a confirmar</span></div>
-      </div>
-      <dl class="ficha">
-        <div><dt>período</dt><dd>2026<small>referência documentada: 30/07/2026</small></dd></div>
-        <div><dt>objetivo</dt><dd>Dar aos motoristas um canal simples para informar problemas</dd></div>
-        <div><dt>minha contribuição</dt><dd>Concepção e desenvolvimento</dd></div>
-      </dl>
-      <div class="story" style="border-right:0">
-        <div><h4>solução</h4><p>Aplicação independente, acessada pelo celular via QR Code, em que o motorista registra o problema do veículo e define a prioridade em quatro níveis. Os chamados chegam ao sistema de gestão para tratamento.</p></div>
-        <div class="tools"><span>PWA</span><span>QR Code</span><span>Supabase</span></div>
       </div>
     </article>
 
@@ -674,11 +673,10 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <p>A experiência na DIME Distribuidora foi onde aprendi a enxergar processos de dentro: primeiro executando, depois identificando o que travava e construindo a solução.</p>
     </div>
     <ol class="timeline">
-      <li><div class="t-date">Expedição<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Expedição</b><span>Contato com o fluxo operacional e com a ligação entre operação e áreas administrativas.</span></div></li>
-      <li><div class="t-date">Frota · atual<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Auxiliar de Frota</b><span>Rotinas administrativas e operacionais do setor; apoio à continuidade das atividades durante as férias do supervisor.</span></div></li>
+      <li><div class="t-date">jan–mar/2026<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Expedição</b><span>Contato com o fluxo operacional e com a ligação entre operação e áreas administrativas.</span></div></li>
+      <li><div class="t-date">abr/2026 · atual<small>DIME Distribuidora</small></div><div class="t-dot"></div><div class="t-body"><b>Jovem Aprendiz – Auxiliar de Frota</b><span>Rotinas administrativas e operacionais do setor; apoio à continuidade das atividades durante as férias do supervisor.</span></div></li>
       <li><div class="t-date">abr–jul/2026<small>relatórios</small></div><div class="t-dot"></div><div class="t-body"><b>Indicadores para a gestão</b><span>Relatórios mensais de eficiência de combustível com critério de cálculo definido.</span></div></li>
       <li><div class="t-date">18/06/2026<small>registro mais antigo</small></div><div class="t-dot"></div><div class="t-body"><b>Sistema de Gestão de Frota</b><span>Plataforma que substitui as planilhas do setor; segue em uso e evolução.</span></div></li>
-      <li><div class="t-date">30/07/2026<small>referência documentada</small></div><div class="t-dot"></div><div class="t-body"><b>Central do Rodoviário</b><span>Canal próprio para os motoristas informarem problemas.</span></div></li>
       <li><div class="t-date">out/2026<small>versões analisadas</small></div><div class="t-dot"></div><div class="t-body"><b>Soluções para outras áreas</b><span>Veículos de Passeio (comercial), Qualidade 10S, Checklists e Ocorrências, Agregados e CIOT.</span></div></li>
       <li><div class="t-date">07/10/2026<small>etapa documentada</small></div><div class="t-dot"></div><div class="t-body"><b>ORION</b><span>Assistente que gera sistemas; 10 sistemas gerados entre 09 e 11/10/2026.</span></div></li>
     </ol>
@@ -692,14 +690,14 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
     </div>
     <div class="matrix-wrap">
       <table class="matrix">
-        <thead><tr><th scope="col"></th><th scope="col">frota</th><th scope="col">passeio</th><th scope="col">qualidade</th><th scope="col">checklists</th><th scope="col">agregados</th><th scope="col">rodoviário</th><th scope="col">orion</th></tr></thead>
+        <thead><tr><th scope="col"></th><th scope="col">frota</th><th scope="col">passeio</th><th scope="col">qualidade</th><th scope="col">checklists</th><th scope="col">agregados</th><th scope="col">orion</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Análise de processos<small>mapear a rotina e achar o gargalo</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot half" title="Parcial"></span></td></tr>
-          <tr><th scope="row">Digitalização de controles<small>do papel e da planilha para o sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
-          <tr><th scope="row">Automação de cálculos e alertas<small>regras aplicadas pelo sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td></td><td><span class="dot" title="Sim"></span></td></tr>
-          <tr><th scope="row">Estruturação de fluxos<small>etapas, status e responsáveis</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
-          <tr><th scope="row">Rastreabilidade e evidências<small>histórico, anexos, auditoria</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td></td><td><span class="dot" title="Sim"></span></td></tr>
-          <tr><th scope="row">Integração de ferramentas e IA<small>banco, armazenamento, mapas, modelos de IA</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Análise de processos<small>mapear a rotina e achar o gargalo</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td></tr>
+          <tr><th scope="row">Digitalização de controles<small>do papel e da planilha para o sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Automação de cálculos e alertas<small>regras aplicadas pelo sistema</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Estruturação de fluxos<small>etapas, status e responsáveis</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Rastreabilidade e evidências<small>histórico, anexos, auditoria</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td></tr>
+          <tr><th scope="row">Integração de ferramentas e IA<small>banco, armazenamento, mapas, modelos de IA</small></th><td><span class="dot" title="Sim"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td><td><span class="dot half" title="Parcial"></span></td><td><span class="dot" title="Sim"></span></td></tr>
         </tbody>
       </table>
     </div>
@@ -711,7 +709,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
       <div class="sec-head"><div class="label"><b>07</b> / formação</div><h2 class="sec">Formação acadêmica</h2></div>
       <div class="card">
         <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-        <p>UNISUAM · em andamento</p>
+        <p>UNISUAM · 5º período · previsão jul/2027</p>
       </div>
     </div>
     <div id="contato" style="scroll-margin-top:72px">
@@ -721,6 +719,7 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 760px; font-si
         <div><span>linkedin</span><a href="https://www.linkedin.com/in/luiz-dias-76ab892b9" target="_blank" rel="noopener">linkedin.com/in/luiz-dias-76ab892b9</a></div>
         <div><span>github</span><a href="https://github.com/luizdiaz1" target="_blank" rel="noopener">github.com/luizdiaz1</a></div>
         <div><span>local</span><b>Rio de Janeiro – RJ</b></div>
+        <div><span>currículo</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a href="cv/Curriculo_Luiz_Dias.pdf" target="_blank" rel="noopener">Português (PDF)</a><a href="cv/Resume_Luiz_Dias.pdf" target="_blank" rel="noopener">English (PDF)</a></span></div>
       </div>
     </div>
   </section>
